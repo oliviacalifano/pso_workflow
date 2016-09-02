@@ -1,0 +1,135 @@
+<html>
+
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+
+<head>
+	<title>Contextual: IAS</title>
+	<link href="multiple_select/multiple-select/multiple-select.css" rel="stylesheet"/>
+	<link href="ias.css" rel="stylesheet"/>
+	<script src="multiple_select/multiple-select/jquery.multiple.select.js"></script>
+</head>
+
+<body>
+	
+	<div id = "all_the_stuff">
+	<H1 class="title">Contextual: IAS</H1>
+	<text>PLEASE NOTE: If you are adding a channel that is not currently in the inclusion/exclusion bucket, the tool will add the channel without overriding any previous targeting. However, if you are adding a channel to the inclusion bucket that <b>is</b> currently in the exclusion bucket, the tool will automatically remove the channel from the inclusion bucket and then add it to the exclusion bucket (and vise-versa for adding to the exclusion bucket) &ndash; you do not need to run the tool with 'remove from' first, and then re-run the tool with the new targeting.</text>
+		<div id = "selections">
+			<div id="strat_selections">
+			<table>
+			<tr><tr><tr></tr></tr></tr>
+			<tr><td><select name="org" class="dropdown" style="width:300px" id="org_dropdown" multiple>
+				</select>
+				<script>
+					$("#org_dropdown").multipleSelect({
+						placeholder: "Choose Org",
+						filter: true,
+						selectAll: false,
+						single: true
+					});	
+				</script>	
+				</td></tr>
+				<tr><td><select name="adv" class="dropdown" style="width:300px" size=12 id="adv_list" multiple></select>
+				<script>
+					$("#adv_list").multipleSelect({
+						placeholder: "Choose Advertiser",
+						filter: true,
+						selectAll: false,
+						single: true
+					});	
+				</script>		
+				</td></tr>
+				<tr><td><select name="campaign" class="dropdown" style="width:300px" size=12 id="campaign_list" multiple></select>
+				<script>
+					$("#campaign_list").multipleSelect({
+						placeholder: "Choose Campaign",
+						filter: true
+					});		
+				</script>		
+				</td></tr>
+				<tr><td><select name="strategy" class="dropdown" style="width:300px" size=12 id="strat_list" multiple></select>
+				<script>
+					$("#strat_list").multipleSelect({
+						placeholder: "Choose Strategies",
+						filter: true
+					});	
+				</script>	
+				<label><input type="checkbox" name="active" id="active" checked="checked"> Show Active Strategies Only</label>
+				</td></tr>
+				
+				
+			<tr><tr><tr><tr><tr><tr></tr></tr></tr></tr></tr></tr>	
+			</table>
+		</div>
+		
+		<div id="add_remove_choices">
+			<table>
+				<tr>
+					<td>
+					<form id="add_remove" class="add_remove">
+						<input type="radio" name="add_remove" value="add" id="add"><label for="add">Add To</label>
+						<input type="radio" name="add_remove" value="remove" id="remove"><label for="remove">Remove From</label>	
+					</form>
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+					<form id="include_exclude" class="add_remove">
+						<input type="radio" name="include_exclude" value="include" id="include"><label for="include">Inclusion</label>
+						<input type="radio" name="include_exclude" value="exclude" id="exclude"><label for="exclude">Exclusion</label>	
+					</form>
+					</td>
+				</tr>	
+			</table>
+		</div>
+		
+		
+		<table>
+		<tr>
+			<td>
+			<form id="logic_ia" class="logic_ia">&nbsp&nbspIAS Inclusion Logic:
+				<input type="radio" name="logic_ia" value="AND" id="and"><label for="and">AND</label>
+				<input type="radio" name="logic_ia" value="OR" id="or"><label for="or">OR</label>	
+				<input type="radio" name="logic_ia" value="CURRENT" id="current"><label for="current">CURRENT</label>	
+			</form>
+			<text style="color:red"><b>**The 'CURRENT' logic setting applies the logic that is currently being used in the IAS inclusion bin</b></text>
+			<br></br>
+			<text style="color:red"><b>**Exclusion logic is always 'OR' </b></text>
+			<br></br>
+			<select name="ias" class="dropdown" style="width:1200px" id="ias_list" multiple>
+			</select>
+			<script>
+				$("#ias_list").multipleSelect({
+					placeholder: "Choose IAS",					
+					filter: true
+				});	
+			</script>	
+			</td>
+		</tr>
+		</table>
+		
+		<div id="submit_button">
+			<button type="submit" class="button" value="punch" id="punch">&nbspHeal&nbsp</button>
+		</div>
+		
+		<div id="feedback" class="feedback">
+		</div>
+		
+		<div id="fold_feedback" class="feedback">
+		</div>
+	</div>
+	</div>
+	</body>		
+
+<script src="get_orgs.js"></script>	
+<script src="get_advs.js"></script>
+<script src="get_campaigns.js"></script>
+<script src="get_strats.js"></script>
+<script src="get_ias.js"></script>
+<script src="t1_toolkit.js"></script>
+<script src="change_ias_withDV.js"></script>	
+
+</html>

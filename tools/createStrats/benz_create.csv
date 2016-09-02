@@ -1,0 +1,2 @@
+name,campaign_id,status,budget,description,type,use_campaign_start,use_campaign_end,start_date,end_date,bid_price_is_media_only,run_on_all_exchanges,supply_source_id,frequency_type,frequency_amount,frequency_interval,use_optimization,goal_type,goal_value,max_bid,pacing_type,pacing_amount,pacing_interval,pixel_target_expr,roi_target,version,geo_region,concept_id
+xconcepts,101663,,1000000,,REM,off,off,2016-08-02T00:00:00,2016-08-03T00:00:00,0,off,27,no-limit,,,on,cpa,1,1,even,2,day,,,0,27,"855859,855857"

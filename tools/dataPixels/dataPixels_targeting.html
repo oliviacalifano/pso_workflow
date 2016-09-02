@@ -1,0 +1,133 @@
+<html>
+
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+
+<head>
+	<title>DATA PIXELS</title>
+	<link href="multiple_select/multiple-select/multiple-select.css" rel="stylesheet"/>
+	<link href="dataPixels.css" rel="stylesheet"/>
+	<script src="multiple_select/multiple-select/jquery.multiple.select.js"></script>
+</head>
+
+<body>
+	
+	<div id = "all_the_stuff">
+	<H1 class="title">DATA PIXELS</H1>	
+
+		<div id = "selections">
+			<div id="strat_selections">
+			<table>
+			<tr><tr><tr></tr></tr></tr>
+			<tr><td><select name="org" class="dropdown" style="width:250px" id="org_dropdown" multiple>
+				</select>
+				<script>
+					$("#org_dropdown").multipleSelect({
+						placeholder: "Choose Org",
+						filter: true,
+						selectAll: false,
+						single: true
+					});	
+				</script>	
+				</td></tr>
+				<tr><td><select name="adv" class="dropdown" style="width:275px" size=12 id="adv_list" multiple></select>
+				<script>
+					$("#adv_list").multipleSelect({
+						placeholder: "Choose Advertiser",
+						filter: true,
+						selectAll: false,
+						single: true
+					});	
+				</script>		
+				</td></tr>
+				<tr><td><select name="campaign" class="dropdown" style="width:300px" size=12 id="campaign_list" multiple></select>
+				<script>
+					$("#campaign_list").multipleSelect({
+						placeholder: "Choose Campaign",
+						filter: true
+					});		
+				</script>		
+				</td></tr>
+				<tr><td><select name="strategy" class="dropdown" style="width:325px" size=12 id="strat_list" multiple></select>
+				<script>
+					$("#strat_list").multipleSelect({
+						placeholder: "Choose Strategies",
+						filter: true
+					});	
+				</script>
+				<label><input type="checkbox" name="active" id="active" checked="checked" onChange="myFunction()"> Show Active Strategies Only</label>				
+				</td></tr>
+			<tr><tr><tr><tr><tr><tr></tr></tr></tr></tr></tr></tr>	
+			</table>
+		</div>
+		
+		<div id="add_remove_choices">
+			<table>
+				<tr>
+					<td>
+					<form id="add_remove" class="add_remove">
+						<input type="radio" name="add_remove" value="add" id="add"><label for="add">Add To</label>
+						<input type="radio" name="add_remove" value="remove" id="remove"><label for="remove">Remove From</label>	
+					</form>
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+					<form id="include_exclude" class="add_remove">
+						<input type="radio" name="include_exclude" value="include" id="include"><label for="include">Inclusion</label>
+						<input type="radio" name="include_exclude" value="exclude" id="exclude"><label for="exclude">Exclusion</label>	
+					</form>
+					</td>
+				</tr>
+				
+				<tr>
+					<td>
+						<form id="and_or" class="and_or">&nbsp&nbspLogic (applied to inclusion bin):
+							<input type="radio" name="and_or" value="AND" id="and"><label for="and">AND</label>
+							<input type="radio" name="and_or" value="OR" id="or"><label for="or">OR</label>	
+						</form>
+					</td>
+				</tr>
+			</table>
+		</div>
+		
+		
+		<table>
+		<tr>
+			<td><select name="dataPixels" class="dropdown" style="width:420px" id="dataPixels_list" multiple>
+			</select>
+			<script>
+				$("#dataPixels_list").multipleSelect({
+					placeholder: "Choose Data Pixels",					
+					filter: true
+				});	
+			</script>	
+			</td>
+			
+		</tr>
+		</table>
+		
+		<div id="submit_button">
+			<button type="submit" class="button" value="punch" id="punch">&nbspHeal&nbsp</button>
+		</div>
+		
+		<div id="feedback" class="feedback">
+		</div>
+		
+		<div id="fold_feedback" class="feedback">
+		</div>
+	</div>
+	</div>
+	</body>
+
+<script src="get_orgs.js"></script>	
+<script src="get_advs.js"></script>
+<script src="get_campaigns.js"></script>
+<script src="get_strats.js"></script>
+<script src="get_dataPixels.js"></script>	
+<script src="t1_toolkit.js"></script>
+<script src="change_dataPixelsOverride.js"></script>	
+
+</html>

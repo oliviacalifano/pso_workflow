@@ -1,0 +1,95 @@
+
+.title {
+	font-family: agentOrange;
+	font-size: 38;
+	color: #005FA3;
+}
+
+.dropdown {
+	font-family: sans-serif;
+	font-size: 12;
+}	
+
+.add_remove {
+	font-family: "TW Cen MT",sans-serif;
+	font-size: 18;
+	font-weight: bold;
+	color: #D54E2B;
+}
+.button {
+   border-top: 1px solid #005FA3;
+   background: #005FA3;
+/*    background: -webkit-gradient(linear, left top, left bottom, from(#005FA3), to(#005FA3));	
+   background: -webkit-linear-gradient(top, #005FA3, #005FA3);
+   background: -moz-linear-gradient(top, #005FA3, #005FA3);
+   background: -ms-linear-gradient(top, #005FA3, #005FA3);
+   background: -o-linear-gradient(top, #005FA3, #005FA3); */
+   padding: 5px 10px;
+   -webkit-border-radius: 8px;
+   -moz-border-radius: 8px;
+   border-radius: 8px;
+/*    -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   box-shadow: rgba(0,0,0,1) 0 1px 0;
+   text-shadow: rgba(0,0,0,.4) 0 1px 0; */
+   color: white;
+   font-size: 16px;
+   font-weight: bold;
+   font-family: Sans-Serif;
+   text-decoration: none;
+   vertical-align: middle;
+   }
+   
+.button:hover {
+   border-top-color: #1600A3;
+   background: #1600A3;
+   color: #ccc;
+   }
+
+#login_title {
+	font-family: sans-serif;
+	font-size: 34;
+	color: #005FA3; 
+}
+   
+#login_form {
+	font-family: "TW Cen MT",sans-serif;
+	font-size: 18;
+	color: #D54E2B;
+} 
+
+.feedback {
+	font-family: sans-serif;
+	font-size: 14;
+	color: #F6B524
+} 
+
+#superman {
+	float: left;
+}
+
+#all_the_stuff {
+	padding-top: 75px;
+	padding-left: 400px;
+}
+
+#selections {
+	padding-top: 1px;
+}
+
+#add_remove_choices {
+	padding-top: 15px;
+}
+
+#supply_sources {
+	padding-top: 10px;
+}	
+
+#submit_button {
+	padding-top: 30px;
+}
+
+@font-face {
+    font-family: agentOrange;
+    src: url(agentorange.ttf);
+}

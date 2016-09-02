@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Yield Tools</title>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/2.0.1/normalize.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/chosen.min.css">
+    <link rel="stylesheet" href="css/chosen-bootstrap.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min.js"></script>
+    <script type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.9.3/typeahead.min.js"></script>
+    <script type="text/javascript" src="js/libs/chosen.jquery.min.js"></script>
+</head>
+
+<body>
+
+    <div id="main" class="poofGone">
+        <div id="leftOuter" class="pos"></div>
+        <div id="leftInner" class="pos"></div>
+        <div id="rightInner" class="pos"></div>
+        <div id="rightOuter" class="pos"></div>
+    </div>
+
+    <!-- confirmation modal -->
+    <div id="confirmationModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title"></h4>
+                </div>
+                <div class="modal-body">
+                    <div class="progress progress-striped">
+                        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+                    </div>
+                    <div id="modalContent"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">Ok</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- // -->
+
+    <!-- login modal -->
+    <div id="loginModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Login with LDAP:</h4>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div id="username" class="form-group">
+                            <input type="email" class="form-control" placeholder="Enter username">
+                        </div>
+                        <div id="password" class="form-group">
+                            <input type="password" class="form-control" placeholder="Password">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">Login</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- // -->
+    <script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" src="js/t1date.js"></script>
+
+    <script type="text/javascript" src="js/concept_mapper/availableToAssign/views/topBar.js"></script>
+    <script type="text/javascript" src="js/concept_mapper/availableToAssign/views/availableConceptView.js"></script>
+    <script type="text/javascript" src="js/concept_mapper/availableToAssign/collections/availableToAssignConceptsCollection.js"></script>
+    <script type="text/javascript" src="js/concept_mapper/assignedToStrat/models/assignedConceptModel.js"></script>
+    <script type="text/javascript" src="js/concept_mapper/assignedToStrat/collections/assignedConceptsCollections.js"></script>
+    <script type="text/javascript" src="js/concept_mapper/assignedToStrat/views/assignedConceptView.js"></script>
+
+    <script type="text/javascript" src="js/login_ldap/models/loginModel.js"></script>
+    <script type="text/javascript" src="js/login_ldap/views/loginView.js"></script>
+
+    <script type="text/javascript" src="js/progress_modal/models/updateModalModel.js"></script>
+    <script type="text/javascript" src="js/progress_modal/views/updateModalView.js"></script>
+
+    <script type="text/javascript" src="js/splash_page/models/findAdvertisers.js"></script>
+    <script type="text/javascript" src="js/splash_page/models/findCampaigns.js"></script>
+    <script type="text/javascript" src="js/splash_page/views/findAdvertisersView.js"></script>
+    <script type="text/javascript" src="js/splash_page/views/findCampaignsView.js"></script>
+    <script type="text/javascript" src="js/splash_page/views/splashPageForm.js"></script>
+
+    <script type="text/javascript" src="js/left/collections/stratsCollections.js"></script>
+    <script type="text/javascript" src="js/left/views/stratsView.js"></script>
+    <script type="text/javascript" src="js/left/views/generalStratNameFilter.js"></script>
+    <script type="text/javascript" src="js/left/views/conceptMapperStratNameFilter.js"></script>
+
+    <script type="text/javascript" src="js/pmp/assignedToStrat/models/model.js"></script>
+    <script type="text/javascript" src="js/pmp/assignedToStrat/collections/collection.js"></script>
+    <script type="text/javascript" src="js/pmp/assignedToStrat/views/view.js"></script>
+    <script type="text/javascript" src="js/pmp/availableToAssign/collections/collection.js"></script>
+    <script type="text/javascript" src="js/pmp/availableToAssign/views/pmpDeal.js"></script>
+    <script type="text/javascript" src="js/pmp/availableToAssign/views/topBar.js"></script>
+    <script type="text/javascript" src="js/pmp/availableToAssign/views/mainView.js"></script>
+
+    <script type="text/javascript" src="js/pmp_creator/models/advertiser.js"></script>
+    <script type="text/javascript" src="js/pmp_creator/models/orgs.js"></script>
+    <script type="text/javascript" src="js/pmp_creator/models/publishers.js"></script>
+    <script type="text/javascript" src="js/pmp_creator/models/supplySources.js"></script>
+    <script type="text/javascript" src="js/pmp_creator/collections/advertisersInOrg.js"></script>
+    <script type="text/javascript" src="js/pmp_creator/views/formView.js"></script>
+    <script type="text/javascript" src="js/pmp_creator/views/advView.js"></script>
+    <script type="text/javascript" src="js/pmp_creator/views/orgSelect.js"></script>
+    <script type="text/javascript" src="js/pmp_creator/views/publishersSelect.js"></script>
+    <script type="text/javascript" src="js/pmp_creator/views/supplySourcesSelect.js"></script>
+    <script type="text/javascript" src="js/pmp_creator/views/advFilterBar.js"></script>
+
+    <script type="text/javascript" src="js/geo/models/GeosAssignedToStratModel.js"></script>
+    <script type="text/javascript" src="js/geo/collections/GeosAssignedToStratCollection.js"></script>
+    <script type="text/javascript" src="js/geo/views/GeosAssignedToStratView.js"></script>
+
+
+    <script type="text/javascript" src="js/router.js"></script>
+
+</body>
+
+</html>

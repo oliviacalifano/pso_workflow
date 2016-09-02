@@ -1,0 +1,123 @@
+	<html>
+
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+
+<head>
+	<title>CHECKLIST</title>
+	<link href="multiple_select/multiple-select/multiple-select.css" rel="stylesheet"/>
+	<link href="check.css" rel="stylesheet"/>
+	<script src="multiple_select/multiple-select/jquery.multiple.select.js"></script>
+	<script src="t1_toolkit.js"></script>
+
+
+<!-- 	<script src="https://adroit-tools.mediamath.com/~lgoldberg/tools/avgrund/jquery.avgrund.js"</script> -->
+
+</head>
+
+<body>
+	
+	<div id = "all_the_stuff">
+		<H1 class="title">CHECKLIST</H1>
+		
+		<div id = "selections">
+		<div id="strat_selections">
+		<table>
+		<tr><tr><tr></tr></tr></tr>
+		<tr><td><select name="org" class="dropdown" style="width:225px" id="org_list" multiple>
+			</select>
+			<script>
+				$("#org_list").multipleSelect({
+					placeholder: "Choose Org",
+					filter: true,
+					selectAll: false,
+					single: true
+				});	
+			</script>	
+
+			</td></tr>
+			<tr><td><select name="adv" class="dropdown" style="width:250px" size=12 id="adv_list" multiple></select>
+			<script>
+				$("#adv_list").multipleSelect({
+					placeholder: "Choose Advertiser",
+					filter: true,
+					selectAll: false,
+					single: true
+				});	
+			</script>		
+			</td></tr>
+			<tr><td><select name="campaign" class="dropdown" style="width:275px" size=12 id="campaign_list" multiple></select>
+			<script>
+				$("#campaign_list").multipleSelect({
+					placeholder: "Choose Campaign",
+					filter: true,
+					selectAll: false,
+					single: true
+				});	
+			</script>		
+			</td></tr>
+			<tr><td><select name="strategy" class="dropdown" style="width:300px" size=12 id="strat_list" multiple></select></td>
+			<script>
+				$("#strat_list").multipleSelect({
+					placeholder: "Choose Strategies",
+					filter: true
+				});	
+			</script>	
+			</tr>
+		<tr><tr><tr><tr><tr><tr></tr></tr></tr></tr></tr></tr>	
+		</table>
+		</div>
+		
+		</div>
+		
+		<div id="submit_button">
+		<button type="submit" class="button" value="punch" id="punch">&nbspOPTIONS&nbsp</button>
+		
+		</div>
+
+	<div id = "container">	
+		<div id="button">
+		<button style="display: none" class="button2" id="dates">&nbspDATES&nbsp</button>
+		</div>
+		
+		<div id="button">
+		<button style="display: none" class="button2" id="concepts">&nbspCONCEPTS&nbsp</button>
+		</div>
+		
+		<div id="button">
+		<button style="display: none" class="button2" id="creatives">&nbspCREATIVES&nbsp</button>
+		</div>
+
+		<div id="button">
+		<button style="display: none" class="button2" id="recencies">&nbspRECENCIES&nbsp</button>
+		</div>
+		
+		<div id="button">
+		<button style="display: none" class="button2" id="budgets">&nbspBUDGETS&nbsp</button>
+		</div>
+		
+		</div>
+		
+		<div id="feedback2" class="feedback">
+		</div>
+		
+		<div id="feedback" class="feedback">
+		</div>
+		
+	</div>
+
+	
+	</body>
+
+<script src="get_orgs.js"></script>	
+<script src="get_advs.js"></script>
+<script src="get_campaigns.js"></script>
+<script src="get_strats.js"></script>
+<script src="check.js"></script>
+<script src="dates.js"></script>
+<script src="budgets.js"></script>
+<script src="creatives2.js"></script>
+<script src="concepts.js"></script>
+<script src="recency.js"></script>
+</html>

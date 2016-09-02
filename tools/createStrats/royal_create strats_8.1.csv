@@ -1,0 +1,7 @@
+name,campaign_id,status,budget,description,type,use_campaign_start,use_campaign_end,start_date,end_date,bid_price_is_media_only,frequency_type,frequency_amount,frequency_interval,use_optimization,goal_type,goal_value,max_bid,pacing_type,pacing_amount,pacing_interval,pixel_target_expr,roi_target,version,geo_region,concept_id
+Check out Step 1 - Booking 3-24 FBX RHS,234179,off,1000000,,REM,off,on,2016-08-02T00:00:00,,0,even,15,hour,on,reach,50,5,even,25,day,([889919]),,0,251,671310
+Check Out Step 2 - Stateroom 3-24 FBX RHS,234179,off,1000000,,REM,off,on,2016-08-02T00:00:00,,0,even,15,hour,on,reach,50,5,even,25,day,([889920]),,0,251,671310
+Check Out Step 3 - Guests 96+ FBX RHS,234179,off,1000000,,REM,off,on,2016-08-02T00:00:00,,0,even,15,hour,on,reach,50,5,even,25,day,([889921]),,0,251,671310
+Check Out Step 4 - Review 3-96 FBX RHS,234179,off,1000000,,REM,off,on,2016-08-02T00:00:00,,0,even,15,hour,on,reach,50,5,even,25,day,([889922]),,0,251,671310
+Deal Pages 3-168 FBX RHS,234179,off,1000000,,REM,off,on,2016-08-02T00:00:00,,0,even,15,hour,on,reach,50,5,even,25,day,([889915]),,0,251,671310
+Home Page 24-96 FBX RHS,234179,off,1000000,,REM,off,on,2016-08-02T00:00:00,,0,even,15,hour,on,reach,50,5,even,25,day,([889913]),,0,251,671310

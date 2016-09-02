@@ -1,0 +1,136 @@
+<html>
+
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+<head>
+	<title>Daypart</title>
+	<link href="multiple_select/multiple-select/multiple-select.css" rel="stylesheet"/>
+	<link href="daypart.css" rel="stylesheet"/>
+	<script src="multiple_select/multiple-select/jquery.multiple.select.js"></script>
+
+</head>
+
+<body>
+	
+	<div id = "all_the_stuff">
+	<H1 class="title">DAY PART</H1>
+
+		<div id = "selections">
+			<div id="strat_selections">
+			<table>
+			<tr><tr><tr></tr></tr></tr>
+			<tr><td><select name="org" class="dropdown" style="width:225px" id="org_dropdown" multiple>
+				</select>
+				<script>
+					$("#org_dropdown").multipleSelect({
+						placeholder: "Choose Org",
+						filter: true,
+						selectAll: false,
+						single: true
+					});	
+				</script>	
+				</td></tr>
+				<tr><td><select name="adv" class="dropdown" style="width:250px" size=12 id="adv_list" multiple></select>
+				<script>
+					$("#adv_list").multipleSelect({
+						placeholder: "Choose Advertiser",
+						filter: true,
+						selectAll: false,
+						single: true
+					});	
+				</script>		
+				</td></tr>
+				<tr><td><select name="campaign" class="dropdown" style="width:275px" size=12 id="campaign_list" multiple></select>
+				<script>
+					$("#campaign_list").multipleSelect({
+						placeholder: "Choose Campaign",
+						filter: true
+					});		
+				</script>		
+				</td></tr>		
+				<tr><td><select name="strategy" class="dropdown" style="width:325px" size=12 id="strat_list" multiple></select>
+				<script>
+					$("#strat_list").multipleSelect({
+						placeholder: "Choose Strategies",
+						filter: true
+					});	
+				</script>
+				<label><input type="checkbox" name="active" id="active" checked="checked" onChange="myFunction()"> Show Active Strategies Only</label>
+				</td></tr>
+			</table>
+			</div>		
+		
+		
+		<br><label><input type="checkbox" name="allday" id="allday" onchange="valueChanged()"> Run on all Day Parts</label><br></br>
+		
+		<div id="newDayPart">
+			<table>
+			<tr><td><select name="daypart" class="dropdown" style="width:250px" size=12 id="days" multiple></select>
+			<script>
+				$("#days").multipleSelect({
+					placeholder: "Choose Days ",
+					filter: true
+				});	
+			</script>	
+			</td></tr>
+			<tr><td><select name="daypart" class="dropdown" style="width:250px" size=12 id="daypart_start" multiple></select>
+			<script>
+				$("#daypart_start").multipleSelect({
+					placeholder: "Choose Start Hour ",
+					filter: true,
+					selectAll: false,
+					single: true
+				});	
+			</script>	
+			</td>
+			
+			<td><select name="daypart" class="dropdown" style="width:250px" size=12 id="daypart_end" multiple></select>
+			<script>
+				$("#daypart_end").multipleSelect({
+					placeholder: "Choose End Hour",
+					filter: true,
+					selectAll: false,
+					single: true
+				});	
+			</script>
+			</td></tr>
+			<tr><td>
+			<form id="user_time" class="user_time">
+				<input type="radio" name="user_time" value="1"><label>End User</label>
+				<input type="radio" name="user_time" value="0"><label>Eastern Timezone</label>	
+			</form>
+			</td></tr>
+				
+			</table>
+		</div>
+		</div>
+		
+		<div id="submit_button">
+			<button type="submit" class="button" value="punch" id="punch">&nbspHeal&nbsp</button>
+		</div>
+		
+		<div id="feedback" class="feedback"></div>
+		
+		<div id="fold_feedback" class="feedback"></div>
+	</div>
+
+	</body>
+
+<script type="text/javascript">
+function valueChanged()
+{
+ $('#newDayPart').toggle(this.checked);
+
+}
+</script>	
+	
+<script src="get_orgs.js"></script>	
+<script src="get_advs.js"></script>
+<script src="get_campaigns.js"></script>
+<script src="get_strats.js"></script>
+<script src="get_times.js"></script>	
+<script src="t1_toolkit.js"></script>
+<script src="change_daypart3.js"></script>	
+
+</html>

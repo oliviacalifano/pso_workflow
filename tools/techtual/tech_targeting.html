@@ -1,0 +1,189 @@
+<html>
+
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+
+<head>
+	<title>Bulk Editing Tool - Tech Targeting</title>
+	<link href="multiple_select/multiple-select/multiple-select.css" rel="stylesheet"/>
+	<link href="geo.css" rel="stylesheet"/>
+	<script src="multiple_select/multiple-select/jquery.multiple.select.js"></script>
+</head>
+
+<body>
+	<div id="world">
+	<img src="heal.jpg" height=314px>
+	</div>
+	
+	<div id = "all_the_stuff">
+	<H1 class="title">Tech-tual Healing</H1>
+	"With great power comes great responsiblity" - Uncle Ben
+	#<a href="disclaimer.html" >disclaimer</a>
+		<div id = "selections">
+			<div id="strat_selections">
+			<table>
+			<tr><tr><tr></tr></tr></tr>
+			<tr><td><select name="org" class="dropdown" style="width:250px" id="org_dropdown">
+				</select>
+				<script>
+					$("#org_dropdown").multipleSelect({
+						placeholder: "Choose Org",
+						selectAll: false,
+						single: true
+					});	
+				</script>	
+				</td></tr>
+				<tr><td><select name="adv" class="dropdown" style="width:275px" size=12 id="adv_list" multiple></select>
+				<script>
+					$("#adv_list").multipleSelect({
+						placeholder: "Choose Advertiser",
+						filter: true
+					});	
+				</script>		
+				</td></tr>
+				<tr><td><select name="campaign" class="dropdown" style="width:300px" size=12 id="campaign_list" multiple></select>
+				<script>
+					$("#campaign_list").multipleSelect({
+						placeholder: "Choose Campaign",
+						filter: true
+					});		
+				</script>		
+				</td></tr>
+				<tr><td><select name="strategy" class="dropdown" style="width:325px" size=12 id="strat_list" multiple></select></td>
+				<script>
+					$("#strat_list").multipleSelect({
+						placeholder: "Choose Strategies",
+						filter: true
+					});	
+				</script>	
+				</tr>
+			<tr><tr><tr><tr><tr><tr></tr></tr></tr></tr></tr></tr>	
+			</table>
+		</div>
+		
+		<div id="add_remove_choices">
+			<table>
+				<tr>
+					<td>
+					<form id="add_remove" class="add_remove">
+						<input type="radio" name="add_remove" value="add" id="add"><label for="add">Add To</label>
+						<input type="radio" name="add_remove" value="remove" id="remove"><label for="remove">Remove From</label>	
+					</form>
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+					<form id="include_exclude" class="add_remove">
+						<input type="radio" name="include_exclude" value="include" id="include"><label for="include">Inclusion</label>
+						<input type="radio" name="include_exclude" value="exclude" id="exclude"><label for="exclude">Exclusion</label>	
+					</form>
+					</td>
+				</tr>
+			</table>
+		</div>
+
+		<table>
+		<tr>
+<!--			<td><select name="geo" class="dropdown" style="width:420px" id="geo_dropdown" multiple> -->
+			<td><select name="device" class="dropdown" style="width:420px" id="devices_list" multiple>
+			</select>
+			<script>
+/*				$("#geo_dropdown").multipleSelect({
+					placeholder: "Choose Geo",
+*/
+				$("#devices_list").multipleSelect({
+					placeholder: "Choose Device",					
+					filter: true
+				});	
+			</script>	
+			</td>
+			
+		</tr>
+		</table>
+
+		<table>
+		<tr>
+			<td><select name="inventory" class="dropdown" style="width:420px" id="inv_list" multiple>
+			</select>
+			<script>
+				$("#inv_list").multipleSelect({
+					placeholder: "Choose Inventory",					
+					filter: true
+				});	
+			</script>	
+			</td>
+			
+		</tr>
+		</table>
+
+		<table>
+		<tr>
+			<td><select name="connection" class="dropdown" style="width:420px" id="cspd_list" multiple>
+			</select>
+			<script>
+				$("#cspd_list").multipleSelect({
+					placeholder: "Choose Connection",					
+					filter: true
+				});	
+			</script>	
+			</td>
+			
+		</tr>
+		</table>		
+		
+		<table>
+		<tr>
+			<td><select name="ISP" class="dropdown" style="width:420px" id="ispx_list" multiple>
+			</select>
+			<script>
+				$("#ispx_list").multipleSelect({
+					placeholder: "Choose ISP",					
+					filter: true
+				});	
+			</script>	
+			</td>
+			
+		</tr>
+		</table>		
+		
+		<table>
+		<tr>
+			<td><select name="browser" class="dropdown" style="width:420px" id="brwsr_list" multiple>
+			</select>
+			<script>
+				$("#brwsr_list").multipleSelect({
+					placeholder: "Choose Browser",					
+					filter: true
+				});	
+			</script>	
+			</td>
+			
+		</tr>
+		</table>
+		
+		<div id="submit_button">
+			<button type="submit" class="button" value="punch" id="punch">&nbspHeal&nbsp</button>
+		</div>
+		
+		<div id="feedback" class="feedback">
+		</div>
+		
+		<div id="fold_feedback" class="feedback">
+		</div>
+	</div>
+			
+	</body>
+<script src="get_tech.js"></script>	
+<!-- <script src="get_regns.js"></script> -->	
+<script src="get_orgs.js"></script>	
+<script src="get_advs.js"></script>
+<script src="get_campaigns.js"></script>
+<script src="get_strats.js"></script>
+<!-- <script src="change_tech.js"></script> -->
+<script src="change_techOverride.js"></script>
+<!-- <script src="change_geo.js"></script> -->
+<script src="t1_toolkit.js"></script>
+
+</html>

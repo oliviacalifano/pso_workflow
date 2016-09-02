@@ -1,0 +1,185 @@
+body {/*font-family:"Lucida Grande",Lucida,Helvetica,Arial,sans-serif;
+		color: #333; font-size: small;*/
+		/*background: url('../img/MediaMath_Logo_tsmall.png') no-repeat fixed bottom right;*/
+		/*margin-left: 40px;*/}
+/*
+th, td {border: 1px solid #ccc; padding: 3px 10px;}
+table {border-collapse: collapse;}
+dt {font-weight: bold;}
+dd {margin-top: 0.4em; margin-bottom: 1em;}
+div.output {background-color: #ddd; padding: 15px; margin: 10px 0;}
+a img {border: none;}
+a {text-decoration: none;padding:2px;}
+a:visited {text-decoration: none;color:blue;}
+a:hover {text-decoration: none;color:yellow;background-color:blue;}
+h3 a:hover{text-decoration: none; color:blue; background-color: white;}
+.highlight {background-color: yellow;}
+.message {color: green; font-style: italic;}
+.error {color: red; font-style: italic; font-weight: bold;}
+.center {text-align: center;}
+.right {text-align: right;}
+*/
+/*input {margin: 2px;}*/
+body{
+  padding-top: 70px;
+  font-family: 'Alegreya Sans', sans-serif;
+}
+
+ul.flashes {background: #cee5F5; padding: 0.5em; width: 50%;
+	border: 1px solid #aacbe2; list-style-type:none;}
+footer {margin-bottom: 10px;}
+
+@media screen and (min-width: 768px){
+  .tool-container{
+    height: 165px;
+    text-align: center;
+    margin-bottom: 15px;
+  }
+  #bulkEditor > h2{
+    text-align: center; 
+    margin-bottom: 30px;
+  }
+  #bulkStrategyDuplicator > h2{
+    text-align: center; 
+    margin-bottom: 30px;
+  }
+}  
+
+.navbar-header > a{
+  font-size: 20px;
+}
+
+.search-inner-addon {
+  position: relative;
+}
+
+.search-inner-addon input {
+  padding-right: 30px;
+}
+
+.search-inner-addon i {
+  position: absolute;
+  right: 0px;
+  padding: 10px 12px;
+  pointer-events: none;
+}
+
+.navbar-default {
+  background-color: #404040;
+}
+
+.navbar-default .navbar-brand {
+  color: rgba(255, 255, 255, 0.79);
+}
+
+ .tool-container:hover{
+  cursor: pointer;
+} 
+
+.navbar-default .navbar-brand:hover{
+  color: rgb(196, 18, 18);
+  background-color: transparent;
+}
+
+#right{
+	position: fixed;
+	right: 200px;
+}
+
+a:hover{
+  text-decoration: none;
+}
+
+
+.pink{
+  color:#C41230;
+}
+
+.pink:hover{
+  background-color: #DF376F;
+  color: #ffffff;
+}
+
+.blue{
+  color:#52BDEC;
+}
+
+.blue:hover{
+  background-color: #52BDEC;
+  color: #ffffff;
+}
+
+.yellow{
+  color:#F7A11A;
+}
+
+.yellow:hover{
+  background-color: #F7A11A;
+  color: #ffffff;
+}
+
+.red{
+  color: #C41230;
+}
+
+.red:hover{
+  background-color: #C41230;
+  color: #ffffff;
+}
+
+.green{
+  color: #5C8727;
+}
+
+.green:hover{
+  background-color: #5C8727;
+  color: #ffffff;
+}
+
+.navyblue{
+  color: #005288;
+}
+
+.navyblue:hover{
+  background-color:#005288;
+  color: #ffffff
+}
+
+.violet{
+  color: #7A68AE;
+}
+
+.violet:hover{
+  background-color: #7A68AE;
+  color: #ffffff;
+}
+
+.tool-container > h2{
+  font-size: 24px;
+  margin-top: 27px;
+  margin-bottom: 34px;
+}
+
+.tool-container > p{
+  text-align: left;
+}
+
+#button-container{
+  margin-left: 15px;
+  margin-bottom: 25px;
+}
+
+#button-container > button.btn{
+  margin-right:5px;
+}
+
+.button-active{
+  background-color: #C41230;
+  color: #fff;
+}
+
+#button-container > button.btn:focus{
+  outline: none;
+  color: #fff;
+}
+

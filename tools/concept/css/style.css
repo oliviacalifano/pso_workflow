@@ -1,0 +1,293 @@
+html, body {
+	width: 100%;
+	height: 100%;
+}
+
+.poofGone {
+	display: none;
+}
+
+.aligner {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+	width: 100%;
+	flex-direction: column;
+}
+
+.aligner-item {
+	width: 40%;
+	margin: 10px;
+}
+
+#advertisersButton {
+	cursor: pointer;
+}
+
+.input-group select {
+	background: #ffffff;
+}
+
+.select-style {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	text-indent: 3px;
+	text-overflow: '';
+}
+
+.input-group-addon {
+	min-width: 90px;
+}
+
+.pos {
+	height: 100%;
+	float: left;
+}
+
+#conceptAssignment {
+	display: none;
+	height: 100%;
+	width: 100%;
+	padding-top: 1%;
+}
+
+#main {
+	height: 100%;
+	width: 100%;
+	padding-top: 1%;
+}
+
+#leftOuter {
+	width: 2%;
+}
+
+#rightOuter {
+	width: 2%;
+}
+
+#leftInner {
+	width: 28%;
+	
+}
+
+#rightInner {
+	width: 68%;
+	padding-left: 2%;
+	position: relative;
+}
+
+#topNavContainer {
+	margin-bottom: 10px;
+}
+
+.rightSideNavContainer {
+	width: 100%;
+	margin-bottom: 10px;
+}
+
+.rightSideNavContainer button {
+	margin-left: 2%;
+}
+
+.rightNavMember {
+	float: left;
+	margin-left: 1%;
+}
+
+#conceptContainer {
+	overflow-y: auto;
+	overflow-x: hidden;
+	height: 90%;
+	width: 100%;
+}
+
+.conceptContainerBox {
+	width: 50%;
+	float: left;
+}
+
+#stratContainer {
+	height: 90%;
+	overflow-y: auto;
+	overflow-x: hidden;
+	background: #eeeeee;
+	border-radius: 10px;
+}
+
+#stratFilterContainer{
+	margin-bottom: 10px;
+}
+
+#topNavContainer {
+	width: 60%;
+}
+
+.concept {
+	width: 95%;
+}
+
+.pmpdeal {
+	width: 95%;
+}
+
+.pmpdeal span {
+	float: right;
+}
+
+.strategyNameBox {
+	width: 100%;
+	word-wrap: break-word;
+	background: #E2DFDF;
+	padding-left: 10%;
+}
+
+ul {
+	list-style-type: none;
+	margin-bottom: 0px;
+	min-height: 15px;
+}
+
+.strategyContainerBox {
+	margin-bottom: 2%;
+}
+
+.strategyConceptsBox {
+
+}
+
+.ajax-loader{
+	background:
+		url('ajax-loader.gif')
+		no-repeat
+		right center;
+	background-origin: content-box;		
+}
+
+#saveBtn {
+	float: right;
+}
+
+input[type="checkbox"] {
+	opacity: .5;
+}
+
+.well {
+	margin-bottom: 1%;
+}
+
+#availablePmpDeals {
+	overflow-y: auto;
+	overflow-x: hidden;
+	height: 90%;
+	width: 100%;
+}
+
+
+/*FIX FOR TYPEAHEAD JS*/
+.twitter-typeahead{
+	display: block !important;
+}
+.twitter-typeahead .tt-query,
+.twitter-typeahead .tt-hint {
+  margin-bottom: 0;
+}
+
+.tt-dropdown-menu {
+  min-width: 160px;
+  margin-top: 2px;
+  padding: 5px 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0,0,0,.2);
+  *border-right-width: 2px;
+  *border-bottom-width: 2px;
+  -webkit-border-radius: 6px;
+     -moz-border-radius: 6px;
+          border-radius: 6px;
+  -webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+     -moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+          box-shadow: 0 5px 10px rgba(0,0,0,.2);
+  -webkit-background-clip: padding-box;
+     -moz-background-clip: padding;
+          background-clip: padding-box;
+}
+
+.tt-suggestion {
+  display: block;
+  padding: 3px 20px;
+}
+
+.tt-suggestion.tt-is-under-cursor {
+  color: #fff;
+  background-color: #0081c2;
+  background-image: -moz-linear-gradient(top, #0088cc, #0077b3);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088cc), to(#0077b3));
+  background-image: -webkit-linear-gradient(top, #0088cc, #0077b3);
+  background-image: -o-linear-gradient(top, #0088cc, #0077b3);
+  background-image: linear-gradient(to bottom, #0088cc, #0077b3);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0077b3', GradientType=0)
+}
+
+.tt-suggestion.tt-is-under-cursor a {
+  color: #fff;
+}
+
+.tt-suggestion p {
+  margin: 0;
+}
+
+.twitter-typeahead .tt-hint {
+    display: block;
+    height: 38px;
+    padding: 8px 12px;
+    font-size: 14px;
+    line-height: 1.428571429;
+    border: 1px solid transparent;
+    background-image: none !important;
+}
+
+.glyphicon {
+	top: 0px !important;
+	margin-left: 0px !important;
+}
+
+#makePmpDealForm input[type="date"] {
+	margin-left: 1%;
+	visibility: hidden;
+}
+
+#dealid input[type="text"] {
+	margin-left: 1%;
+}
+
+.errorz {
+	color: red;
+}
+
+#advSelect {
+	overflow-y: auto;
+	overflow-x: hidden; 
+	height: 90%;
+	margin-top: 1%;
+}
+
+#fetchAdvertisers {
+	width: 8%;
+}
+
+#advSelect .list-group-item {
+	padding: 0px 15px;
+}
+
+#makePmpDealForm {
+	overflow-x: visible;
+	overflow-y: auto;
+	height: 100%;
+	padding: 0% 3%;
+}
+
+#pmpSubmit {
+	margin-bottom: 2%;
+}

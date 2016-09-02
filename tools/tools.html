@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html ng-app="piToolsHomepage" >
+  <head>
+
+
+<title>WORKFLOW TOOLS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Bootstrap -->
+<link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" media="screen">
+<link rel="shortcut icon" href="/tools/static/favicon.ico" type="image/x-icon">
+<link rel="icon" href="/tools/static/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" type="text/css" href="standard.css"/>
+<link href="//fonts.googleapis.com/css?family=Alegreya+Sans" rel="stylesheet" type="text/css">
+
+<script src="angular.js"></script>
+  <script src="angular.min.js"></script>
+  <script src="index.js"></script>
+  <script src="ui-bootstrap.min.js"></script>
+
+  </head>
+  <body>
+    
+   <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <!-- <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button> -->
+          
+          <a class="navbar-brand" href="/tools" >WORKFLOW TOOLS</a>
+		  <a class="navbar-brand" id="right" href="https://wiki.mediamath.com/display/Yield/Workflow+Tools" target="_blank">DOCUMENTATION</a>
+          
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+                
+                
+          </ul>
+          
+          
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    
+<div class="container">
+    
+ <body ng-app="piToolsHomepage" ng-controller="piToolsList">
+  <div class="row">
+    <div id="button-container">
+      <button class="btn" ng-click="triggerAllTools()" ng-class="{'button-active' : allTools == true}">All</button>
+      <button class="btn" ng-click="triggerTargetingTools()" ng-class="{'button-active' : targeting == true}">Targeting</button>  
+      <button class="btn" ng-click="triggerQATools()" ng-class="{'button-active' : QA == true}">QA</button >
+      <button class="btn" ng-click="triggerReportTools()" ng-class="{'button-active' : reports == true}">Reports</button> 
+    </div>
+    <a ng-show="QA || allTools" href="https://pi.mediamath.com/tools/t1campaignsummary/" class="tool-container col-lg-3 col-md-4 col-sm-6 col-xs-12 green">
+      <h2>T1 Campaign Summary Tool</h2>
+      <p>Quick summary of Campaign/Strategy details.</p>
+    </a>	
+    <a  ng-show="QA || allTools" href="checklist/checklist.html" class="tool-container col-lg-3 col-md-4 col-sm-6 col-xs-12 blue" >
+      <h2 style="text-align: center;">Checklist</h2>
+      <p>QA your campaigns by checking dates, concepts, creatives, recencies and budgets.</p>
+    </a>
+     <a ng-show="targeting || allTools" href="supplysource/supply_targeting.html" class="tool-container col-lg-3 col-md-4 col-sm-6 col-xs-12 green">
+      <h2>Supply Source Man</h2>
+      <p>Bulk change strategy supply and fold targeting.</p>
+    </a>
+    <!--<a ng-show="targeting || allTools" href="geo_DMAs/geo_targeting.html" class="tool-container col-lg-3 col-md-4 col-sm-6 col-xs-12 red" >
+      <h2 style="text-align: center;">DMA Targeting</h2>
+      <p>Bulk edit strategy DMA targeting.</p>
+    </a>
+    <a ng-show="targeting || allTools" href="geo_regions/geo_targeting.html" class=" tool-container col-lg-3 col-md-4 col-sm-6 col-xs-12 yellow">
+      <h2 style="text-align: center;">Region Targeting</h2>
+      <p>Bulk edit strategy region targeting</p>
+    </a>-->
+    <a ng-show="targeting || allTools" href="techtual/tech_targeting.html" class=" tool-container col-lg-3 col-md-4 col-sm-6 col-xs-12 red">
+      <h2 style="text-align: center;">Tech-tual Healing</h2>
+      <p>Bulk edit stratety technology targeting including device, inventory, connection, ISP, browser.</p> 
+    </a>
+    <a  ng-show="targeting || allTools" href="peer39/peer39_targeting.html" class="tool-container col-lg-3 col-md-4 col-sm-6 col-xs-12 navyblue">
+      <h2>Contextual: Peer39</h2>
+      <p>Add or remove Peer39 channels.</p>
+    </a>
+    <a ng-show="targeting || allTools" href="ias/ias_targeting.html" class=" tool-container col-lg-3 col-md-4 col-sm-6 col-xs-12 yellow">
+      <h2>Contextual: IAS</h2>
+      <p>Add or remove IAS Channels. </p>
+    </a>
+	<a ng-show="targeting || allTools" href="doubleVerify/dv_targeting.html" class=" tool-container col-lg-3 col-md-4 col-sm-6 col-xs-12 violet">
+      <h2>Contextual: Double Verify</h2>
+      <p>Add or remove DV Channels. </p>
+    </a>
+     <a ng-show="targeting || allTools" href="daypart/daypart_targeting.html" class=" tool-container col-lg-3 col-md-4 col-sm-6 col-xs-12 blue">
+      <h2>Dayparting</h2>
+      <p>Fix day part targeting for multiple strategies within a campaign.</p>
+    </a>
+    <a ng-show="targeting || allTools" href="blacklistCampaign/BL_targeting.html" class=" tool-container col-lg-3 col-md-4 col-sm-6 col-xs-12 green">
+      <h2>Blacklists/Whitelists: Campaign Level</h2>
+      <p>Add or remove a blacklist or whitelist at the campaign level.</p>
+    </a> 
+    <a ng-show="targeting || allTools" href="blacklistStrategy/BL_targeting.html" class=" tool-container col-lg-3 col-md-4 col-sm-6 col-xs-12 violet">
+      <h2 style="text-align: center;">Blacklists/Whitelists: Strategy Level</h2>
+      <p>Bulk add or remove a blacklist or whitelist at the strategy level.</p>
+    </a>  
+    <a ng-show="targeting || allTools" href="siteSelectiveness/siteSelectiveness_targeting.html" class=" tool-container col-lg-3 col-md-4 col-sm-6 col-xs-12 yellow">
+      <h2>Site Selectiveness</h2>
+      <p>Bulk edit site selectiveness and transparent URLS.</p> 
+    </a>
+    <a ng-show="targeting || allTools" href="eventPixels/eventPixels_targeting.html" class="tool-container col-lg-3 col-md-4 col-sm-6 col-xs-12 navyblue">
+      <h2>Event Pixels</h2>
+      <p>Target or anti-target even pixels. Includes AND/OR logic.</p> 
+    </a>
+    <a ng-show="targeting || allTools" href="dataPixels/dataPixels_targeting.html" class="tool-container col-lg-3 col-md-4 col-sm-6 col-xs-12 pink">
+      <h2>Data Pixels</h2>
+      <p>Target or anti-target data pixels. Includes AND/OR logic. </p>
+    </a>
+    <a ng-show="reports || allTools" href="spendCap2.0/spendCap_targeting.html" class="tool-container col-lg-3 col-md-4 col-sm-6 col-xs-12 blue">
+      <h2>Spend Cap Report</h2>
+      <p>Download an excel to check whether your campaigns are pacing with the spend cap rather than strategy pacing. </p>
+    </a>
+	<a ng-show="reports || allTools" href="history2.0/history.html" class="tool-container col-lg-3 col-md-4 col-sm-6 col-xs-12 green">
+      <h2>Change Log Report</h2>
+      <p>Download the change log for multiple strategies or a single campaign.</p>
+    </a>
+
+	<a ng-show="reports || allTools" href="uniques2.0/uniques.html" class="tool-container col-lg-3 col-md-4 col-sm-6 col-xs-12 yellow">
+      <h2>Uniques Report</h2>
+      <p>Download the daily loads and uniques for a segment.</p>
+    </a>
+	<a ng-show="reports || allTools" href="PacingReport2.0/hourlySpend.html" class="tool-container col-lg-3 col-md-4 col-sm-6 col-xs-12 navyblue">
+      <h2>Campaign Pacing Report</h2>
+      <p>Compare cumulative spend/impressions by hour for today and yesterday.</p>
+    </a>	
+	<a ng-show="reports || allTools" href="strategyPacingReport/hourlySpend.html" class="tool-container col-lg-3 col-md-4 col-sm-6 col-xs-12 green">
+      <h2>Strategy Pacing Report</h2>
+      <p>Compare cumulative spend/impressions by hour for today and yesterday.</p>
+    </a>
+	<a ng-show="targeting || allTools" href="zipcodes/zipcodes.html" class="tool-container col-lg-3 col-md-4 col-sm-6 col-xs-12 pink">
+      <h2>Zipcodes</h2>
+      <p>Edit location targeting by uploading or removing a postal codes file. If you are uploading a file it must be saved as a csv.</p>
+    </a>
+	<a ng-show="targeting || allTools" href="/tools/concept/" class="tool-container col-lg-3 col-md-4 col-sm-6 col-xs-12 navyblue">
+      <h2>Other Tools</h2>
+      <p>Concept Assigner, PMP apply to all, PMP Assigner</p>
+    </a>	
+  </div>
+ </body> 
+
+</div>
+
+
+    
+
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	<script src="main.js"></script>
+
+
+  </body>
+</html>
