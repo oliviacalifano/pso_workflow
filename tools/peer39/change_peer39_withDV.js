@@ -327,6 +327,7 @@ function update_ctxl_targeting() {
 						if (success == 1 && mod_ctxl.length!=0) {
 							count = count +1;
 							$("#counter").html(count + "/" + strat_list.length);
+							
 							move((count/strat_list.length)*100);
 							feedback = feedback + "<p>Updated contextual targeting for "+current_strat+". Check changes <a target=\"_blank\" href=\"https://adroit-tools.mediamath.com/t1/api/v2.0/strategies/"+current_strat+"/targeting_segments?full=*\">here</a></p>";								
 							$("#feedback").html(feedback); 
@@ -347,6 +348,7 @@ function update_ctxl_targeting() {
 
 
 function move(width) {
+console.log(width);
   var elem = document.getElementById("myBar");
   var id = setInterval(frame,10);
   function frame() {
