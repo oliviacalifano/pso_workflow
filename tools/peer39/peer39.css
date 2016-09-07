@@ -70,7 +70,7 @@ width:960px;
 
 #myProgress {
     position: relative;
-    width: 100%;
+    width: 200px;
     height: 30px;
     background-color: grey;
 }
