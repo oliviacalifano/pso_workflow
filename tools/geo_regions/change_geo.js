@@ -196,12 +196,12 @@ function update_geo_targeting() {
 				set_targeting(current_strat, '7', final_list, function(success)
 				{			
 					if (success == 1 && mod_regn.length!=0) {
-						feedback = feedback + "<p>Updated region targeting for "+current_strat+". Check changes <a target=\"_blank\" href=\"https://adroit-tools.mediamath.com/t1/api/strategies/"+current_strat+"/target_dimensions/7\">here</a></p>";								
+						feedback = feedback + "<p>Updated region targeting for "+current_strat+". Check changes <a target=\"_blank\" href=\"https://adroit-tools.mediamath.com/t1/api/v2.0/strategies/"+current_strat+"/target_dimensions/7\">here</a></p>";								
 						$("#feedback").html(feedback); 
 					}
 					else{
 							var error = "ERROR: ";
-							feedback = feedback + "<p>" + error.fontcolor("red")+current_camp+". Check changes <a target=\"_blank\" href=\"https://adroit-tools.mediamath.com/t1/api/strategies/"+current_strat+"/target_dimensions/7\">here</a></p>";								
+							feedback = feedback + "<p>" + error.fontcolor("red")+current_camp+". Check changes <a target=\"_blank\" href=\"https://adroit-tools.mediamath.com/t1/api/v2.0/strategies/"+current_strat+"/target_dimensions/7\">here</a></p>";								
 						$("#feedback").html(feedback); 
 						}
 				});	
