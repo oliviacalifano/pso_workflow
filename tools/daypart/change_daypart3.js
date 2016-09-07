@@ -193,13 +193,13 @@ function update_daypart_targeting() {
 				set_targeting(current_strat, update, function(current_strat, success)
 				{						
 					if (success == 1) {
-						feedback = feedback + "<p> Added the daypart for "+current_strat+". Check changes <a target=\"_blank\" href=\"https://adroit-tools.mediamath.com/t1/api/strategies/"+ current_strat +"/day_parts\">here</a></p>";								
+						feedback = feedback + "<p> Added the daypart for "+current_strat+". Check changes <a target=\"_blank\" href=\"https://adroit-tools.mediamath.com/t1/api/v2.0/strategies/"+ current_strat +"/day_parts\">here</a></p>";								
 						$("#feedback").html(feedback); 
 
 					}
 					else{
 						var error = "ERROR: ";
-						feedback = feedback + "<p>" + error.fontcolor("red")+current_camp+". Check changes <a target=\"_blank\" href=\"https://adroit-tools.mediamath.com/t1/api/strategies/"+ current_strat +"/day_parts\">here</a></p>";								
+						feedback = feedback + "<p>" + error.fontcolor("red")+current_camp+". Check changes <a target=\"_blank\" href=\"https://adroit-tools.mediamath.com/t1/api/v2.0/strategies/"+ current_strat +"/day_parts\">here</a></p>";								
 						$("#feedback").html(feedback); 
 						}
 

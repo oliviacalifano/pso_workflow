@@ -192,16 +192,16 @@ function update_bl_targeting() {
 					{			
 						if (success == 1 && mod_bl.length!=0) {
 							if (add_remove == 'add') {
-							feedback = feedback + "<p> Added the blacklists/whitelists for "+current_camp+". Check changes <a target=\"_blank\" href=\"https://adroit-tools.mediamath.com/t1/api/campaigns/"+ current_camp +"/site_lists?q=assigned%3D%3D1&sort_by=id\">here</a></p>";								
+							feedback = feedback + "<p> Added the blacklists/whitelists for "+current_camp+". Check changes <a target=\"_blank\" href=\"https://adroit-tools.mediamath.com/t1/api/v2.0/campaigns/"+ current_camp +"/site_lists?q=assigned%3D%3D1&sort_by=id\">here</a></p>";								
 							$("#feedback").html(feedback); 
 							}
 							if (add_remove == 'remove') {
-							feedback = feedback + "<p> Removed the blacklists/whitelists for "+current_camp+". Check changes <a target=\"_blank\" href=\"https://adroit-tools.mediamath.com/t1/api/campaigns/"+ current_camp +"/site_lists?q=assigned%3D%3D1&sort_by=id\">here</a></p>";									
+							feedback = feedback + "<p> Removed the blacklists/whitelists for "+current_camp+". Check changes <a target=\"_blank\" href=\"https://adroit-tools.mediamath.com/t1/api/v2.0/campaigns/"+ current_camp +"/site_lists?q=assigned%3D%3D1&sort_by=id\">here</a></p>";									
 							$("#feedback").html(feedback); 
 							}
 						else{
 							var error = "ERROR: ";
-							feedback = feedback + "<p>" + error.fontcolor("red")+current_camp+". Check changes <a target=\"_blank\" href=\"https://adroit-tools.mediamath.com/t1/api/campaigns/"+ current_camp +"/site_lists?q=assigned%3D%3D1&sort_by=id\">here</a></p>";									
+							feedback = feedback + "<p>" + error.fontcolor("red")+current_camp+". Check changes <a target=\"_blank\" href=\"https://adroit-tools.mediamath.com/t1/api/v2.0/campaigns/"+ current_camp +"/site_lists?q=assigned%3D%3D1&sort_by=id\">here</a></p>";									
 							$("#feedback").html(feedback);
 						}
 						}

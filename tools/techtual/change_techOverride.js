@@ -435,12 +435,12 @@ function update_tech_targeting() {
 					set_targeting(current_strat, '24', final_list, function(success)
 					{			
 						if (success == 1 && mod_dev.length!=0) {
-							feedback = feedback + "<p>Updated device targeting for "+current_strat+". Check changes <a target=\"_blank\" href=\"https://adroit-tools.mediamath.com/t1/api/strategies/"+current_strat+"/target_dimensions/24\">here</a></p>";								
+							feedback = feedback + "<p>Updated device targeting for "+current_strat+". Check changes <a target=\"_blank\" href=\"https://adroit-tools.mediamath.com/t1/api/v2.0/strategies/"+current_strat+"/target_dimensions/24\">here</a></p>";								
 							$("#feedback").html(feedback); 
 						}
 						else{
 							var error = "ERROR: ";
-							feedback = feedback + "<p>" + error.fontcolor("red")+current_camp+". Check changes <a target=\"_blank\" href=\"https://adroit-tools.mediamath.com/t1/api/strategies/"+current_strat+"/target_dimensions/24\">here</a></p>";								
+							feedback = feedback + "<p>" + error.fontcolor("red")+current_camp+". Check changes <a target=\"_blank\" href=\"https://adroit-tools.mediamath.com/t1/api/v2.0/strategies/"+current_strat+"/target_dimensions/24\">here</a></p>";								
 							$("#feedback").html(feedback); 
 						}
 					});	
@@ -465,12 +465,12 @@ function update_tech_targeting() {
 					set_targeting(current_strat, '25', final_list, function(success)
 					{			
 						if (success == 1 && mod_inv.length!=0) {
-							feedback = feedback + "<p>Updated device targeting for "+current_strat+". Check changes <a target=\"_blank\" href=\"https://adroit-tools.mediamath.com/t1/api/strategies/"+current_strat+"/target_dimensions/25\">here</a></p>";								
+							feedback = feedback + "<p>Updated device targeting for "+current_strat+". Check changes <a target=\"_blank\" href=\"https://adroit-tools.mediamath.com/t1/api/v2.0/strategies/"+current_strat+"/target_dimensions/25\">here</a></p>";								
 							$("#feedback").html(feedback); 
 						}
 						else{
 							var error = "ERROR: ";
-							feedback = feedback + "<p>" + error.fontcolor("red")+current_camp+". Check changes <a target=\"_blank\" href=\"https://adroit-tools.mediamath.com/t1/api/strategies/"+current_strat+"/target_dimensions/25\">here</a></p>";								
+							feedback = feedback + "<p>" + error.fontcolor("red")+current_camp+". Check changes <a target=\"_blank\" href=\"https://adroit-tools.mediamath.com/t1/api/v2.0/strategies/"+current_strat+"/target_dimensions/25\">here</a></p>";								
 							$("#feedback").html(feedback);
 						}
 					});	
@@ -495,12 +495,12 @@ function update_tech_targeting() {
 					set_targeting(current_strat, '2', final_list, function(success)
 					{			
 						if (success == 1 && mod_cspd.length!=0) {
-							feedback = feedback + "<p>Updated device targeting for "+current_strat+". Check changes <a target=\"_blank\" href=\"https://adroit-tools.mediamath.com/t1/api/strategies/"+current_strat+"/target_dimensions/2\">here</a></p>";								
+							feedback = feedback + "<p>Updated device targeting for "+current_strat+". Check changes <a target=\"_blank\" href=\"https://adroit-tools.mediamath.com/t1/api/v2.0/strategies/"+current_strat+"/target_dimensions/2\">here</a></p>";								
 							$("#feedback").html(feedback); 
 						}
 						else{
 							var error = "ERROR: ";
-							feedback = feedback + "<p>" + error.fontcolor("red")+current_camp+". Check changes <a target=\"_blank\" href=\"https://adroit-tools.mediamath.com/t1/api/strategies/"+current_strat+"/target_dimensions/2\">here</a></p>";								
+							feedback = feedback + "<p>" + error.fontcolor("red")+current_camp+". Check changes <a target=\"_blank\" href=\"https://adroit-tools.mediamath.com/t1/api/v2.0/strategies/"+current_strat+"/target_dimensions/2\">here</a></p>";								
 							$("#feedback").html(feedback);
 						}
 					});	
@@ -525,12 +525,12 @@ function update_tech_targeting() {
 					set_targeting(current_strat, '4', final_list, function(success)
 					{			
 						if (success == 1 && mod_brwsr.length!=0) {
-							feedback = feedback + "<p>Updated device targeting for "+current_strat+". Check changes <a target=\"_blank\" href=\"https://adroit-tools.mediamath.com/t1/api/strategies/"+current_strat+"/target_dimensions/4\">here</a></p>";								
+							feedback = feedback + "<p>Updated device targeting for "+current_strat+". Check changes <a target=\"_blank\" href=\"https://adroit-tools.mediamath.com/t1/api/v2.0/strategies/"+current_strat+"/target_dimensions/4\">here</a></p>";								
 							$("#feedback").html(feedback); 
 						}
 						else{
 							var error = "ERROR: ";
-							feedback = feedback + "<p>" + error.fontcolor("red")+current_camp+". Check changes <a target=\"_blank\" href=\"https://adroit-tools.mediamath.com/t1/api/strategies/"+current_strat+"/target_dimensions/4\">here</a></p>";								
+							feedback = feedback + "<p>" + error.fontcolor("red")+current_camp+". Check changes <a target=\"_blank\" href=\"https://adroit-tools.mediamath.com/t1/api/v2.0/strategies/"+current_strat+"/target_dimensions/4\">here</a></p>";								
 							$("#feedback").html(feedback);
 						}
 					});	
@@ -555,12 +555,12 @@ function update_tech_targeting() {
 					set_targeting(current_strat, '3', final_list, function(success)
 					{			
 						if (success == 1 && mod_ispx.length!=0) {
-							feedback = feedback + "<p>Updated device targeting for "+current_strat+". Check changes <a target=\"_blank\" href=\"https://adroit-tools.mediamath.com/t1/api/strategies/"+current_strat+"/target_dimensions/3\">here</a></p>";								
+							feedback = feedback + "<p>Updated device targeting for "+current_strat+". Check changes <a target=\"_blank\" href=\"https://adroit-tools.mediamath.com/t1/api/v2.0/strategies/"+current_strat+"/target_dimensions/3\">here</a></p>";								
 							$("#feedback").html(feedback); 
 						}
 						else{
 							var error = "ERROR: ";
-							feedback = feedback + "<p>" + error.fontcolor("red")+current_camp+". Check changes <a target=\"_blank\" href=\"https://adroit-tools.mediamath.com/t1/api/strategies/"+current_strat+"/target_dimensions/3\">here</a></p>";								
+							feedback = feedback + "<p>" + error.fontcolor("red")+current_camp+". Check changes <a target=\"_blank\" href=\"https://adroit-tools.mediamath.com/t1/api/v2.0/strategies/"+current_strat+"/target_dimensions/3\">here</a></p>";								
 							$("#feedback").html(feedback);
 						}
 					});	
