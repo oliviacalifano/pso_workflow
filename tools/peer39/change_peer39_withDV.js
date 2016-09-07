@@ -233,6 +233,7 @@ function update_ctxl_targeting() {
 	var ia_op = "";
 	var pe_op = "";
 	var dv_op = "";
+	var count = 0;
 
 	//check if adding or removing technologies
 	var add_remove = $('input[name=add_remove]:checked', '#add_remove').val();
@@ -324,6 +325,8 @@ function update_ctxl_targeting() {
 					set_targeting(current_strat, final_list, pe_op, ia_op, dv_op, function(success)
 					{			
 						if (success == 1 && mod_ctxl.length!=0) {
+							count = count +1;
+							$("#counter").html(count + "/" + strat_list.length);
 							feedback = feedback + "<p>Updated contextual targeting for "+current_strat+". Check changes <a target=\"_blank\" href=\"https://adroit-tools.mediamath.com/t1/api/v2.0/strategies/"+current_strat+"/targeting_segments?full=*\">here</a></p>";								
 							$("#feedback").html(feedback); 
 						}
