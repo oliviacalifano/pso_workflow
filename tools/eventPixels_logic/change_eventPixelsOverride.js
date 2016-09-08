@@ -42,12 +42,13 @@ function get_eventPixel_targets(strat, operation, pool, log, opPixels, callback)
 	var returnVal="";
 	var pixels="";
 	var pixelSplit=""
-	var andOr='';
+	var andOr=log;
 	var includePixels="";
 	var excludePixels="";
 	var includeFinal="";
 	var excludeFinal="";
-	var logic='OR';
+	var logic_in = "OR";
+	var logic_ex = "OR";
 
 	var request = $.ajax({
 		url: "https://adroit-tools.mediamath.com/t1/api/v2.0/strategies/"+strat,
@@ -101,19 +102,45 @@ function get_eventPixel_targets(strat, operation, pool, log, opPixels, callback)
 			console.log(excludePixels);
 			}
 
+			//current inclusion and exclusion logic			
+			if(includePixels.indexOf("AND")!= -1)
+			{
+				logic_in='AND';
+			}
+			else
+			{
+				logic_in='OR';
+			}			
+			
+			if(excludePixels.indexOf("AND")!= -1)
+			{
+				logic_ex='AND';
+			}
+			else
+			{
+				logic_ex='OR';
+			}
+			
+			if(pool=='include' && andOr == "CURRENT"){
+				logic_in = logic_in;
+			}
+			if(pool=='include' && andOr != "CURRENT"){
+				logic_in = andOr;
+			}		
+
+			if(pool=='exclude' && andOr == "CURRENT"){
+				logic_ex = logic_ex;
+			}
+			if(pool=='exclude' && andOr != "CURRENT"){
+				logic_ex = andOr;
+			}			
+			
 			if(operation=='add')
 			{
 				if(pool=='include')
 				{
 					console.log("adding "+opPixels+" to inclusion");
-					if(includePixels.indexOf("AND")!= -1)
-					{
-						logic='AND';
-					}
-					else
-					{
-						logic='OR';
-					}
+
 					includePixels=includePixels.replace(/[\]\[\(\)A-Z]/g,"");
 					excludePixels=excludePixels.replace(/[\]\[\(\)A-Z]/g,"");
 					includePixels=includePixels.split("  ");
@@ -136,14 +163,7 @@ function get_eventPixel_targets(strat, operation, pool, log, opPixels, callback)
 				if(pool=='exclude')
 				{
 					console.log("adding "+opPixels+" to exclusion");
-					if(includePixels.indexOf("AND")!= -1)
-					{
-						logic='AND';
-					}
-					else
-					{
-						logic='OR';
-					}
+
 					includePixels=includePixels.replace(/[\]\[\(\)A-Z]/g,"");
 					excludePixels=excludePixels.replace(/[\]\[\(\)A-Z]/g,"");
 					includePixels=includePixels.split("  ");
@@ -163,7 +183,6 @@ function get_eventPixel_targets(strat, operation, pool, log, opPixels, callback)
 					console.log(excludePixels);
 					
 				}
-		
 			}
 			
 			console.log("ok");
@@ -206,7 +225,6 @@ function get_eventPixel_targets(strat, operation, pool, log, opPixels, callback)
 							delete excludePixels[z];
 						}
 					}
-					
 				}
 			}
 			
@@ -223,15 +241,15 @@ function get_eventPixel_targets(strat, operation, pool, log, opPixels, callback)
 		{
 			includePixels[x]="["+includePixels[x]+"]";
 		}
-		//includeFinal=includePixels.join(" "+logic+" ");
-		includeFinal=includePixels.join(" "+log+" ");
+		includeFinal=includePixels.join(" "+logic_in+" ");
+		
 		console.log(includeFinal);
 		
 		for(var x=0;x<excludePixels.length;x++)
 		{
 			excludePixels[x]="["+excludePixels[x]+"]";
 		}
-		excludeFinal=excludePixels.join(" OR ");
+		excludeFinal=excludePixels.join(" "+logic_ex+" ");
 		
 		if(excludeFinal.length>1){
 			excludeFinal="NOT ( "+excludeFinal+" )";
@@ -297,6 +315,8 @@ function set_targeting(strat_id, ver, final_list, callback)
 				console.log("updated " + strat_id);
 			},
 			error: function(jqXHR, textStatus, errorThrown) {
+				var success = 0;
+				callback(success);
 				console.log(jqXHR, textStatus, errorThrown)
 			}
 		})
@@ -364,7 +384,7 @@ function update_eventPixel_targeting() {
 						}
 						else{
 							var error = "ERROR: ";
-							feedback = feedback + "<p>" + error.fontcolor("red")+current_camp+". Check changes <a target=\"_blank\" href=\"https://t1.mediamath.com/app/#strategy/edit/"+current_strat+"/targeting/myData\">here</a></p>";								
+							feedback = feedback + "<p>" + error.fontcolor("red")+current_strat+". Check changes <a target=\"_blank\" href=\"https://t1.mediamath.com/app/#strategy/edit/"+current_strat+"/targeting/myData\">here</a></p>";								
 							$("#feedback").html(feedback); 
 						}
 						
