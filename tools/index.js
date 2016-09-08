@@ -4,14 +4,14 @@ var piToolsHomepage = angular.module('piToolsHomepage',["ui.bootstrap"]);
 
 function piToolsList($scope) {
    $scope.allTools = true;
-   $scope.targeting = false;
+   $scope.bulkEdit = false;
    $scope.QA = false;
    $scope.reports= false;
    
    
     var turnOfTriggers = function(){
     	$scope.allTools = false;
-   		$scope.targeting = false;
+   		$scope.bulkEdit = false;
    		$scope.QA = false;
    		$scope.reports= false;
     }
@@ -23,7 +23,7 @@ function piToolsList($scope) {
 
 	$scope.triggerTargetingTools = function(){
 		turnOfTriggers();
-		$scope.targeting = true;
+		$scope.bulkEdit = true;
 	}
 
 	$scope.triggerQATools = function(){
