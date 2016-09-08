@@ -235,6 +235,7 @@ function update_dv_targeting() {
 	var dv_op = "";
 	var pe_op = "";
 	var ia_op = "";
+	var count = 0;
 
 	//check if adding or removing technologies
 	var add_remove = $('input[name=add_remove]:checked', '#add_remove').val();
@@ -326,6 +327,10 @@ function update_dv_targeting() {
 					set_targeting(current_strat, final_list, dv_op, pe_op, ia_op, function(success)
 					{			
 						if (success == 1 && mod_dv.length!=0) {
+							count = count +1;
+							$("#counter").html(count + "/" + strat_list.length);
+							
+							move(Math.round((count/strat_list.length)*100));
 							feedback = feedback + "<p>Updated contextual targeting for "+current_strat+". Check changes <a target=\"_blank\" href=\"https://adroit-tools.mediamath.com/t1/api/v2.0/strategies/"+current_strat+"/targeting_segments?full=*\">here</a></p>";								
 							$("#feedback").html(feedback); 
 						}
@@ -341,6 +346,12 @@ function update_dv_targeting() {
 			
 		}
 	}
+}
+
+function move(width) {
+console.log(width);
+  var elem = document.getElementById("myBar");
+  elem.style.width = width + '%';
 }
 
 
