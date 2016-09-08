@@ -53,7 +53,7 @@
   <div class="row">
     <div id="button-container">
       <button class="btn" ng-click="triggerAllTools()" ng-class="{'button-active' : allTools == true}">All</button>
-      <button class="btn" ng-click="triggerTargetingTools()" ng-class="{'button-active' : targeting == true}">Targeting</button>  
+      <button class="btn" ng-click="triggerTargetingTools()" ng-class="{'button-active' : bulkEdit == true}">Bulk Edit</button>  
       <button class="btn" ng-click="triggerQATools()" ng-class="{'button-active' : QA == true}">QA</button >
       <button class="btn" ng-click="triggerReportTools()" ng-class="{'button-active' : reports == true}">Reports</button> 
     </div>
@@ -65,59 +65,59 @@
       <h2 style="text-align: center;">Checklist</h2>
       <p>QA your campaigns by checking dates, concepts, creatives, recencies and budgets.</p>
     </a>
-     <a ng-show="targeting || allTools" href="supplysource/supply_targeting.html" class="tool-container col-lg-3 col-md-4 col-sm-6 col-xs-12 green">
+     <a ng-show="bulkEdit || allTools" href="supplysource/supply_bulkEdit.html" class="tool-container col-lg-3 col-md-4 col-sm-6 col-xs-12 green">
       <h2>Supply Source Man</h2>
-      <p>Bulk change strategy supply and fold targeting.</p>
+      <p>Bulk change strategy supply and fold bulkEdit.</p>
     </a>
-    <!--<a ng-show="targeting || allTools" href="geo_DMAs/geo_targeting.html" class="tool-container col-lg-3 col-md-4 col-sm-6 col-xs-12 red" >
+    <!--<a ng-show="bulkEdit || allTools" href="geo_DMAs/geo_bulkEdit.html" class="tool-container col-lg-3 col-md-4 col-sm-6 col-xs-12 red" >
       <h2 style="text-align: center;">DMA Targeting</h2>
-      <p>Bulk edit strategy DMA targeting.</p>
+      <p>Bulk edit strategy DMA bulkEdit.</p>
     </a>
-    <a ng-show="targeting || allTools" href="geo_regions/geo_targeting.html" class=" tool-container col-lg-3 col-md-4 col-sm-6 col-xs-12 yellow">
+    <a ng-show="bulkEdit || allTools" href="geo_regions/geo_bulkEdit.html" class=" tool-container col-lg-3 col-md-4 col-sm-6 col-xs-12 yellow">
       <h2 style="text-align: center;">Region Targeting</h2>
-      <p>Bulk edit strategy region targeting</p>
+      <p>Bulk edit strategy region bulkEdit</p>
     </a>-->
-    <a ng-show="targeting || allTools" href="techtual/tech_targeting.html" class=" tool-container col-lg-3 col-md-4 col-sm-6 col-xs-12 red">
+    <a ng-show="bulkEdit || allTools" href="techtual/tech_bulkEdit.html" class=" tool-container col-lg-3 col-md-4 col-sm-6 col-xs-12 red">
       <h2 style="text-align: center;">Tech-tual Healing</h2>
-      <p>Bulk edit stratety technology targeting including device, inventory, connection, ISP, browser.</p> 
+      <p>Bulk edit stratety technology bulkEdit including device, inventory, connection, ISP, browser.</p> 
     </a>
-    <a  ng-show="targeting || allTools" href="peer39/peer39_targeting.html" class="tool-container col-lg-3 col-md-4 col-sm-6 col-xs-12 navyblue">
+    <a  ng-show="bulkEdit || allTools" href="peer39/peer39_bulkEdit.html" class="tool-container col-lg-3 col-md-4 col-sm-6 col-xs-12 navyblue">
       <h2>Contextual: Peer39</h2>
       <p>Add or remove Peer39 channels.</p>
     </a>
-    <a ng-show="targeting || allTools" href="ias/ias_targeting.html" class=" tool-container col-lg-3 col-md-4 col-sm-6 col-xs-12 yellow">
+    <a ng-show="bulkEdit || allTools" href="ias/ias_bulkEdit.html" class=" tool-container col-lg-3 col-md-4 col-sm-6 col-xs-12 yellow">
       <h2>Contextual: IAS</h2>
       <p>Add or remove IAS Channels. </p>
     </a>
-	<a ng-show="targeting || allTools" href="doubleVerify/dv_targeting.html" class=" tool-container col-lg-3 col-md-4 col-sm-6 col-xs-12 violet">
+	<a ng-show="bulkEdit || allTools" href="doubleVerify/dv_bulkEdit.html" class=" tool-container col-lg-3 col-md-4 col-sm-6 col-xs-12 violet">
       <h2>Contextual: Double Verify</h2>
       <p>Add or remove DV Channels. </p>
     </a>
-     <a ng-show="targeting || allTools" href="daypart/daypart_targeting.html" class=" tool-container col-lg-3 col-md-4 col-sm-6 col-xs-12 blue">
+     <a ng-show="bulkEdit || allTools" href="daypart/daypart_bulkEdit.html" class=" tool-container col-lg-3 col-md-4 col-sm-6 col-xs-12 blue">
       <h2>Dayparting</h2>
-      <p>Fix day part targeting for multiple strategies within a campaign.</p>
+      <p>Fix day part bulkEdit for multiple strategies within a campaign.</p>
     </a>
-    <a ng-show="targeting || allTools" href="blacklistCampaign/BL_targeting.html" class=" tool-container col-lg-3 col-md-4 col-sm-6 col-xs-12 green">
+    <a ng-show="bulkEdit || allTools" href="blacklistCampaign/BL_bulkEdit.html" class=" tool-container col-lg-3 col-md-4 col-sm-6 col-xs-12 green">
       <h2>Blacklists/Whitelists: Campaign Level</h2>
       <p>Add or remove a blacklist or whitelist at the campaign level.</p>
     </a> 
-    <a ng-show="targeting || allTools" href="blacklistStrategy/BL_targeting.html" class=" tool-container col-lg-3 col-md-4 col-sm-6 col-xs-12 violet">
+    <a ng-show="bulkEdit || allTools" href="blacklistStrategy/BL_bulkEdit.html" class=" tool-container col-lg-3 col-md-4 col-sm-6 col-xs-12 violet">
       <h2 style="text-align: center;">Blacklists/Whitelists: Strategy Level</h2>
       <p>Bulk add or remove a blacklist or whitelist at the strategy level.</p>
     </a>  
-    <a ng-show="targeting || allTools" href="siteSelectiveness/siteSelectiveness_targeting.html" class=" tool-container col-lg-3 col-md-4 col-sm-6 col-xs-12 yellow">
+    <a ng-show="bulkEdit || allTools" href="siteSelectiveness/siteSelectiveness_bulkEdit.html" class=" tool-container col-lg-3 col-md-4 col-sm-6 col-xs-12 yellow">
       <h2>Site Selectiveness</h2>
       <p>Bulk edit site selectiveness and transparent URLS.</p> 
     </a>
-    <a ng-show="targeting || allTools" href="eventPixels/eventPixels_targeting.html" class="tool-container col-lg-3 col-md-4 col-sm-6 col-xs-12 navyblue">
+    <a ng-show="bulkEdit || allTools" href="eventPixels/eventPixels_bulkEdit.html" class="tool-container col-lg-3 col-md-4 col-sm-6 col-xs-12 navyblue">
       <h2>Event Pixels</h2>
       <p>Target or anti-target even pixels. Includes AND/OR logic.</p> 
     </a>
-    <a ng-show="targeting || allTools" href="dataPixels/dataPixels_targeting.html" class="tool-container col-lg-3 col-md-4 col-sm-6 col-xs-12 pink">
+    <a ng-show="bulkEdit || allTools" href="dataPixels/dataPixels_bulkEdit.html" class="tool-container col-lg-3 col-md-4 col-sm-6 col-xs-12 pink">
       <h2>Data Pixels</h2>
       <p>Target or anti-target data pixels. Includes AND/OR logic. </p>
     </a>
-    <a ng-show="reports || allTools" href="spendCap2.0/spendCap_targeting.html" class="tool-container col-lg-3 col-md-4 col-sm-6 col-xs-12 blue">
+    <a ng-show="reports || allTools" href="spendCap2.0/spendCap_bulkEdit.html" class="tool-container col-lg-3 col-md-4 col-sm-6 col-xs-12 blue">
       <h2>Spend Cap Report</h2>
       <p>Download an excel to check whether your campaigns are pacing with the spend cap rather than strategy pacing. </p>
     </a>
@@ -138,11 +138,11 @@
       <h2>Strategy Pacing Report</h2>
       <p>Compare cumulative spend/impressions by hour for today and yesterday.</p>
     </a>
-	<a ng-show="targeting || allTools" href="zipcodes/zipcodes.html" class="tool-container col-lg-3 col-md-4 col-sm-6 col-xs-12 pink">
+	<a ng-show="bulkEdit || allTools" href="zipcodes/zipcodes.html" class="tool-container col-lg-3 col-md-4 col-sm-6 col-xs-12 pink">
       <h2>Zipcodes</h2>
-      <p>Edit location targeting by uploading or removing a postal codes file. If you are uploading a file it must be saved as a csv.</p>
+      <p>Edit location bulkEdit by uploading or removing a postal codes file. If you are uploading a file it must be saved as a csv.</p>
     </a>
-	<a ng-show="targeting || allTools" href="/tools/concept/" class="tool-container col-lg-3 col-md-4 col-sm-6 col-xs-12 navyblue">
+	<a ng-show="bulkEdit || allTools" href="/tools/concept/" class="tool-container col-lg-3 col-md-4 col-sm-6 col-xs-12 navyblue">
       <h2>Other Tools</h2>
       <p>Concept Assigner, PMP apply to all, PMP Assigner</p>
     </a>	
