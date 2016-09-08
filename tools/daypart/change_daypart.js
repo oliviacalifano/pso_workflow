@@ -1,4 +1,6 @@
 'use strict' 
+//overrides if run on all day parts is turned on
+
 
 //returns array of all selected strategies
 function get_selected_strats() {
@@ -48,7 +50,7 @@ function get_daypart(s){
 	var end_hour = $("#daypart_end").val();
 	var days = get_selected_days().join(""); 
 	
-	var add = "day_parts."+ num + ".start_hour="+start_hour+"&day_parts."+ num + ".end_hour="+end_hour+"&day_parts."+ num + ".days="+days+"&day_parts."+ num + ".user_time="+user_time;	
+	var add = "day_parts."+ num + ".user_time="+user_time+"&day_parts."+ num + ".start_hour="+start_hour+"&day_parts."+ num + ".end_hour="+end_hour+"&day_parts."+ num + ".days="+days;	
 	console.log(add);
 	return add;
 	}
@@ -85,19 +87,36 @@ function get_current_daypart(strat_id, callback){
 			
 			for(var i=0; i <ids.length; i++)
 			{
+				var holder = [];
 				var num = i+1;
 				var x = $(xml).find('entity#' + ids[i]).children('prop');
 				x.each(function(result) {
 					name = $(this).attr('name');
 					item_id = $(this).attr('value');
-					if(name == "start_hour") options.push("day_parts."+ num + ".start_hour="+item_id);
-					if(name == "end_hour") options.push("day_parts."+ num + ".end_hour="+item_id);
-					if(name == "days") options.push("day_parts."+ num + ".days="+item_id);
-					if(name == "user_time") options.push("day_parts."+ num + ".user_time="+item_id);		
+					if(name == "user_time") holder.push("day_parts."+ num + ".user_time="+item_id);
+					if(name == "start_hour") holder.push("day_parts."+ num + ".start_hour="+item_id);
+					if(name == "end_hour") holder.push("day_parts."+ num + ".end_hour="+item_id);
+					if(name == "days") holder.push("day_parts."+ num + ".days="+item_id);
 			});
+			console.log(holder);
+			var hold = holder.join("&");
+			console.log(hold);
+			var test = "day_parts."+num+".user_time=1&day_parts."+num+".start_hour=0&day_parts."+num+".end_hour=23&day_parts."+num+".days=MTWRFSU";
+			console.log(test);
+			if(hold == test)
+			{
+				console.log("yes");
 			}
+			else{
+				options.push(hold);
+			}
+			
+			}
+			
+
 			current = options.join("&");
 			console.log(current);
+
 			callback(strat_id, current, num);
 			
 		},	
@@ -174,10 +193,18 @@ function update_daypart_targeting() {
 				set_targeting(current_strat, update, function(current_strat, success)
 				{						
 					if (success == 1) {
-						feedback = feedback + "<p> Added the daypart for "+current_strat+". Check changes <a target=\"_blank\" href=\"https://adroit-tools.mediamath.com/t1/api/strategies/"+ current_strat +"/day_parts\">here</a></p>";								
+						feedback = feedback + "<p> Added the daypart for "+current_strat+". Check changes <a target=\"_blank\" href=\"https://adroit-tools.mediamath.com/t1/api/v2.0/strategies/"+ current_strat +"/day_parts\">here</a></p>";								
 						$("#feedback").html(feedback); 
 
 					}
+					else{
+						var error = "ERROR: ";
+						feedback = feedback + "<p>" + error.fontcolor("red")+current_camp+". Check changes <a target=\"_blank\" href=\"https://adroit-tools.mediamath.com/t1/api/v2.0/strategies/"+ current_strat +"/day_parts\">here</a></p>";								
+						$("#feedback").html(feedback); 
+						}
+
+
+					
 				});	
 				
 			});
