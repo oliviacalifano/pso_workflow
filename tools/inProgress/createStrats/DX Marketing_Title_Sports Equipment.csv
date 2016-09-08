@@ -1,0 +1,22 @@
+name,campaign_id,status,budget,start_date,use_campaign_end,frequency_type,frequency_amount,frequency_interval,goal_type,goal_value,max_bid,pacing_type,pacing_amount,pacing_interval,pixel_target_expr,type,version,geo,concept_id
+IL_Title_Sports Equipment,262682,0,1000000,2016-07-31T00:00:00,on,even,2,day,spend,1,1,asap,2,day,( [1036127] ) AND NOT ( [1020766] ),AUD,0,534,832128
+IN_Title_Sports Equipment,262682,0,1000000,2016-07-31T00:00:00,on,even,2,day,spend,1,1,asap,2,day,( [1036127] ) AND NOT ( [1020766] ),AUD,0,535,832128
+IA_Title_Sports Equipment,262682,0,1000000,2016-07-31T00:00:00,on,even,2,day,spend,1,1,asap,2,day,( [1036127] ) AND NOT ( [1020766] ),AUD,0,536,832128
+KS_Title_Sports Equipment,262682,0,1000000,2016-07-31T00:00:00,on,even,2,day,spend,1,1,asap,2,day,( [1036127] ) AND NOT ( [1020766] ),AUD,0,537,832128
+LA_Title_Sports Equipment,262682,0,1000000,2016-07-31T00:00:00,on,even,2,day,spend,1,1,asap,2,day,( [1036127] ) AND NOT ( [1020766] ),AUD,0,539,832128
+MI_Title_Sports Equipment,262682,0,1000000,2016-07-31T00:00:00,on,even,2,day,spend,1,1,asap,2,day,( [1036127] ) AND NOT ( [1020766] ),AUD,0,543,832128
+MS_Title_Sports Equipment,262682,0,1000000,2016-07-31T00:00:00,on,even,2,day,spend,1,1,asap,2,day,( [1036127] ) AND NOT ( [1020766] ),AUD,0,545,832128
+MO_Title_Sports Equipment,262682,0,1000000,2016-07-31T00:00:00,on,even,2,day,spend,1,1,asap,2,day,( [1036127] ) AND NOT ( [1020766] ),AUD,0,546,832128
+NV_Title_Sports Equipment,262682,0,1000000,2016-07-31T00:00:00,on,even,2,day,spend,1,1,asap,2,day,( [1036127] ) AND NOT ( [1020766] ),AUD,0,549,832128
+OH_Title_Sports Equipment,262682,0,1000000,2016-07-31T00:00:00,on,even,2,day,spend,1,1,asap,2,day,( [1036127] ) AND NOT ( [1020766] ),AUD,0,556,832128
+OK_Title_Sports Equipment,262682,0,1000000,2016-07-31T00:00:00,on,even,2,day,spend,1,1,asap,2,day,( [1036127] ) AND NOT ( [1020766] ),AUD,0,557,832128
+RI_Title_Sports Equipment,262682,0,1000000,2016-07-31T00:00:00,on,even,2,day,spend,1,1,asap,2,day,( [1036127] ) AND NOT ( [1020766] ),AUD,0,560,832128
+SC_Title_Sports Equipment,262682,0,1000000,2016-07-31T00:00:00,on,even,2,day,spend,1,1,asap,2,day,( [1036127] ) AND NOT ( [1020766] ),AUD,0,561,832128
+SD_Title_Sports Equipment,262682,0,1000000,2016-07-31T00:00:00,on,even,2,day,spend,1,1,asap,2,day,( [1036127] ) AND NOT ( [1020766] ),AUD,0,562,832128
+TN_Title_Sports Equipment,262682,0,1000000,2016-07-31T00:00:00,on,even,2,day,spend,1,1,asap,2,day,( [1036127] ) AND NOT ( [1020766] ),AUD,0,563,832128
+TX_Title_Sports Equipment,262682,0,1000000,2016-07-31T00:00:00,on,even,2,day,spend,1,1,asap,2,day,( [1036127] ) AND NOT ( [1020766] ),AUD,0,564,832128
+UT_Title_Sports Equipment,262682,0,1000000,2016-07-31T00:00:00,on,even,2,day,spend,1,1,asap,2,day,( [1036127] ) AND NOT ( [1020766] ),AUD,0,565,832128
+VA_Title_Sports Equipment,262682,0,1000000,2016-07-31T00:00:00,on,even,2,day,spend,1,1,asap,2,day,( [1036127] ) AND NOT ( [1020766] ),AUD,0,567,832128
+WA_Title_Sports Equipment,262682,0,1000000,2016-07-31T00:00:00,on,even,2,day,spend,1,1,asap,2,day,( [1036127] ) AND NOT ( [1020766] ),AUD,0,568,832128
+WI_Title_Sports Equipment,262682,0,1000000,2016-07-31T00:00:00,on,even,2,day,spend,1,1,asap,2,day,( [1036127] ) AND NOT ( [1020766] ),AUD,0,570,832128
+WY_Title_Sports Equipment,262682,0,1000000,2016-07-31T00:00:00,on,even,2,day,spend,1,1,asap,2,day,( [1036127] ) AND NOT ( [1020766] ),AUD,0,571,832128

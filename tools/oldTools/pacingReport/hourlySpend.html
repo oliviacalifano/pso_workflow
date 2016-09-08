@@ -1,0 +1,92 @@
+<html>
+
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+
+<head>
+	<title>Pacing Report</title>
+	<link href="multiple_select/multiple-select/multiple-select.css" rel="stylesheet"/>
+	<link href="spendCap.css" rel="stylesheet"/>
+	<script src="multiple_select/multiple-select/jquery.multiple.select.js"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script type="text/javascript" src="plot/jquery.jqplot.js"></script>
+	<script type="text/javascript" src="plot/jqplot.canvasTextRenderer.js"></script>
+	<script type="text/javascript" src="plot/jqplot.canvasAxisLabelRenderer.js"></script>
+	<script type="text/javascript" src="plot/jqplot.canvasAxisTickRenderer.js"></script>
+	<script type="text/javascript" src="plot/jqplot.highlighter.js"></script>
+	<script type="text/javascript" src="plot/jqplot.cursor.js"></script>
+	<script type="text/javascript" src="plot/jqplot.pointLabels.js"></script>
+	<link rel="stylesheet" type="text/css" href="plot/jquery.jqplot.css" />	
+	
+</head>
+
+<body>
+
+
+
+<div class="all-the-stuff">
+	<H1 class="title">PACING REPORT</H1>
+
+			<div id="strat_selections">
+			<select name="org" class="dropdown" style="width:250px" id="org_dropdown" multiple>
+				</select>
+				<script>
+					$("#org_dropdown").multipleSelect({
+						placeholder: "Choose Org",
+						filter: true,
+						selectAll: false,
+						single: true
+					});	
+				</script>	
+				<select name="adv" class="dropdown" style="width:275px" size=12 id="adv_list" multiple></select>
+				<script>
+					$("#adv_list").multipleSelect({
+						placeholder: "Choose Advertiser",
+						filter: true,
+						selectAll:false,
+						single:true
+					});	
+				</script>		
+				
+				<select name="campaign" class="dropdown" style="width:300px" size=12 id="campaign_list" multiple></select>
+				<script>
+					$("#campaign_list").multipleSelect({
+						placeholder: "Choose Campaign",
+						filter: true,
+						selectAll:false,
+						single:true
+					});		
+				</script>	
+
+			<br></br>	
+				
+			<form id="metric" class="metric">
+				<input type="radio" name="metric" value="media_cost"><label>Spend</label>
+				<input type="radio" name="metric" value="impressions"><label>Impressions</label>	
+			</form>
+	
+			</div>
+		
+		<div id="submit_button">
+			<button type="submit" class="button" value="plot" id="plot">&nbspPlot Data&nbsp</button>
+			<button type="submit" class="button" value="punch" id="punch">&nbspDownload Report&nbsp</button>
+		</div>	
+
+		<br><br><br>
+		
+		<div id="chart2" style="height:500px;width:800px;float:left;"></div>
+		
+		<br><br><br>
+	
+	
+	</div>
+	</body>
+
+<script src="get_orgs.js"></script>	
+<script src="get_advs.js"></script>
+<script src="get_campaigns.js"></script>
+<script src="t1_toolkit.js"></script>
+<script src="generate.js"></script>
+
+</html>

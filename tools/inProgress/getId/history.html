@@ -1,0 +1,118 @@
+<html>
+
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+
+<head>
+	<title>Get ID</title>
+	<link href="multiple_select/multiple-select/multiple-select.css" rel="stylesheet"/>
+	<link href="history.css" rel="stylesheet"/>
+	<script src="multiple_select/multiple-select/jquery.multiple.select.js"></script>
+</head>
+
+<body>
+	
+	<div id = "all_the_stuff">
+	<H1 class="title">GET AN ID!</H1>
+	
+	
+		<div id = "selections">
+			<div id="strat_selections">
+			<table>
+			<tr><tr><tr></tr></tr></tr>
+			<tr><td><select name="org" class="dropdown" style="width:300px" id="org_dropdown" multiple>
+				</select>
+				<script>
+					$("#organizations_list").multipleSelect({
+						placeholder: "Choose Org",
+						filter: true
+					});	
+				</script>	
+				</td></tr>
+				
+				<tr><td>
+				<select name="agency" class="dropdown" style="width:300px" size=12 id="agency_list" multiple></select>
+				<script>
+					$("#agencies_list").multipleSelect({
+						placeholder: "Choose Agencies",
+						filter: true
+					});	
+				</script>			
+				</td></tr>
+				
+				<tr><td><select name="adv" class="dropdown" style="width:300px" size=12 id="adv_list" multiple></select>
+				<script>
+					$("#advertisers_list").multipleSelect({
+						placeholder: "Choose Advertiser",
+						filter: true
+					});	
+				</script>		
+				</td></tr>
+				
+				<tr><td><select name="campaign" class="dropdown" style="width:300px" size=12 id="campaign_list" multiple></select>
+				<script>
+					$("#campaigns_list").multipleSelect({
+						placeholder: "Choose Campaign",
+						filter: true
+					});		
+				</script>		
+				</td></tr>
+				
+				<tr><td>
+				<select name="strategy" class="dropdown" style="width:300px" size=12 id="strat_list" multiple></select>
+				<script>
+					$("#strategies_list").multipleSelect({
+						placeholder: "Choose Strategies",
+						filter: true
+					});	
+				</script>			
+				</td></tr>
+				
+				<tr><td>
+				<select name="concept" class="dropdown" style="width:300px" size=12 id="concept_list" multiple></select>
+				<script>
+					$("#concepts_list").multipleSelect({
+						placeholder: "Choose Concepts",
+						filter: true
+					});	
+				</script>			
+				</td></tr>
+			<tr><tr><tr><tr><tr><tr></tr></tr></tr></tr></tr></tr>	
+			</table>
+		</div>
+		
+			<div id="toggle">
+					<input type="radio" name="toggle" value="organizations" id="organizations" checked="checked"><label for="organizations">Organization</label>
+					<input type="radio" name="toggle" value="agencies" id="agencies"><label for="agencies">Agency</label>
+					<input type="radio" name="toggle" value="advertisers" id="advertisers"><label for="advertisers">Advertiser</label>
+					<input type="radio" name="toggle" value="campaigns" id="campaigns"><label for="campaigns">Campaign</label>	
+					<input type="radio" name="toggle" value="strategies" id="strategies"><label for="strategies">Strategy</label>
+					<input type="radio" name="toggle" value="strategies" id="strategies"><label for="strategies">Concept</label>
+					<input type="radio" name="toggle" value="event_pixel" id="event_pixel"><label for="event_pixel">Event Pixel</label>
+					<input type="radio" name="toggle" value="data_pixel" id="data_pixel"><label for="data_pixel">Data Pixel</label>
+	</div>
+		
+		<div id="submit_button">
+			<button type="submit" class="button" value="punch" id="punch">&nbspHeal&nbsp</button>
+		</div>
+		
+		<div id="feedback" class="feedback">
+		</div>
+		
+		<div id="fold_feedback" class="feedback">
+		</div>
+	</div>
+	</div>
+	</body>	
+
+<script src="get_orgs.js"></script>	
+<script src="get_agencies.js"></script>
+<script src="get_advs.js"></script>
+<script src="get_campaigns.js"></script>
+<script src="get_strats.js"></script>
+<script src="get_concepts.js"></script>
+<script src="t1_toolkit.js"></script>
+<script src="history.js"></script>	
+
+</html>
