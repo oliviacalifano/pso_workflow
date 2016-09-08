@@ -308,7 +308,8 @@ function update_eventPixel_targeting() {
 	var strat_list = [];
 	var change = [];
 	var feedback = "";
-	var success = 0; 
+	var success = 0;
+	var count = 0; 
 
 	//check if adding or removing technologies
 	var add_remove = $('input[name=add_remove]:checked', '#add_remove').val();
@@ -353,6 +354,11 @@ function update_eventPixel_targeting() {
 					set_targeting(current_strat, v, update, function(success)
 					{			
 						if (success == 1 && change.length!=0) {
+							count = count +1;
+							$("#counter").html(count + "/" + strat_list.length);
+							
+							move(Math.round((count/strat_list.length)*100));
+
 							feedback = feedback + "<p>Updated event pixel targeting for "+current_strat+". Check changes <a target=\"_blank\" href=\"https://t1.mediamath.com/app/#strategy/edit/"+current_strat+"/targeting/myData\">here</a></p>";								
 							$("#feedback").html(feedback); 
 						}
@@ -369,6 +375,12 @@ function update_eventPixel_targeting() {
 			
 		}
 	}
+}
+
+function move(width) {
+console.log(width);
+  var elem = document.getElementById("myBar");
+  elem.style.width = width + '%';
 }
 
 
