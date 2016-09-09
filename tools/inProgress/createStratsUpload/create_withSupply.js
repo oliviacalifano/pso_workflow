@@ -67,6 +67,7 @@ function upload_zips(d,callback){
 			}
 			if(d.run_on_all_exchanges == "off"){
 				var supplies = d.supply_source_id;
+				console.log(supplies);
 				supplies = supplies.split(';');
 				for (i=0; i<supplies.length; i++) {
 				supply.append('supply_source.'+(i+1).toString()+'.id', supplies[i]);
@@ -83,7 +84,7 @@ function upload_zips(d,callback){
 			}
 			
 			//concept
-			if(d.concept_id != undefined || d.concept_id != ""){
+			if(d.concept_id != undefined && d.concept_id != ""){
 				var concepts = d.concept_id;
 				concepts = concepts.split(';');
 				for (i=0; i<concepts.length; i++) {
@@ -165,6 +166,7 @@ function add_concept(s,c,row,callback){
 }
 
 function add_supply(strat,s,row,callback){
+	console.log(s);
 	$.ajax({
 	url: "https://adroit-tools.mediamath.com/t1/api/v2.0/strategies/"+strat+"/supplies",
 	contentType: false,
@@ -219,7 +221,6 @@ console.log(width);
 function upload_button(data, count){
 
 	feedback="";
-	var count1 = 0;
 /*  	var fileUpload = document.getElementById("fileSelect");
     if (fileUpload.value != null) {
 		var uploadFile = new FormData();
@@ -237,10 +238,6 @@ function upload_button(data, count){
  					post(upload,count,function(strat,strat_success){
 						
 						if (strat_success == 1) {
-							count1 = count1 +1;
-							$("#counter").html(count1 + "/" + count);
-							
-							move(Math.round((count1/count)*100));
 
 							feedback = feedback + "Success on Row " + count + ": Strategy Added</p>";							
 							$("#feedback").html(feedback); 
@@ -279,6 +276,7 @@ function upload_button(data, count){
 							})
 						}
 						if(s_id != undefined && s_id != ""){
+							console.log(s.id);
 							add_supply(strat,supply,count,function(supply_success){
 							if (supply_success == 1) {
 							feedback = feedback + "Success on Row " + count + ": Supplies Added</p>";								
