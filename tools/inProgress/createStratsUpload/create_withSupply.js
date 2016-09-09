@@ -209,10 +209,17 @@ $("#feedback_sup").html(feedback);
 });
 
 
+function move(width) {
+console.log(width);
+  var elem = document.getElementById("myBar");
+  elem.style.width = width + '%';
+}
+
 
 function upload_button(data, count){
 
 	feedback="";
+	var count1 = 0;
 /*  	var fileUpload = document.getElementById("fileSelect");
     if (fileUpload.value != null) {
 		var uploadFile = new FormData();
@@ -230,6 +237,11 @@ function upload_button(data, count){
  					post(upload,count,function(strat,strat_success){
 						
 						if (strat_success == 1) {
+							count1 = count1 +1;
+							$("#counter").html(count1 + "/" + count);
+							
+							move(Math.round((count1/count)*100));
+
 							feedback = feedback + "Success on Row " + count + ": Strategy Added</p>";							
 							$("#feedback").html(feedback); 
 						}

@@ -69,6 +69,19 @@
    color: #ccc;
    }   
 
+#myProgress {
+    position: relative;
+    width: 300px;
+    height: 30px;
+    background-color: grey;
+}
+#myBar {
+    position: absolute;
+    width: 0%;
+    height: 100%;
+    background-color: green;
+} 
+
    
 #login_title {
 	font-family: sans-serif;
