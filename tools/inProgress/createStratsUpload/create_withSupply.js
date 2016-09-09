@@ -22,7 +22,7 @@ function upload_zips(d,callback){
 			
 			//conditional
 			if(d.status != ""){
-			uploadFile.append("status",d.status.toLowerCase());
+			uploadFile.append("status", $(this).status);
 			}
 			if(d.description != ""){
 			uploadFile.append("description",d.description);
