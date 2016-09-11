@@ -73,7 +73,8 @@ function set_targeting(strat_id, ver, callback)
 
 function update_dataPixel_targeting() {
 	var feedback = "";
-
+	var count = 0;
+	
 	var strat_list = get_selected_strats();
 	strat_list = strat_list[0]; 
 	console.log("strat list:", strat_list);
@@ -90,6 +91,10 @@ function update_dataPixel_targeting() {
 					set_targeting(current_strat, v, function(success)
 					{			
 						if (success == 1) {
+							count = count +1;
+							$("#counter").html(count + "/" + strat_list.length);
+							
+							move(Math.round((count/strat_list.length)*100));
 							feedback = feedback + "<p>Updated "+current_strat+". Check changes <a target=\"_blank\" href=\"https://t1.mediamath.com/app/#strategy/edit/"+current_strat+"/targeting/siteList\">here</a></p>";								
 							$("#feedback").html(feedback); 
 						}
@@ -105,6 +110,12 @@ function update_dataPixel_targeting() {
 				};
 			};
 
+function move(width) {
+console.log(width);
+  var elem = document.getElementById("myBar");
+  elem.style.width = width + '%';
+}			
+			
 $("#punch").click(function() {
 	console.log("hit!");
 	update_dataPixel_targeting();
