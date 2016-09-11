@@ -152,6 +152,7 @@ function update_daypart_targeting() {
 	console.log("allday:", allparts);	
 	var add_remove = $("#add_remove").is(":checked");
 	console.log("add_remove:", add_remove);	
+	var count = 0;
 	
 	var strat_list = [];
 	//var mod_daypart = "";
@@ -193,6 +194,10 @@ function update_daypart_targeting() {
 				set_targeting(current_strat, update, function(current_strat, success)
 				{						
 					if (success == 1) {
+						count = count +1;
+						$("#counter").html(count + "/" + strat_list.length);
+							
+						move(Math.round((count/strat_list.length)*100));
 						feedback = feedback + "<p> Added the daypart for "+current_strat+". Check changes <a target=\"_blank\" href=\"https://adroit-tools.mediamath.com/t1/api/v2.0/strategies/"+ current_strat +"/day_parts\">here</a></p>";								
 						$("#feedback").html(feedback); 
 
@@ -213,6 +218,11 @@ function update_daypart_targeting() {
 }
 }
 
+function move(width) {
+console.log(width);
+  var elem = document.getElementById("myBar");
+  elem.style.width = width + '%';
+}
 
 
 $("#punch").click(function() {
