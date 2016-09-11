@@ -78,11 +78,19 @@ function upload_zips(strat, callback){
 	
 }
 
+function move(width) {
+console.log(width);
+  var elem = document.getElementById("myBar");
+  elem.style.width = width + '%';
+}
+
 $("#punch").click(function() {
 	//console.log("hit!");
 	var strats = get_selected_strats();
 	strats = strats[0]; 
 	feedback="";
+	var count = 0;
+	
 	for(var i=0; i<strats.length; i++) {
 		
 		 //get list of current supplies attached to camp
@@ -91,6 +99,10 @@ $("#punch").click(function() {
 		console.log(current_strat);
 			upload_zips(current_strat, function(success, strat){
 				if (success == 1) {
+				count = count +1;
+				$("#counter").html(count + "/" + strats.length);
+				
+				move(Math.round((count/strats.length)*100));
 				feedback = feedback + "<p> Zipcode file uploaded for strategy "+strat+". Check changes <a target=\"_blank\" href=\"https://t1.mediamath.com/app/#strategy/edit/"+ strat+"/targeting/location\">here</a></p>";									
 				$("#feedback").html(feedback); 
 				}
