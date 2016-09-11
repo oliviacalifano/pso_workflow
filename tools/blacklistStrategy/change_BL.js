@@ -145,7 +145,8 @@ function update_bl_targeting() {
 	var feedback = "";
 	var success = 0; 
 	var final_list = {};
-
+	var count = 0;
+	
 	//check if adding or removing technologies
 	var add_remove = $('input[name=add_remove]:checked', '#add_remove').val();
 	console.log("add_remove:", add_remove);	
@@ -184,6 +185,10 @@ function update_bl_targeting() {
 					{			
 						if (success == 1 && mod_bl.length!=0) {
 							if (add_remove == 'add') {
+							count = count +1;
+							$("#counter").html(count + "/" + strat_list.length);
+							
+							move(Math.round((count/strat_list.length)*100));	
 							feedback = feedback + "<p> Added the blacklists/whitelists for "+current_strat+". Check changes <a target=\"_blank\" href=\"https://adroit-tools.mediamath.com/t1/api/v2.0/strategies/"+ current_strat +"/site_lists?q=assigned%3D%3D1&sort_by=id\">here</a></p>";								
 							$("#feedback").html(feedback); 
 							}
@@ -208,6 +213,11 @@ function update_bl_targeting() {
 	}
 }
 
+function move(width) {
+console.log(width);
+  var elem = document.getElementById("myBar");
+  elem.style.width = width + '%';
+}
 
 $("#punch").click(function() {
 
