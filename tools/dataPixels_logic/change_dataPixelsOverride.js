@@ -42,7 +42,7 @@ function get_dataPixel_targets(strat, operation, pool, log, opPixels, callback){
 	var returnVal="";
 	var pixels="";
 	var pixelSplit=""
-	var andOr='';
+	var andOr=log;
 	var includePixels="";
 	var excludePixels="";
 	var includeFinal="";
