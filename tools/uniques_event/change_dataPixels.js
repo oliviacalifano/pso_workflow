@@ -22,12 +22,11 @@ function get_dataPixel_targets(id,name,callback){
 	console.log(p_name);
 	console.log(name);
 	var namespace = $("#fname").val();
-	console.log(namespace);
+
 	var pixel = $("#lname").val();
-	console.log(typeof pixel);
 
 	var request = $.ajax({
-		url: "https://adroit-tools.mediamath.com/t1/uniques/v1/segments/" + namespace + ":"+ id +"/stats/daily",
+		url: "https://adroit-tools.mediamath.com/t1/uniques/v1/pixels/" + id +"/stats/daily",
 		type: "GET",
 		cache: false,
 	
@@ -41,12 +40,10 @@ function get_dataPixel_targets(id,name,callback){
 			var str = '';
 
             for (var i = 0; i < array.length; i++) {
-                var line = id + "," + p_name[1];
-                for (var index in array[i]) {
-                    if (line != '') line += ','
-
-                    line += array[i][index];
-                }
+                var line = p_name[1];
+				console.log(array[i]);
+					
+                    line = array[i]["date"]+ "," + array[i]["pixel_id"]+ ","+line+ "," +array[i]["loads"]+ "," +array[i]["uniques"];
 
                 str += line + '\r\n';
             }
@@ -115,7 +112,7 @@ function update_ctxl_targeting() {
 			{	counter++;
 				console.log(counter);
 				if(counter == pixel_list.length){
-				pixel_history = "pixel_id,pixel_name,date,loads,uniques" +'\r\n' + pixel_history + doc;
+				pixel_history = "date,pixel_id,pixel_name,loads,uniques" +'\r\n' + pixel_history + doc;
 				downloadCSV(pixel_history, { filename: "Pixel_Loads_" + "Advertiser_"+adv_name + ".csv" });
 				}
 				else{
