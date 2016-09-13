@@ -148,7 +148,7 @@ function get_concepts(strat, s, callback){
 			
 			});
 			
-			con = con.slice(0, -1);
+			//con = con.slice(0, -1);
 			//con = con + ",";
 			console.log(con);
 			
@@ -184,7 +184,7 @@ function get_geos(strat, s, callback){
 			
 			});
 			
-			geo = geo.slice(0, -1);
+			//geo = geo.slice(0, -1);
 			geo = geo + ",";
 			console.log(geo);
 			
