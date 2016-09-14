@@ -264,7 +264,7 @@ function update_fold_position(s_id, fold_position) {
 }
 
 function update_supply_sources() {
-
+	var count1 = 0;
 	//check if adding or removing supplies
 	var choice = $('input[name=choice]:checked', '#add_remove').val();
 	console.log("choice", choice);	
@@ -323,7 +323,10 @@ function update_supply_sources() {
 					}		
 				
 				});	
+			count1 = count1 +1;
+			$("#counter1").html(count1 + "/" + strat_list.length);
 			
+			move1(Math.round((count1/strat_list.length)*100));
 			feedback = feedback + "<p>Updated supply targeting for "+current_strat+"</p>"; 
 			$("#feedback").html(feedback);		
 		}
@@ -331,7 +334,7 @@ function update_supply_sources() {
 }
 
 function update_fold_targeting() {	
-
+	var count2 = 0;
 	//check if fold targeting is included 
 	var fold_position = [];
 	
@@ -356,6 +359,10 @@ function update_fold_targeting() {
 		for (var i=0; i<(strat_list.length); i++) {
 			console.log("in for loop", strat_list[i]);
 			update_fold_position(strat_list[i], fold_position);
+			count2 = count2 +1;
+			$("#counter2").html(count2 + "/" + strat_list.length);
+			
+			move2(Math.round((count2/strat_list.length)*100));
 			feedback = feedback + "<p>Updated fold targeting for "+strat_list[i]+"</p>"; 
 			console.log("in for loop 2", strat_list[i]);
 			$("#fold_feedback").html(feedback);	
@@ -364,6 +371,18 @@ function update_fold_targeting() {
 		
 	console.log("fold:", fold_position);
 }	
+
+function move1(width) {
+console.log(width);
+  var elem = document.getElementById("myBar1");
+  elem.style.width = width + '%';
+}
+
+function move2(width) {
+console.log(width);
+  var elem = document.getElementById("myBar2");
+  elem.style.width = width + '%';
+}
 
 $("#punch").click(function() {
 	console.log("goin");
