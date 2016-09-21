@@ -42,45 +42,110 @@ function get_selected_vendors()
 	
 } */
 
+/* function counter(callback){
+	var feedback = "";
+	var audience = "";
+	var counter = 0;
+	var view = "";
+
+	aggregate_pages("https://adroit-tools.mediamath.com/t1/api/v2.0/path_audience_segments?sort_by=audience_vendor_id%2Cname%2Cid&order_by=ascending&only_brain_enabled=false&agency_id=112282&currency_code=USD&q=name%3D%3A*"+search+"*%26audience_vendor_id%3D%3D"+vendor)
+		.then(function(xml) { 
+			counter = $(xml).find("entities").attr("count");
+			console.log(counter);
+
+			callback(count,counter,view);
+		});	
+
+		
+} */
+
+
 function post(vendor,search,callback){
 	var feedback = "";
 	var audience = "";
-	var count = 0;
+	//var count = 0;
+	//var counter = 0;
+	var view = "";
+
 	aggregate_pages("https://adroit-tools.mediamath.com/t1/api/v2.0/path_audience_segments?full=*&sort_by=audience_vendor_id%2Cname%2Cid&order_by=ascending&only_brain_enabled=false&agency_id=112282&currency_code=USD&q=name%3D%3A*"+search+"*%26audience_vendor_id%3D%3D"+vendor)
 		.then(function(xml) { 
-			var counter = $(xml).find("entities").attr("count");
-			console.log(counter);
-			var entry = $(xml).find('prop[name="full_path"]');
+			//counter = $(xml).find("entities").attr("count");
+			//console.log(counter);
+			var entry = $(xml).find('entity');
 			entry.each(function(){
-			count++;
-			audience = $(this).attr('value');
+			audience = $(this).find('prop[name="full_path"]').attr('value');
+			var newchar = '|'
+			audience = audience.split(',').join(newchar);
+			console.log(audience);
+			uniques = $(this).find('prop[name="uniques"]').attr('value');
+			console.log(uniques);
+			cpm = $(this).find('prop[name="retail_cpm"]').attr('value');
+			console.log(cpm);
 			//console.log(audience);
-			callback(count,counter,audience);
+			if (uniques != undefined && cpm != undefined){
+				view = view + "\n" + audience + "," + uniques + "," + cpm ;
+			}
+			else {
+				view = view;
+			}
+			
 			});
-		});		
+			callback(view);
+		});	
+
+		
 }
 
 
-
-$("#aud_button").click(function() {	
-	var audiences ="";	
+//one vendor
+/* $("#aud_button").click(function() {	
+	var audiences ="";
+	var header = "audience, uniques, cpm";
 	vendor_list = get_selected_vendors();
 	console.log("vendor list:", vendor_list);
 	var search = $("#search").val();
-	post(vendor_list,search,function(count,counter,audience){
-		console.log(audience);
+	post(vendor_list,search,function(count,counter,audience,uniques,cpm){
+		//console.log(audience);
 		console.log(count);
 		if(counter == count){
-		audiences = audiences + audience;
+		audiences = header + "\n" + audiences + audience + "," + uniques + "," + cpm;
 		console.log("madeit");		
 		downloadCSV(audiences, { filename: "vendorSearch.csv" });
 		}
 		else{
-			audiences = audiences + audience + "\n";
-			console.log(audiences);
+			audiences = audiences + audience + "," + uniques + "," + cpm + "\n";
+			//console.log(audiences);
 		}
 	
 	});
+}) */
+
+//multiple vendors
+$("#aud_button").click(function() {	
+	var audiences = "";
+	var vendor_list = [];
+	var header = "audience, uniques, cpm";
+	vendor_list = get_selected_vendors();
+	//vendor_list = vendor_list[0]; 
+	console.log("vendor list:", vendor_list);
+	var search = $("#search").val();
+	var counts = 0;
+	
+	for(var i=0; i<vendor_list.length; i++) {
+	post(vendor_list[i],search,function(view){
+		counts++;	
+		if(counts == vendor_list.length){
+		audiences = header + audiences + view;
+		console.log("madeit");		
+		downloadCSV(audiences, { filename: "vendorSearch.csv" });
+		}
+		else{
+			audiences = audiences + view;
+			//console.log(audiences);
+		}
+	
+	});
+	}
 })
 
 function downloadCSV(csv, args) {  
