@@ -57,9 +57,7 @@ function post(vendor,search,callback){
 			//console.log(audience);
 			callback(count,counter,audience);
 			});
-		});
-		
-		
+		});		
 }
 
 
