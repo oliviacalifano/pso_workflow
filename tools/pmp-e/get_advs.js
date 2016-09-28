@@ -6,7 +6,7 @@ $("#org_dropdown").change(function(){
 
 function update_adv_list(org_id)
 {
-	
+	$("#deals_list").empty(); 
 	$("#adv_list").empty(); 
 
 	console.log("getting advs for org", org_id);

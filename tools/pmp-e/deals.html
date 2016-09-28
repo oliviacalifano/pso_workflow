@@ -5,16 +5,16 @@
 
 
 <head>
-	<title>EVENT PIXELS</title>
+	<title>PMP-E</title>
 	<link href="multiple_select/multiple-select/multiple-select.css" rel="stylesheet"/>
-	<link href="eventPixels.css" rel="stylesheet"/>
+	<link href="deals.css" rel="stylesheet"/>
 	<script src="multiple_select/multiple-select/jquery.multiple.select.js"></script>
 </head>
 
 <body>
 	
 	<div id = "all_the_stuff">
-	<H1 class="title">EVENT PIXELS</H1>	
+	<H1 class="title">PMP-E</H1>	
 
 		<div id = "selections">
 			<div id="strat_selections">
@@ -41,89 +41,45 @@
 					});	
 				</script>		
 				</td></tr>
-				<tr><td><select name="campaign" class="dropdown" style="width:300px" size=12 id="campaign_list" multiple></select>
+
+				<tr><td><select name="deals" class="dropdown" style="width:300px" id="deals_list" multiple>
+				</select>
 				<script>
-					$("#campaign_list").multipleSelect({
-						placeholder: "Choose Campaign",
-						filter: true
-					});		
-				</script>		
-				</td></tr>
-				<tr><td><select name="strategy" class="dropdown" style="width:325px" size=12 id="strat_list" multiple></select>
-				<script>
-					$("#strat_list").multipleSelect({
-						placeholder: "Choose Strategies",
-						filter: true
+					$("#deals_list").multipleSelect({
+						placeholder: "Choose Deal",					
+						filter: true,
+						selectAll: false,
+						single: true
 					});	
-				</script>
-				<label><input type="checkbox" name="active" id="active" checked="checked" onChange="myFunction()"> Show Active Strategies Only</label>
+				</script>	
 				</td></tr>
 			<tr><tr><tr><tr><tr><tr></tr></tr></tr></tr></tr></tr>	
 			</table>
 		</div>
-			
-		<div id="add_remove_choices">
-			<table>
-				<tr>
-					<td>
-					<form id="add_remove" class="add_remove">
-						<input type="radio" name="add_remove" value="add" id="add"><label for="add">Add To</label>
-						<input type="radio" name="add_remove" value="remove" id="remove"><label for="remove">Remove From</label>	
-					</form>
-					</td>
-				</tr>
+		
+		<div>
+		&nbsp <text style="color:red"><b>Please wait for the below fields to populate with the current deal information.</b></text>
+		
+			<form id="status" class="status"> &nbsp Status:
+			<input type="radio" name = "status" value="1" id="active"><label for="active">Active</label>
+			<input type="radio" name = "status" value="0" id="inactive"><label for="inactive">Inactive</label>
+			</form>
+		
+		
+			<form action="demo_form.asp">
+			&nbsp New Deal Name: <input type="text" id="d_name">
+			&nbsp New Deal ID: <input type="text" id="d_id" style="width:200px">
+			</form>
+		</div>	
 
-				<tr>
-					<td>
-					<form id="include_exclude" class="add_remove">
-						<input type="radio" name="include_exclude" value="include" id="include"><label for="include">Inclusion</label>
-						<input type="radio" name="include_exclude" value="exclude" id="exclude"><label for="exclude">Exclusion</label>	
-					</form>
-					</td>
-				</tr>
-				
-				<tr>
-				</tr>
-				
-				<tr>
-					<td>
-						<form id="and_or" class="and_or">&nbsp&nbspLogic (applies to SELECTED inclusion/exclusion bin):
-							<input type="radio" name="and_or" value="AND" id="and"><label for="and">AND</label>
-							<input type="radio" name="and_or" value="OR" id="or"><label for="or">OR</label>	
-							<input type="radio" name="and_or" value="CURRENT" id="current"><label for="or">CURRENT</label>	
-						</form>
-					</td>
-				</tr>
-			</table>
-		</div>
-		
-		
 		<table>
 		<tr>
-			<td><select name="eventPixels" class="dropdown" style="width:420px" id="eventPixels_list" multiple>
-			</select>
-			<script>
-				$("#eventPixels_list").multipleSelect({
-					placeholder: "Choose Event Pixels",					
-					filter: true
-				});	
-			</script>	
-			</td>
-			
+		&nbsp <text style="color:red"><b>All fields must be filled before making changes (keep the current settings if you are not changing that particular field).</b></text>
 		</tr>
-		</table>
-
-		<br></br>	
-		<table>
-		<td>
-		<button type="submit" class="button" value="punch" id="punch">&nbspHeal&nbsp</button>
-		</td>
-		<td>
-		<div id="myProgress"><div id="myBar"></div></div></td>
-		<td>
-		<div id="counter"></div></td>
-		</table>
 		
+		
+		</table>
+		<button type="submit" class="button" value="punch" id="punch">&nbspHeal&nbsp</button>
 		<div id="feedback" class="feedback">
 		</div>
 		
@@ -135,10 +91,9 @@
 
 <script src="get_orgs.js"></script>	
 <script src="get_advs.js"></script>
-<script src="get_campaigns.js"></script>
-<script src="get_strats.js"></script>
-<script src="get_eventPixels.js"></script>	
+<script src="get_deals.js"></script>	
+<script src="get_deal_info.js"></script>
 <script src="t1_toolkit.js"></script>
-<script src="change_eventPixelsOverride.js"></script>	
-
+<script src="change_deals.js"></script>	
+	
 </html>
