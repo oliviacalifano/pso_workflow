@@ -109,7 +109,7 @@ function add_supply(supply_list, mod_supplies) {
 
 //removes supply sources from the input list of exchanges, returns updated list
 function remove_supply(supply_list, mod_supplies, callback) {
-	
+
 	//if strategy currently running on all exchanges, get full list of supplies and remove selected
 	if (supply_list == '1') {
 	
@@ -140,7 +140,7 @@ function remove_supply(supply_list, mod_supplies, callback) {
 						all_supplies.splice(index,1);
 					}	
 				}
-		
+				
 				console.log("mod supply list",all_supplies); 
 				console.log(all_supplies.length);
 				callback(supply_list, mod_supplies, all_supplies); 	
@@ -170,8 +170,8 @@ function remove_supply(supply_list, mod_supplies, callback) {
 }
 
 //posts the updated supply list to a strategy 
-function update_supply(strat_id, supply_list) {
-
+function update_supply(strat_id, supply_list,callback) {
+var success =0;
 	//if strat is running on all supply sources, ignore
 	if (supply_list=='1') { return '0'; }
 
@@ -196,7 +196,9 @@ function update_supply(strat_id, supply_list) {
 		dataType: "xml",
 		data: supply_dict, 
 		success: function(data,textStatus, jqXHR) {
+			success =1;
 			console.log("updated " + strat_id); 
+			callback(success,strat_id);
 		},
 		error: function(jqXHR, textStatus, errorThrown) {
 		console.log(jqXHR, textStatus, errorThrown)
@@ -207,8 +209,8 @@ function update_supply(strat_id, supply_list) {
 }
 
 //posts run_on_all_exchanges to strategy 
-function run_on_all_ex(strat_id) {
-		
+function run_on_all_ex(strat_id,callback) {
+var success =0;
 	var request = $.ajax({
 	url: "https://adroit-tools.mediamath.com/t1/api/v2.0/strategies/"+strat_id+"/supplies",
 	type: "POST",
@@ -216,7 +218,9 @@ function run_on_all_ex(strat_id) {
 	dataType: "xml",
 	data: {all_exchanges:'1'},
 	success: function(data,textStatus, jqXHR) {
-		console.log("updated " + strat_id); 
+		success =1;
+		console.log("updated " + strat_id);
+		callback(success,strat_id);		
 	},
 	error: function(jqXHR, textStatus, errorThrown) {
 	console.log(jqXHR, textStatus, errorThrown)
@@ -225,10 +229,16 @@ function run_on_all_ex(strat_id) {
 	return "updated supply successfully";	
 }
 
-function update_fold_position(s_id, fold_position) {
+function update_fold_position(s_id, fold_position,callback) {
+var success = 0;
 
 	if (fold_position.length == 1) {
+		if(fold_position == 0){
+		var position = " ";
+		}
+		else {
 		var position = "include="+fold_position[0];
+		}
 		console.log("only one fold", fold_position[0]);
 	}
 
@@ -253,9 +263,13 @@ function update_fold_position(s_id, fold_position) {
 		dataType: "xml",
 		data: position,
 		success: function(data,textStatus, jqXHR) {
+			success = 1;
 			console.log("fold updated " + s_id); 
+			callback(success,s_id);
 		},
 		error: function(jqXHR, textStatus, errorThrown) {
+		success = 0;
+		callback(success,s_id);
 		console.log(jqXHR, textStatus, errorThrown)
 		}
 		})
@@ -300,22 +314,40 @@ function update_supply_sources() {
 					//add selected supplies to list and post new list
 					if (choice == "Add") {
 						var updated_list = add_supply(s_list, mod_exchanges);
-						update_supply(current_strat,updated_list); 
+						update_supply(current_strat,updated_list,function(success,current_strat){	
+						if(success == 1){
+						count1 = count1 +1;	
+						feedback = feedback + "<p>Updated supply targeting for "+current_strat+"</p>"; 
+						print(count1, strat_list.length,current_strat,feedback);		
 						console.log("added" + updated_list + " to " + current_strat);
+						}
+						});
 					}
 					
 					//remove supplies and update
 					else if (choice == "Remove") {
 						remove_supply(s_list, mod_exchanges, function(s_list, mod_exchanges, updated_list){
-							update_supply(current_strat,updated_list); 
-							console.log("removed " + updated_list + " from " + current_strat);	
+							update_supply(current_strat,updated_list,function(success,current_strat){
+								if(success == 1){
+								count1 = count1 +1;
+								feedback = feedback + "<p>Updated supply targeting for "+current_strat+"</p>"; 
+								print(count1, strat_list.length,current_strat,feedback);
+								console.log("removed " + updated_list + " from " + current_strat);
+								}
+							})							
 						});	
 					}
 					
 					else if (choice =="AllEx") {
 						$("#supply_list").multipleSelect("disable");	
-						run_on_all_ex(current_strat);	
-						console.log(current_strat + " is running on all exchanges");		
+						run_on_all_ex(current_strat,function(success,current_strat){
+							if(success == 1){
+							count1 = count1 +1;
+							feedback = feedback + "<p>Updated supply targeting for "+current_strat+"</p>"; 
+							print(count1, strat_list.length,current_strat,feedback);
+							console.log(current_strat + " is running on all exchanges");	
+							}
+						});						
 					}	
 					
 					else {
@@ -323,14 +355,17 @@ function update_supply_sources() {
 					}		
 				
 				});	
-			count1 = count1 +1;
-			$("#counter1").html(count1 + "/" + strat_list.length);
-			
-			move1(Math.round((count1/strat_list.length)*100));
-			feedback = feedback + "<p>Updated supply targeting for "+current_strat+"</p>"; 
-			$("#feedback").html(feedback);		
+	
 		}
 	}
+}
+
+function print(count1, length,current_strat,feed){
+	console.log(feed);
+	$("#counter1").html(count1 + "/" + length);
+	move1(Math.round((count1/length)*100));
+	$("#feedback").html(feed);		
+	
 }
 
 function update_fold_targeting() {	
@@ -357,15 +392,25 @@ function update_fold_targeting() {
 		
 		// //if fold position targeting is selected, then update
 		for (var i=0; i<(strat_list.length); i++) {
+			
 			console.log("in for loop", strat_list[i]);
-			update_fold_position(strat_list[i], fold_position);
+			update_fold_position(strat_list[i], fold_position, function(success,strat){
+			if(success == 1){
 			count2 = count2 +1;
 			$("#counter2").html(count2 + "/" + strat_list.length);
 			
 			move2(Math.round((count2/strat_list.length)*100));
-			feedback = feedback + "<p>Updated fold targeting for "+strat_list[i]+"</p>"; 
-			console.log("in for loop 2", strat_list[i]);
+			feedback = feedback + "<p>Updated fold targeting for "+strat+"</p>"; 
+	
 			$("#fold_feedback").html(feedback);	
+			}
+			
+			else{
+			var error = "ERROR: ";
+			feedback = feedback + "<p>"+ error.fontcolor("red")+strat+".</p>";								
+			$("#feedback").html(feedback);
+			}
+			})
 		}		
 	}	
 		

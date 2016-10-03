@@ -228,7 +228,12 @@ function run_on_all_ex(strat_id) {
 function update_fold_position(s_id, fold_position) {
 
 	if (fold_position.length == 1) {
+		if(fold_position == 0){
+		var position = " ";
+		}
+		else {
 		var position = "include="+fold_position[0];
+		}
 		console.log("only one fold", fold_position[0]);
 	}
 
