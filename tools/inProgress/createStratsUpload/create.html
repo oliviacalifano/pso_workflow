@@ -60,28 +60,40 @@
 		
 		<!--<input id="fileSelect" type="file" accept=".csv" />-->
 		
-	<input type="file" onchange="loadFile()" />
+	<input type="file" />
 
   <script>
     var reader = new FileReader();  
     
-    function loadFile() {      
+
+$("#punch").click(function() {
+    
       var file = document.querySelector('input[type=file]').files[0];      
       reader.addEventListener("load", parseFile, false);
       if (file) {
         reader.readAsText(file);
       }      
-    }
-    
+
+});
+	
+ 
     function parseFile(){
 	var count = 0;
       var data = d3.csvParse(reader.result, function(d){
-	  count = count +1;
-        upload_button(d,count);  
+	  console.log($('#new').val());
+		for(var i = 0; i < $('#new').val(); i++){
+		count = count +1;
+        upload_button(d,count); 
+		}		
       });
     }
   </script>
 
+  			&nbsp
+			<form action="demo_form.asp">
+			How many new strategies are you creating?:<input type="text" id="new">
+			</form>	
+  
 <br></br>
 		<div>
 		<button type="submit" class="button" value="punch" id="punch">&nbspHeal&nbsp</button>
