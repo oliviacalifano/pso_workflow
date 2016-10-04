@@ -4,7 +4,7 @@ function upload_zips(d,callback){
     var uploadFile = new FormData();
 	var geo = new FormData();
 	var concept = new FormData();
-	var supply = new FormData();
+	//var supply = new FormData();
 			//required
 			console.log(d.status);
 			uploadFile.append("name",d.name);
@@ -65,14 +65,14 @@ function upload_zips(d,callback){
 			if(d.run_on_all_exchanges != ""){
 			uploadFile.append("run_on_all_exchanges", d.run_on_all_exchanges.toLowerCase());
 			}
-			if(d.run_on_all_exchanges == "off"){
+/* 			if(d.run_on_all_exchanges == "off"){
 				var supplies = d.supply_source_id;
 				console.log(supplies);
 				supplies = supplies.split(';');
 				for (i=0; i<supplies.length; i++) {
 				supply.append('supply_source.'+(i+1).toString()+'.id', supplies[i]);
 				}
-			}			
+			} */			
 			
 			//geo	
 			if(d.geo_region != ""){
@@ -93,7 +93,7 @@ function upload_zips(d,callback){
 			}
 			console.log(d.name,d.campaign_id,d.status,d.budget,d.description,d.type,d.use_campaign_start,d.use_campaign_end,d.start_date,d.end_date,d.bid_price_is_media_only,d.frequency_type,d.frequency_amount,d.frequency_interval,d.use_optimization,d.goal_type,d.goal_value,d.max_bid,d.pacing_type,d.pacing_amount,d.pacing_interval,d.pixel_target_expr,d.roi_target,d.version,d.geo_region,d.concept_id);
 			
-	callback(uploadFile,geo,concept,supply,d.concept_id,d.geo_region,d.supply_source_id);
+	callback(uploadFile,geo,concept,d.concept_id,d.geo_region);
 }
 
 function post(upload,row,callback){
@@ -165,7 +165,7 @@ function add_concept(s,c,row,callback){
 	});
 }
 
-function add_supply(strat,s,row,callback){
+/* function add_supply(strat,s,row,callback){
 	console.log(s);
 	$.ajax({
 	url: "https://adroit-tools.mediamath.com/t1/api/v2.0/strategies/"+strat+"/supplies",
@@ -186,7 +186,7 @@ function add_supply(strat,s,row,callback){
 		callback(error);
 	}
 	});
-}
+} */
 
 $("#geo_button").click(function() {
 $("#feedback_geo").clear;
@@ -234,7 +234,7 @@ function upload_button(data, count){
 			console.log(data["name"]);
 			console.log(count);
 
-			upload_zips(data,function(upload,geo,concept,supply,c_id,g_id,s_id){
+			upload_zips(data,function(upload,geo,concept,c_id,g_id){
  					post(upload,count,function(strat,strat_success){
 						
 						if (strat_success == 1) {
@@ -275,7 +275,7 @@ function upload_button(data, count){
 							}
 							})
 						}
-						if(s_id != undefined && s_id != ""){
+/* 						if(s_id != undefined && s_id != ""){
 							console.log(s.id);
 							add_supply(strat,supply,count,function(supply_success){
 							if (supply_success == 1) {
@@ -287,7 +287,7 @@ function upload_button(data, count){
 							$("#feedback").html(feedback); 
 							}
 							})
-						}
+						} */
 						
 					}) 
 			})
