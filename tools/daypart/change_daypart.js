@@ -61,7 +61,6 @@ function get_current_daypart(strat_id, callback){
 	
 	console.log("getting dayparts for: ",strat_id);
 	
-	var info = [];
 	var options=[];
 	var ids = [];
 	var current = "";
@@ -81,11 +80,8 @@ function get_current_daypart(strat_id, callback){
 			});
 			console.log(ids);
 			console.log(include.length);
-			for(var i = 0; i < include.length; i++){
-				info.push(include[i]);
-			}
 			
-			for(var i=0; i <ids.length; i++)
+			for(var i=0; i <=ids.length; i++)
 			{
 				var holder = [];
 				var num = i+1;
