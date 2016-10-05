@@ -278,6 +278,7 @@ var success = 0;
 }
 
 function update_supply_sources() {
+	var feedback = ""; 
 	var count1 = 0;
 	//check if adding or removing supplies
 	var choice = $('input[name=choice]:checked', '#add_remove').val();
@@ -293,7 +294,7 @@ function update_supply_sources() {
 		console.log("strat list:", strat_list);
 		var mod_exchanges = get_selected_supply(); 
 		mod_exchanges = mod_exchanges[0];
-		var feedback = ""; 
+		
 		console.log("list of exchanges to mod ",mod_exchanges);
 		
 
@@ -369,6 +370,7 @@ function print(count1, length,current_strat,feed){
 }
 
 function update_fold_targeting() {	
+	var feedback = "";
 	var count2 = 0;
 	//check if fold targeting is included 
 	var fold_position = [];
@@ -387,8 +389,6 @@ function update_fold_targeting() {
 		var strat_list = get_selected_strats();
 		strat_list = strat_list[0]; 
 		console.log("strat list:", strat_list);
-		
-		var feedback = "";
 		
 		// //if fold position targeting is selected, then update
 		for (var i=0; i<(strat_list.length); i++) {
