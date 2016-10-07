@@ -99,14 +99,24 @@
 			<br></br>
 			<text style="color:red"><b>**Exclusion logic is always 'OR' </b></text>
 			<br></br>			
-			<select name="ctxl" class="dropdown" style="width:420px" id="ctxl_list" multiple>
+			<select name="ctxl_pre" class="dropdown" style="width:420px" id="ctxl_pre" multiple>
+			</select>
+			<script>
+				$("#ctxl_pre").multipleSelect({
+					placeholder: "Choose Peer39",					
+					filter: true,
+					selectAll: false,
+					single: true
+				});	
+			</script>
+			<select name="ctxl_list" class="dropdown" style="width:420px" id="ctxl_list" multiple>
 			</select>
 			<script>
 				$("#ctxl_list").multipleSelect({
-					placeholder: "Choose Peer39",					
+					placeholder: "Choose Peer39 Sub-Channels",					
 					filter: true
 				});	
-			</script>	
+			</script>			
 			</td>
 		</tr>
 		</table>
@@ -135,7 +145,8 @@
 <script src="get_advs.js"></script>
 <script src="get_campaigns.js"></script>
 <script src="get_strats.js"></script>
-<script src="get_peer39.js"></script>
+<script src="get_peer39pre.js"></script>
+<script src="get_peer39sub.js"></script>
 <script src="t1_toolkit.js"></script>
 <script src="change_peer39_withDV.js"></script>	
 
