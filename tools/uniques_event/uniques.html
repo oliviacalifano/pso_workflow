@@ -19,6 +19,21 @@
 			<div id="strat_selections">
 			<table>
 			<tr><tr><tr></tr></tr></tr>
+			<tr><td><select name="type" class="dropdown" style="width:225px" id="type" multiple>
+				 <option value="0">Event Pixels</option>
+				<option value="1">Segments</option
+				</select>
+				<script>
+					$("#type").multipleSelect({
+						placeholder: "Choose Type",
+						filter: true,
+						selectAll: false,
+						single: true,
+						
+					});	
+				</script>	
+				</td></tr>
+			
 			<tr><td><select name="org" class="dropdown" style="width:250px" id="org_dropdown" multiple>
 				</select>
 				<script>
@@ -43,12 +58,15 @@
 			<tr><tr><tr><tr><tr><tr></tr></tr></tr></tr></tr></tr>	
 			</table>
 		</div>
+		
+		
+				<table>
 			<form action="demo_form.asp">
 			Namespace: <input type="text" id="fname">
 			</form>
 		
 &nbsp
-		<table>
+		
 			<select name="dataPixels" class="dropdown" style="width:420px" id="dataPixels_list" multiple></select>
 			<script>
 				$("#dataPixels_list").multipleSelect({
@@ -56,7 +74,7 @@
 					filter: true
 				});	
 			</script>	
-		</table>	
+		</table>		
 		
 		<div id="submit_button">
 			<button type="submit" class="button" value="punch" id="punch">&nbspHeal&nbsp</button>

@@ -22,11 +22,19 @@ function get_dataPixel_targets(id,name,callback){
 	console.log(p_name);
 	console.log(name);
 	var namespace = $("#fname").val();
-
 	var pixel = $("#lname").val();
-
+	var type = $("#type").val();
+	var u = "";
+	if(type == 1){
+		u = "https://adroit-tools.mediamath.com/t1/uniques/v1/segments/" + namespace + ":"+ id +"/stats/daily";
+	}
+	if(type == 0){
+		u = "https://adroit-tools.mediamath.com/t1/uniques/v1/pixels/" + id +"/stats/daily";
+	}
+console.log(u);
 	var request = $.ajax({
-		url: "https://adroit-tools.mediamath.com/t1/uniques/v1/segments/" + namespace + ":"+ id +"/stats/daily",
+		
+		url: u,
 		type: "GET",
 		cache: false,
 	
@@ -43,7 +51,7 @@ function get_dataPixel_targets(id,name,callback){
                 var line = p_name[1];
 				console.log(array[i]);
 					
-                    line = array[i]["date"]+ "," + array[i]["pixel_id"]+ ","+line+ "," +array[i]["loads"]+ "," +array[i]["uniques"];
+                    line = array[i]["date"]+ "," + id + ","+line+ "," +array[i]["loads"]+ "," +array[i]["uniques"];
 
                 str += line + '\r\n';
             }
