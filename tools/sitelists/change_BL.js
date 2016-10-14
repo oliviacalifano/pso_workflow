@@ -48,6 +48,25 @@ function get_bl_targets(strat_id, callback){
 		console.log(jqXHR, textStatus, errorThrown)
 		}
 	})
+}
+
+function get_campaign(current_strat, callback){
+
+	var request = $.ajax({
+		url: "https://adroit-tools.mediamath.com/t1/api/v2.0/strategies/" + current_strat,
+		type: "GET",
+		cache: false,
+		dataType: "xml",
+	
+		success: function(xml) {
+			var camp = $(xml).find('prop[name=campaign_id]').attr("value");
+			console.log(camp);
+			callback(current_strat, camp);
+		},	
+		error: function(jqXHR, textStatus, errorThrown) {
+		console.log(jqXHR, textStatus, errorThrown)
+		}
+	})
 }	
 
 function add_to_final_list(array, mod_list)
@@ -63,6 +82,61 @@ function add_to_final_list(array, mod_list)
 
 }
 
+function remove_campaign(strat_id, camp_id, list, bl, a_r, callback)
+{		
+	if(a_r == "remove"){
+		console.log(list);
+		var include_array = [];
+		var exclude_array = [];
+		var final_list;
+		var include_list = "";
+		var exclude_list = "";
+		var success = 0; 
+
+		console.log(bl);
+		
+		for(var i = 0; i<list.length; i++){
+			include_array.push("site_lists." + (i+1) +".id="+list[i]);
+		}
+ 		for(var j = 0; j<list.length; j++){
+			if(bl.indexOf(list[j] == -1) && a_r == "remove"){
+				console.log(list[j])
+				exclude_array.push("site_lists." + (j+1) + ".assigned=0");
+			}
+			else {
+				exclude_array.push("site_lists." + (j+1) + ".assigned=1");
+			}
+		}
+		include_list = include_array.join("&");
+		exclude_list = exclude_array.join("&");
+
+		final_list = include_list + "&" + exclude_list;
+		console.log(final_list);
+
+		var request = $.ajax({
+			url: "https://adroit-tools.mediamath.com/t1/api/v2.0/campaigns/" + camp_id +"/site_lists",
+			type: "POST",
+			cache: false,
+			dataType: "xml",
+			data: final_list,
+			success: function(data,textStatus, jqXHR) { 
+				success = 1;
+				console.log("success", success);
+				console.log("updated " + strat_id);
+				callback(strat_id);
+			},
+			error: function(jqXHR, textStatus, errorThrown) {
+				callback(success);
+				console.log(jqXHR, textStatus, errorThrown)
+			}
+		})
+	}
+	else{
+		callback(strat_id);
+	}
+}
+
+
 function set_targeting(strat_id, list, bl, a_r, callback)
 {		
 		console.log(list);
@@ -76,6 +150,8 @@ function set_targeting(strat_id, list, bl, a_r, callback)
 		console.log(include_array);
 		console.log(include_array.length);
 		console.log(bl);
+		console.log(list);
+		
 		
 		for(var i = 0; i<list.length; i++){
 			include_array.push("site_lists." + (i+1) +".id="+list[i]);
@@ -157,30 +233,34 @@ function update_bl_targeting() {
 					}
 					console.log("After..bl list for current_strat.  Include: ", final_list);
 					
-					set_targeting(current_strat, final_list, mod_bl, add_remove, function(success)
-					{			
-						if (success == 1 && mod_bl.length!=0) {
-							if (add_remove == 'add') {	
-							feedback = feedback + "<p> Added the blacklists/whitelists for "+current_strat+". Check changes <a target=\"_blank\" href=\"https://adroit-tools.mediamath.com/t1/api/v2.0/strategies/"+ current_strat +"/site_lists?q=assigned%3D%3D1&sort_by=id\">here</a></p>";								
-							$("#feedback").html(feedback); 
-							}
-							if (add_remove == 'remove') {
-							feedback = feedback + "<p> Removed the blacklists/whitelists for "+current_strat+". Check changes <a target=\"_blank\" href=\"https://adroit-tools.mediamath.com/t1/api/v2.0/strategies/"+ current_strat +"/site_lists?q=assigned%3D%3D1&sort_by=id\">here</a></p>";									
-							$("#feedback").html(feedback); 
-							}
-							count = count +1;
-							$("#counter").html(count + "/" + strat_list.length);
-							
-							move(Math.round((count/strat_list.length)*100));
-						}
-						
-					else{
-							var error = "ERROR: ";
-							feedback = feedback + "<p>" + error.fontcolor("red")+current_camp+". Check changes <a target=\"_blank\" href=\"https://adroit-tools.mediamath.com/t1/api/v2.0/strategies/"+ current_strat +"/site_lists?q=assigned%3D%3D1&sort_by=id\">here</a></p>";	
-							$("#feedback").html(feedback);
-					}	
-						
-					});	
+					get_campaign(current_strat,function(current_strat, camp){
+						remove_campaign(current_strat,camp,final_list, mod_bl, add_remove, function(current_strat){
+							set_targeting(current_strat, final_list, mod_bl, add_remove, function(success)
+							{			
+								if (success == 1 && mod_bl.length!=0) {
+									if (add_remove == 'add') {	
+									feedback = feedback + "<p> Added the blacklists/whitelists for "+current_strat+". Check changes <a target=\"_blank\" href=\"https://adroit-tools.mediamath.com/t1/api/v2.0/strategies/"+ current_strat +"/site_lists?q=assigned%3D%3D1&sort_by=id\">here</a></p>";								
+									$("#feedback").html(feedback); 
+									}
+									if (add_remove == 'remove') {
+									feedback = feedback + "<p> Removed the blacklists/whitelists for "+current_strat+". Check changes <a target=\"_blank\" href=\"https://adroit-tools.mediamath.com/t1/api/v2.0/strategies/"+ current_strat +"/site_lists?q=assigned%3D%3D1&sort_by=id\">here</a></p>";									
+									$("#feedback").html(feedback); 
+									}
+									count = count +1;
+									$("#counter").html(count + "/" + strat_list.length);
+									
+									move(Math.round((count/strat_list.length)*100));
+								}
+								
+							else{
+									var error = "ERROR: ";
+									feedback = feedback + "<p>" + error.fontcolor("red")+current_camp+". Check changes <a target=\"_blank\" href=\"https://adroit-tools.mediamath.com/t1/api/v2.0/strategies/"+ current_strat +"/site_lists?q=assigned%3D%3D1&sort_by=id\">here</a></p>";	
+									$("#feedback").html(feedback);
+							}	
+								
+							});	
+						});
+					});
 					
 				});
 			};
