@@ -1,6 +1,7 @@
 $("#deals_list").change(function(){
 	$('#d_name').attr("value","");
 	$('#d_id').attr("value","");
+	$('#d_pub').attr("value","");
 	$("#active").prop("checked", false);
 	$("#inactive").prop("checked", false);
 	var value = $(this).val();
@@ -25,11 +26,17 @@ function get_deal_info(deal){
 			var name = $(xml).find('prop[name="name"]').attr('value');
 			var stat = $(xml).find('prop[name="status"]').attr('value');
 			var put = $(xml).find('prop[name="deal_identifier"]').attr('value');
+			var pub = $(xml).find('prop[name="supply_source_id"]').attr('value');
+			
 			
 			console.log(put);
 			console.log(stat);
+			console.log(pub);
 			$('#d_id').attr("value",put);
 			$('#d_name').attr("value",name);
+			$('#sup_list').multipleSelect("setSelects", [pub]);
+
+			$('#d_pub').attr("value",pub);
 			if(stat == 1){
 			$("#active").prop("checked", true);
 			}

@@ -38,9 +38,9 @@ function get_deal(deal, callback){
 	})
 }	
 
-function update_deal(deal, ver, s, new_name, new_id, callback)
+function update_deal(deal, ver, s, new_name, new_id, new_sup, callback)
 {		
-		var to_post = "version="+ ver +"&status="+s +"&name="+new_name +"&deal_identifier="+new_id;
+		var to_post = "version="+ ver +"&status="+s +"&name="+new_name +"&deal_identifier="+new_id+"&supply_source_id="+new_sup;
 
 		var request = $.ajax({
 			url: "https://adroit-tools.mediamath.com/t1/api/v2.0/deals/"+deal,
@@ -66,9 +66,11 @@ function update() {
 
 	var new_name = $("#d_name").val();
 	var new_id = $("#d_id").val();
+	var new_sup = $("#sup_list").val();
 	
 	console.log(new_name);
 	console.log(new_id);
+	console.log(new_sup);
 	
 	var feedback = "";
 	var success = 0;
@@ -88,7 +90,7 @@ function update() {
 		var current_deal = deals_list[i];
 				get_deal(current_deal, function(deal, version) 
 				{
-					update_deal(deal, version, active, new_name, new_id, function(success)
+					update_deal(deal, version, active, new_name, new_id, new_sup, function(success)
 					{			
 						if (success == 1) {
 							feedback = feedback + "<p>Updated Deal ID. Check changes <a target=\"_blank\" href=\"https://adroit-tools.mediamath.com/t1/api/v2.0/deals/"+deal+"\">here</a></p>";								
@@ -110,3 +112,14 @@ $("#punch").click(function() {
 	console.log("hit!");
 	update();
 })	
+
+$("#sup_button").click(function() {
+$("#feedback_sup").clear;
+var id = $("#sup_list").val();
+var sup = $("#sup_list").multipleSelect('getSelects', 'text');
+
+
+var feedback = sup + ": " + id;							
+$("#feedback_sup").html(feedback); 
+
+});

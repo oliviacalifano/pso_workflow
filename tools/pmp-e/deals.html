@@ -72,6 +72,26 @@
 			</form>
 		</div>	
 
+<table>
+<tr><td>
+			
+			&nbsp New RTB Provider ID: 
+			<select name="sup" class="dropdown" style="width:250px" id="sup_list" multiple>
+			</select>
+			<script>
+				$("#sup_list").multipleSelect({
+					placeholder: "Choose Provider",
+					filter: true,
+					selectAll: false,
+					single: true
+				});	
+			</script>
+			
+</td>
+		</table>			
+		
+		
+		
 		<table>
 		<tr>
 		&nbsp <text style="color:red"><b>All fields must be filled before making changes (keep the current settings if you are not changing that particular field).</b></text>
@@ -91,7 +111,8 @@
 
 <script src="get_orgs.js"></script>	
 <script src="get_advs.js"></script>
-<script src="get_deals.js"></script>	
+<script src="get_deals.js"></script>
+<script src="get_supply.js"></script>	
 <script src="get_deal_info.js"></script>
 <script src="t1_toolkit.js"></script>
 <script src="change_deals.js"></script>	
