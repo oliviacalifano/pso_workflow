@@ -73,19 +73,23 @@ function get_spendCap(camp,callback){
 			
 			var org_name = $("#org_dropdown").multipleSelect('getSelects', 'text');
 			console.log(org_name[0]);
+			org_name = org_name[0];
+			org_name = org_name.replace(",", " ");
 			
 			var adv_id = $(xml).find("entity").find("entity").attr("id");
 			console.log(adv_id);
 			
 			var adv_name = $(xml).find("entity").find("entity").attr("name");
 			console.log(adv_name);
-
+			adv_name = adv_name.replace(",", " ");
+			
 			var camp_id = $(xml).find("entity").attr("id");
 			console.log(camp_id);
 			
 			var camp_name = $(xml).find("entity").attr("name");
 			console.log(camp_name);
-
+			camp_name = camp_name.replace(",", " ");
+			
 			var auto = $(xml).find("prop[name=spend_cap_automatic]").attr("value");
 			console.log(auto);
 			
