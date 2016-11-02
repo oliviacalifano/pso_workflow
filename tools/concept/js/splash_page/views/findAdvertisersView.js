@@ -12,7 +12,7 @@ YieldTools.advertiserAutocomplete = Backbone.View.extend({
 		var me = this;
 		//render html and set the model (this) to model var
 		this.$el.find("#advertisersInput").typeahead({
-			limit: 10,
+			limit: 100,
 			remote: {
 				replace: function(url, uriEncodedQuery) {
 					//replace spaces with +
@@ -20,7 +20,7 @@ YieldTools.advertiserAutocomplete = Backbone.View.extend({
 					//escape the whole name="*__*" and throw that inno the q= param
 					var queryTerm = escape($("#advertisersInput").val().replace(" ", "+"));
 					var qParam = escape("name=:*" + queryTerm + "*");
-					return YieldTools.API_BASE + "advertisers?with=agency,organization&sort_by=id&order_by=ascending&page_limit=10&q=" + qParam;
+					return YieldTools.API_BASE + "advertisers?with=agency,organization&sort_by=id&order_by=ascending&page_limit=100&q=" + qParam;
 				},
 				cache: true,
 				dataType: 'XML',
