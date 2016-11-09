@@ -28,7 +28,8 @@ function get_dvs(parentId, callback){
 					console.log(id);
 
 					if(children!="0"){
-							get_dvs(id, callback);
+						holder[full]= id;
+						get_dvs(id, callback);
 					}
 					else {
 						holder[full]= id;

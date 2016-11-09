@@ -28,7 +28,8 @@ function get_ias(parentId, callback){
 					console.log(id);
 
 					if(children!="0"){
-							get_ias(id, callback);
+						holder[full]= id;
+						get_ias(id, callback);
 					}
 					else {
 						holder[full]= id;

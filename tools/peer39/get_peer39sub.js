@@ -25,7 +25,8 @@ var url = "https://adroit-tools.mediamath.com/t1/api/v2.0/targeting_segments?ful
 					console.log(id);
 
 					if(children!="0"){
-							get_sub(id, callback);
+						holder[full]= id;
+						get_sub(id, callback);
 					}
 					else {
 						holder[full]= id;
