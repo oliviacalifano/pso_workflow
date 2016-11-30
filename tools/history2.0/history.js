@@ -119,8 +119,12 @@ function get_history(strat, n, col, camp_n, camp_i, callback){
 			array.push(this.getAttribute('user_name'));
 			$(this).find('field').each(function(){
 				array.push(this.getAttribute('name'));
-				array.push(this.getAttribute('new_value'));
-				array.push(this.getAttribute('old_value'));
+				var new_v = this.getAttribute('new_value');
+				new_v = new_v.replace(/\n/g," ")
+				array.push(new_v);
+				var old_v = this.getAttribute('old_value');
+				old_v = old_v.replace(/\n/g," ")
+				array.push(old_v);
 			});
 			if(array.length > max){
 				max = array.length;
@@ -134,7 +138,6 @@ function get_history(strat, n, col, camp_n, camp_i, callback){
 				s = segments.join(";");
 				//console.log(s);
 				//console.log(typeof array);
-				
 				array.splice(i,1,s);
 				//console.log(array);
 				string = array.join(",");
@@ -179,7 +182,7 @@ function download() {
 
 	var collection = $('input[name=toggle]:checked', '#toggle').val();
 	console.log("toggle:", toggle);	
-	//console.log(collection);
+	console.log(collection);
 	
 	if(collection == 'campaigns'){
 		var strategy_history = "";
