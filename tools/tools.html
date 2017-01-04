@@ -57,13 +57,13 @@
   <div class="row">
     <div id="button-container">
       <button class="btn" ng-click="triggerAllTools()" ng-class="{'button-active' : allTools == true}">All</button>
-      <button class="btn" ng-click="triggerTargetingTools()" ng-class="{'button-active' : bulkEdit == true}">Bulk Edit</button>  
+      <button class="btn" ng-click="triggerTargetingTools()" ng-class="{'button-active' : bulkEdit == true}">Edit</button>  
       <button class="btn" ng-click="triggerQATools()" ng-class="{'button-active' : QA == true}">QA</button >
       <button class="btn" ng-click="triggerReportTools()" ng-class="{'button-active' : reports == true}">Reports</button> 
     </div>
     <a ng-show="QA || allTools" href="https://pi.mediamath.com/tools/t1campaignsummary/" class="tool-container col-lg-3 col-md-4 col-sm-6 col-xs-12 green">
       <h2>T1 Campaign Summary Tool</h2>
-      <p>Quick summary of Campaign/Strategy details.</p>
+      <p>Comprehensive summary of campaign & strategy details.</p>
     </a>	
     <a  ng-show="QA || allTools" href="checklist/checklist.html" class="tool-container col-lg-3 col-md-4 col-sm-6 col-xs-12 blue" >
       <h2 style="text-align: center;">Checklist</h2>
@@ -83,7 +83,11 @@
     </a>
     <a ng-show="bulkEdit || allTools" href="geo_regions/geo_targeting.html" class=" tool-container col-lg-3 col-md-4 col-sm-6 col-xs-12 yellow">
       <h2 style="text-align: center;">Region Targeting</h2>
-      <p>Bulk edit strategy region targeting</p>
+      <p>Bulk edit strategy region targeting.</p>
+    </a>
+	<a ng-show="bulkEdit || allTools" href="zipcodes/zipcodes.html" class="tool-container col-lg-3 col-md-4 col-sm-6 col-xs-12 pink">
+      <h2>Zipcode Targeting</h2>
+      <p>Bulk edit zipcode targeting by uploading a postal code file. File must be uploaded as a CSV.</p>
     </a>
     <a ng-show="bulkEdit || allTools" href="techtual/tech_targeting.html" class=" tool-container col-lg-3 col-md-4 col-sm-6 col-xs-12 red">
       <h2 style="text-align: center;">Tech-tual Healing</h2>
@@ -103,7 +107,7 @@
     </a>
      <a ng-show="bulkEdit || allTools" href="daypart/daypart_targeting.html" class=" tool-container col-lg-3 col-md-4 col-sm-6 col-xs-12 blue">
       <h2>Dayparting</h2>
-      <p>Fix day part targeting for multiple strategies within a campaign.</p>
+      <p>Bulk edit daypart targeting.</p>
     </a>
     <a ng-show="bulkEdit || allTools" href="sitelists/BL_targeting.html" class=" tool-container col-lg-3 col-md-4 col-sm-6 col-xs-12 violet">
       <h2 style="text-align: center;">Sitelists</h2>
@@ -114,8 +118,8 @@
       <p>Bulk edit site selectiveness and transparent URLS.</p> 
     </a>
     <a ng-show="bulkEdit || allTools" href="eventPixels_logic/eventPixels_targeting.html" class="tool-container col-lg-3 col-md-4 col-sm-6 col-xs-12 navyblue">
-      <h2>Event Pixels</h2>
-      <p>Target or anti-target even pixels. Includes AND/OR/CURRENT logic.</p> 
+      <h2>Event Pixels & Adaptive Segments</h2>
+      <p>Target or anti-target event pixels and adaptive segments. Includes AND/OR/CURRENT logic.</p> 
     </a>
     <a ng-show="bulkEdit || allTools" href="dataPixels_logic/dataPixels_targeting.html" class="tool-container col-lg-3 col-md-4 col-sm-6 col-xs-12 pink">
       <h2>Data Pixels</h2>
@@ -123,7 +127,7 @@
     </a>
     <a ng-show="reports || allTools" href="spendCap2.0/spendCap_targeting.html" class="tool-container col-lg-3 col-md-4 col-sm-6 col-xs-12 blue">
       <h2>Spend Cap Report</h2>
-      <p>Download an excel to check whether your campaigns are pacing with the spend cap rather than strategy pacing. </p>
+      <p>Download a report to check whether your campaigns are hitting their campaign spend caps. </p>
     </a>
 	<a ng-show="reports || allTools" href="history2.0/history.html" class="tool-container col-lg-3 col-md-4 col-sm-6 col-xs-12 green">
       <h2>Change Log Report</h2>
@@ -149,9 +153,9 @@
       <h2>3rd Party Audiences Export</h2>
       <p>Choose a vendor and search for a keyword to download all possible 3rd party audiences.</p>
     </a>
-	<a ng-show="bulkEdit || allTools" href="zipcodes/zipcodes.html" class="tool-container col-lg-3 col-md-4 col-sm-6 col-xs-12 pink">
-      <h2>Zipcodes</h2>
-      <p>Edit location bulkEdit by uploading or removing a postal codes file. If you are uploading a file it must be saved as a csv.</p>
+	<a ng-show="bulkEdit || allTools" href="pmp-e/deals.html" class="tool-container col-lg-3 col-md-4 col-sm-6 col-xs-12 green">
+      <h2>PMP-E Editor</h2>
+      <p>Edit a PMP-E's status, deal name, deal id or RTB provider.</p>
     </a>
 	<a ng-show="bulkEdit || allTools" href="/tools/concept/" class="tool-container col-lg-3 col-md-4 col-sm-6 col-xs-12 navyblue">
       <h2>Other Tools</h2>
