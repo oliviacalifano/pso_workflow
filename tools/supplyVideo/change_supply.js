@@ -114,7 +114,7 @@ function remove_supply(supply_list, mod_supplies, callback) {
 	if (supply_list == '1') {
 	
 		var request = $.ajax({
-			url: "https://adroit-tools.mediamath.com/t1/api/v2.0/supply_sources?sort_by=name",
+			url: "https://adroit-tools.mediamath.com/t1/api/v2.0/supply_sources?sort_by=name&q=has_video%3D%3D1",
 			type: "GET",
 			cache: false,
 			dataType: "xml",
