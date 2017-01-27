@@ -20,8 +20,6 @@ function get_selected_camps() {
 	return camp_id;
 }
 
-
-
 function get_camp_info(camp, callback){
 	
 	var request = $.ajax({
@@ -83,15 +81,26 @@ function get_sitelists(strat,callback){
 		dataType: "xml",
 	
 		success: function(xml) {
-		
-		var site_id = $(xml).find('entity').attr('id');
+		var sites = "";
+/* 		var site_id = $(xml).find('entity').attr('id');
 		console.log(site_id);
 		
 		var site_name = $(xml).find('entity').attr('name');
-		console.log(site_name);
+		console.log(site_name); */
+		
+		var entry = $(xml).find('entity');
+		var array = [];
+		entry.each(function(){
+		var site_id = $(this).attr('id');
+		var site_name = $(this).attr('name');
+		console.log(site_id,site_name);
+		array.push(site_name);
+		array.join();
+		
+		});
 		
 
-		callback(strat,site_id,site_name)
+		callback(strat,array)
 		},	
 		error: function(jqXHR, textStatus, errorThrown) {
 		console.log(jqXHR, textStatus, errorThrown)
@@ -107,7 +116,7 @@ function download() {
 	camp_list = get_selected_camps();
 	camp_list = camp_list[0];
 	
-	var header = "campaign_id,campaign_name,strat_id,strat_name,sitelist_id,sitelist_name";
+	var header = "campaign_id,campaign_name,strat_id,strat_name,sitelist_name";
 	
 	console.log("starting to loop through strats and update geo");
 	for(var i=0; i<camp_list.length; i++) {
@@ -117,16 +126,16 @@ function download() {
 	var counter = 0;
 
 	get_strat_info(current_camp,function(current_camp,ids){	
-		get_sitelists(current_camp,function(current_camp,site_id,site_name){	
+		get_sitelists(current_camp,function(current_camp,sites){	
 					counter++;
 
 					if(counter == camp_list.length){
-						info = header +info+ "\n"+ ids + "," + site_id + "," + site_name;
+						info = header +info+ "\n"+ ids + "," + sites;
 						downloadCSV(info, { filename: "strategy_sitelists_assigned.csv" });
 					}
 					else{
 						console.log(info);
-						info = info +"\n"+ ids + "," + site_id + "," + site_name;
+						info = info +"\n"+ ids + "," + sites;
 					} 
 	})
 		})
