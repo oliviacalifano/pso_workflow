@@ -48,7 +48,7 @@ function check_spend(camp, d, callback){
 			d = d[1];
 			d = d.split(",");
 			var cpa = d[d.length - 1];
-			var spend = d[d.length - 1];
+			var spend = d[d.length - 2];
 			var data = Number(spend) + "," + Number(cpa);
 			console.log(data);
 			
