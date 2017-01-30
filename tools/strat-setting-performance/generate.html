@@ -5,7 +5,7 @@
 
 
 <head>
-	<title>Spend Cap Report</title>
+	<title>Strategy Settings and Performance Report</title>
 	<link href="multiple_select/multiple-select/multiple-select.css" rel="stylesheet"/>
 	<link href="spendCap.css" rel="stylesheet"/>
 	<script src="multiple_select/multiple-select/jquery.multiple.select.js"></script>
@@ -15,7 +15,7 @@
 <body>
 	
 	<div id = "all_the_stuff">
-	<H1 class="title">SPEND CAP REPORT</H1>	
+	<H1 class="title">Strategy Settings and Performance Report</H1>	
 
 		<div id = "selections">
 			<div id="strat_selections">
@@ -48,6 +48,15 @@
 					});		
 				</script>		
 				</td></tr>
+				<tr><td><select name="strategy" class="dropdown" style="width:300px" size=12 id="strat_list" multiple></select>
+				<script>
+					$("#strat_list").multipleSelect({
+						placeholder: "Choose Strategies",
+						filter: true
+					});	
+				</script>	
+				<label><input type="checkbox" name="active" id="active" checked="checked"> Show Active Strategies Only</label>
+				</td></tr>
 			<tr><tr><tr><tr><tr><tr></tr></tr></tr></tr></tr></tr>	
 			</table>
 		</div>
@@ -68,6 +77,7 @@
 <script src="get_orgs.js"></script>	
 <script src="get_advs.js"></script>
 <script src="get_campaigns.js"></script>
+<script src="get_strats.js"></script>
 <script src="t1_toolkit.js"></script>
 <script src="generate.js"></script>
 

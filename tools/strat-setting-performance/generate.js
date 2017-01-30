@@ -10,17 +10,17 @@ jQuery.extend({
     }
 });
 
-function get_selected_campaigns() 
+function get_selected_strategies() 
 {
-	var camp_ids = []; 
+	var strat_ids = []; 
 	
 	//get selected ctxlice ids
-	$("#campaign_list").each(function() { 
-		camp_ids.push($(this).val()); 
+	$("#strat_list").each(function() { 
+		strat_ids.push($(this).val()); 
 	});
-	console.log(camp_ids);
+	console.log(strat_ids);
 
-	return camp_ids[0];
+	return strat_ids[0];
 }
 
 function yesterdayDate(){
@@ -40,16 +40,17 @@ function yesterdayDate(){
 function check_spend(camp, d, callback){
 	
 	var request = $.ajax({
-		url: "https://adroit-tools.mediamath.com/t1/reporting/v1/std/performance?start_date=" + d + "&time_rollup=by_day&filter=campaign_id%3D" + camp + "&end_date=" + d + "&dimensions=advertiser_name%2Cadvertiser_id%2Ccampaign_name%2Ccampaign_id&metrics=total_spend",
+		url: "https://adroit-tools.mediamath.com/t1/reporting/v1/std/performance?start_date="+d+"&time_rollup=by_day&filter=strategy_id%3D"+camp+"&end_date="+d+"&dimensions=strategy_id&metrics=total_spend,total_spend_cpa",
 		type: "GET",
 	
 		success: function(csv) {
 			var d = csv.split('\n');
 			d = d[1];
 			d = d.split(",");
-			var data = d[d.length - 1];
+			var cpa = d[d.length - 1];
+			var spend = d[d.length - 1];
+			var data = Number(spend) + "," + Number(cpa);
 			console.log(data);
-			console.log(typeof(data));
 			
 			callback(camp, data);
 		},	
@@ -59,51 +60,42 @@ function check_spend(camp, d, callback){
 	});
 }
 
-function get_spendCap(camp,callback){
+function get_settings(camp,callback){
 
 	var request = $.ajax({
-		url: "https://adroit-tools.mediamath.com/t1/api/v2.0/campaigns/"+camp+"?with=advertiser",
+		url: "https://adroit-tools.mediamath.com/t1/api/v2.0/strategies/"+camp+"?with=campaign",
 		type: "GET",
 		cache: false,
 	
 		success: function(xml) {
 			
-			var org_id = $("#org_dropdown").multipleSelect('getSelects');
-			console.log(org_id[0]);
-			
-			var org_name = $("#org_dropdown").multipleSelect('getSelects', 'text');
-			console.log(org_name[0]);
-			org_name = org_name[0];
-			org_name = org_name.replace(",", " ");
-			
-			var adv_id = $(xml).find("entity").find("entity").attr("id");
-			console.log(adv_id);
-			
-			var adv_name = $(xml).find("entity").find("entity").attr("name");
-			console.log(adv_name);
-			adv_name = adv_name.replace(",", " ");
-			
-			var camp_id = $(xml).find("entity").attr("id");
+			var camp_name = $(xml).find("entity").find("entity").attr("name");
+			console.log(camp_name);
+
+			var camp_id = $(xml).find("entity").find("entity").attr("id");
 			console.log(camp_id);
 			
-			var camp_name = $(xml).find("entity").attr("name");
-			console.log(camp_name);
-			camp_name = camp_name.replace(",", " ");
+			var strat_name = $(xml).find("entity").attr("name");
+			console.log(strat_name);
+
+			var strat_id = $(xml).find("entity").attr("id");
+			console.log(strat_id);
 			
-			var auto = $(xml).find("prop[name=spend_cap_automatic]").attr("value");
-			console.log(auto);
+			var pacing_type = $(xml).find("prop[name=pacing_type]").attr("value");
+			console.log(pacing_type);
 			
-			var cap = $(xml).find("prop[name=spend_cap_amount]").attr("value");
-			console.log(cap);
+			var pacing_interval = $(xml).find("prop[name=pacing_interval]").attr("value");
+			console.log(pacing_interval);
+
+			var pacing_amount = $(xml).find("prop[name=pacing_amount]").attr("value");
+			console.log(pacing_amount);
+
+			var max_bid = $(xml).find("prop[name=max_bid]").attr("value");
+			console.log(max_bid);
 			
-			if(auto == "1"){
-			var info = org_id +","+ org_name +","+ adv_id +","+ adv_name +","+ camp_id +","+ camp_name +",Auto";
-			cap = "Auto";
-			}
-			else {
-				var info = org_id +","+ org_name +","+ adv_id +","+ adv_name +","+ camp_id +","+ camp_name +","+ cap;
-			}
-			callback(camp,info,cap);
+			var info = camp_id +","+ camp_name + "," + strat_id +","+ strat_name + "," + pacing_type +","+ pacing_interval+ "," + pacing_amount +","+ max_bid;
+
+			callback(camp,info);
 			
 		},	
 		error: function(jqXHR, textStatus, errorThrown) {
@@ -120,7 +112,7 @@ function checks(){
 	date = yesterdayDate();
 	console.log(date);
 		
-	campaign_list = get_selected_campaigns();
+	campaign_list = get_selected_strategies();
 	console.log("pixel list:", campaign_list);
 	var counter =0;
 	var doc = "";
@@ -128,25 +120,17 @@ function checks(){
 		for(var i=0; i<campaign_list.length; i++) {
 				var current_camp = campaign_list[i];
 				
-				get_spendCap(current_camp, function(current_camp, info, cap){
+				get_settings(current_camp, function(current_camp, info){
 					check_spend(current_camp, date ,function(current_camp, spend) 
 					{	
 						counter++;
-						console.log(counter);
-						var hitting = "N";
-						var temp = +cap - 2;
-						console.log("cap:"+cap);
-						console.log("temp:"+temp);
-						if (spend >= temp){
-							hitting = "Y";
-						}
-						console.log(hitting);
+
 						if(counter == campaign_list.length){
-						doc = "org_id,org_name,advertiser_name,advertiser_id,campaign_name,campaign_id,spend_cap,spend_YDY,hitting_spend_cap" +'\r\n' + doc + info + "," + Number(spend) + ","+ hitting;
-						downloadCSV(doc, { filename: "SpendCap_Report_" + date + ".csv" });
+						doc = "camp_id,camp_name,strat_id,strat_name,pacing_type,pacing_interval,pacing_amount,max_bid,spend,cpa" +'\r\n' + doc + info + "," + spend;
+						downloadCSV(doc, { filename: "settings_performance_report_" + date + ".csv" });
 						}
 						else{
-						doc = doc + info + "," + Number(spend) +","+ hitting +'\r\n'; 
+						doc = doc + info + "," + spend +'\r\n'; 
 						console.log(info);
 						}
 				});
