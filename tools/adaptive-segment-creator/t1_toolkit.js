@@ -35,6 +35,41 @@ function push_entities_to_multiselect(xml, id)
 	});	
 }
 
+function push_attr(xml)
+{
+	console.log(data);
+	options = [];
+	data = data['data']
+		for (x in data){
+		
+		item_id = data[x]['id'];
+		name = data[x]['name'];
+		options.push("<option value="+item_id+">"+name+"</option>")
+		}
+		$('#attr_list').append(options);
+		$('#attr_list').multipleSelect({
+			placeholder: "Choose The Thing",
+			filter: true
+		});
+}
+
+function push_attr(xml, id)
+{
+	options = [];
+	
+	$(xml).find("entity[type=attribute]").each(function(result) {
+		item_id = $(this).attr('id')
+		name = $(this).attr('name')
+		options.push("<option value="+item_id+">"+name+"</option>")
+	});
+	console.log(options, id);
+	$(id).append(options);
+	$(id).multipleSelect({
+		placeholder: "Choose The Thing",
+		filter: true
+	});	
+}
+
 function push_entities_to_multiselect_with_name_prefix(xml, id, name_prefix, id_prefix)
 {
 	options = [];
