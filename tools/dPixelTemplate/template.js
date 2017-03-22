@@ -43,6 +43,9 @@ function get_strat_info(strat,callback){
 			a.push(i.find("prop[name=eligible]").attr("value"));
 			a.push(i.find("prop[name=pixel_type]").attr("value"));
 			a.push(i.find("prop[name=tag_type]").attr("value"));
+			
+			//QA
+			a.push(i.find("prop[name=updated_on]").attr("value"));
 				
 		console.log(a);
 
@@ -74,8 +77,11 @@ function download() {
 	var info = "";
 	pixel_list = get_selected_dPixels();
 	pixel_list = pixel_list[0]; 
-	var header = "id,name,version,cost_cpm,eligible,pixel_type,tag_type";
+	//bulk edit
+	//var header = "id,name,version,cost_cpm,eligible,pixel_type,tag_type";
 	
+	//QA line
+	var header = "id,name,version,cost_cpm,eligible,pixel_type,tag_type,updated_on";
 	console.log("starting to loop through strats and update geo");
 	for(var i=0; i<pixel_list.length; i++) {
 
