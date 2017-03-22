@@ -1,0 +1,4 @@
+name,campaign_id,status,budget,description,type,use_campaign_start,use_campaign_end,start_date,end_date,bid_price_is_media_only,frequency_type,frequency_amount,frequency_interval,use_optimization,goal_type,goal_value,max_bid,pacing_type,pacing_amount,pacing_interval,pixel_target_expr,roi_target,version,geo_region,concept_id
+olivia10,212617,on,1000000,,AUD,off,on,2016-07-29T00:00:00,,1,no-limit,,,off,reach,1,1,,2,,,,0,,
+olivia11,212617,on,1000000,,AUD,off,on,2016-07-29T00:00:00,,1,no-limit,,,off,spend,1,1,,2,,,,0,,
+olivia12,212617,on,1000000,,AUD,off,on,2016-07-29T00:00:00,,1,no-limit,,,on,cpa,1,1,,2,,,,0,,

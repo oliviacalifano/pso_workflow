@@ -1,0 +1,83 @@
+	<html>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+<head>
+	<title>CREATE STRATS</title>
+	<link href="zip.css" rel="stylesheet"/>
+	<script src="t1_toolkit.js"></script>
+	<script src="d3/d3.js"></script>
+	<script src="d3/d3.min.js"></script>
+	<link href="multiple_select/multiple-select/multiple-select.css" rel="stylesheet"/>
+	<link href="geo.css" rel="stylesheet"/>
+	<script src="multiple_select/multiple-select/jquery.multiple.select.js"></script>
+
+</head>
+
+<body>
+	
+	<div id = "all_the_stuff">
+		<H1 class="title">CREATE STRATEGIES</H1>
+<table>
+<tr><td>		
+<select name="geo" class="dropdown" style="width:420px" id="geo_dropdown" multiple>
+			</select>
+			<script>
+				$("#geo_dropdown").multipleSelect({
+					placeholder: "Choose Region",
+					filter: true,
+					selectAll: false,
+					single: true
+				});	
+			</script>	
+			</td>
+			<td>
+			<button value="geo_button" id="geo_button">&nbsp Get Region ID&nbsp</button></td>
+			<td>
+			<div id="feedback_geo" class="feedback_geo"></div></td></tr>
+		</table>		
+			
+<table>
+<tr><td>		
+<select name="sup" class="dropdown" style="width:420px" id="supply_list" multiple>
+			</select>
+			<script>
+				$("#supply_list").multipleSelect({
+					placeholder: "Choose Supply",
+					filter: true,
+					selectAll: false,
+					single: true
+				});	
+			</script>	
+			</td>
+			<td>
+			<button value="sup_button" id="sup_button">&nbsp Get Supply ID&nbsp</button></td>
+			<td>
+			<div id="feedback_sup" class="feedback_sup"></div></td></tr>
+		</table>			
+			
+			
+		<br></br>
+		
+		<!--<input id="fileSelect" type="file" accept=".csv" />-->
+		<input type="file" id="csvfile" name="uploadCSV"/>
+		
+
+		<div id="submit_button">
+			<button type="submit" class="button" value="punch" id="punch">&nbspHeal&nbsp</button>
+		</div>
+		
+		<div id="feedback" class="feedback">
+		</div>
+		
+		</div>
+	</div>
+
+	
+	</body>
+	
+<script src="get_regns.js"></script>
+<script src="get_supply.js"></script>
+<script src="create_withSupply.js"></script>
+
+</html>
