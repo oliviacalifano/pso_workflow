@@ -60,8 +60,7 @@
 		<br></br>
 		
 		<!--<input id="fileSelect" type="file" accept=".csv" />-->
-		<input type="file" id="csvfile" name="uploadCSV"/>
-		
+		<input type="file" />		
 
 		<div id="submit_button">
 			<button type="submit" class="button" value="punch" id="punch">&nbspHeal&nbsp</button>
@@ -71,13 +70,38 @@
 		</div>
 		
 		</div>
-	</div>
 
 	
 	</body>
 	
+
 <script src="get_regns.js"></script>
 <script src="get_supply.js"></script>
 <script src="create_withSupply.js"></script>
+
+		<script>
+			var reader = new FileReader();  
+				
+
+			$("#punch").click(function() {
+				
+				  var file = document.querySelector('input[type=file]').files[0];      
+				  reader.addEventListener("load", parseFile, false);
+				  if (file) {
+					reader.readAsText(file);
+				  }      
+
+			});
+				
+			 
+				function parseFile(){
+				  var data = d3.csvParse(reader.result, function(d){
+					  console.log(d);
+					  upload_button(d); 
+					});		
+				  };
+
+	  </script>
+
 
 </html>

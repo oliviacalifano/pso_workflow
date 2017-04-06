@@ -40,7 +40,26 @@ function yesterdayDate(){
 function check_spend(camp, d, callback){
 	
 	var request = $.ajax({
-		url: "https://adroit-tools.mediamath.com/t1/reporting/v1/std/performance?start_date="+d+"&time_rollup=by_day&filter=strategy_id%3D"+camp+"&end_date="+d+"&dimensions=strategy_id&metrics=total_spend,total_spend_cpa",
+		url: "https://adroit-tools.mediamath.com/t1/reporting/v1/std/performance?start_date="+d+"&time_rollup=by_day&filter=strategy_id%3D"+camp+"&end_date="+d+"&dimensions=strategy_id&metrics=total_spend",
+		type: "GET",
+	
+		success: function(csv) {
+			var d = csv.split('\n');
+			d = d[1];
+			d = d.split(",");
+			var spend = d[d.length - 1];			
+			callback(camp, Number(spend));
+		},	
+		error: function(jqXHR, textStatus, errorThrown) {
+		console.log(jqXHR, textStatus, errorThrown)
+		}	
+	});
+}
+
+function check_perf(camp, callback){
+	
+	var request = $.ajax({
+		url: "https://adroit-tools.mediamath.com/t1/reporting/v1/std/performance?time_window=last_7_days&time_rollup=all&filter=strategy_id%3D"+camp+"&dimensions=strategy_id&metrics=total_spend_cpm,total_spend_cpa",
 		type: "GET",
 	
 		success: function(csv) {
@@ -48,8 +67,8 @@ function check_spend(camp, d, callback){
 			d = d[1];
 			d = d.split(",");
 			var cpa = d[d.length - 1];
-			var spend = d[d.length - 2];
-			var data = Number(spend) + "," + Number(cpa);
+			var cpm = d[d.length - 2];
+			var data = Number(cpm) + "," + Number(cpa);
 			console.log(data);
 			
 			callback(camp, data);
@@ -58,7 +77,7 @@ function check_spend(camp, d, callback){
 		console.log(jqXHR, textStatus, errorThrown)
 		}	
 	});
-}
+} 
 
 function get_settings(camp,callback){
 
@@ -93,9 +112,9 @@ function get_settings(camp,callback){
 			var max_bid = $(xml).find("prop[name=max_bid]").attr("value");
 			console.log(max_bid);
 			
-			var info = camp_id +","+ camp_name + "," + strat_id +","+ strat_name + "," + pacing_type +","+ pacing_interval+ "," + pacing_amount +","+ max_bid;
+			var info = camp_id +","+ camp_name + "," + strat_id +","+ strat_name + "," + pacing_type +","+ pacing_interval+ "," + pacing_amount;
 
-			callback(camp,info);
+			callback(camp,info,max_bid);
 			
 		},	
 		error: function(jqXHR, textStatus, errorThrown) {
@@ -120,19 +139,20 @@ function checks(){
 		for(var i=0; i<campaign_list.length; i++) {
 				var current_camp = campaign_list[i];
 				
-				get_settings(current_camp, function(current_camp, info){
-					check_spend(current_camp, date ,function(current_camp, spend) 
-					{	
+				get_settings(current_camp, function(current_camp, info,max_bid){
+					check_spend(current_camp, date ,function(current_camp, spend){
+						check_perf(current_camp, function(current_camp, perf){
 						counter++;
 
 						if(counter == campaign_list.length){
-						doc = "camp_id,camp_name,strat_id,strat_name,pacing_type,pacing_interval,pacing_amount,max_bid,spend,cpa" +'\r\n' + doc + info + "," + spend;
+						doc = "camp_id,camp_name,strat_id,strat_name,pacing_type,pacing_interval,pacing_amount,spend,max_bid,eCPM,eCPA" +'\r\n' + doc + info + "," + spend + "," + max_bid + "," + perf;
 						downloadCSV(doc, { filename: "settings_performance_report_" + date + ".csv" });
 						}
 						else{
-						doc = doc + info + "," + spend +'\r\n'; 
+						doc = doc + info + "," + spend + "," + max_bid + "," + perf +'\r\n'; 
 						console.log(info);
 						}
+						});
 				});
 		});
 		}

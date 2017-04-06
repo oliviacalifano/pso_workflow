@@ -67,7 +67,7 @@ function upload_zips(d,callback){
 			}
 			if(d.run_on_all_exchanges == "off"){
 				var supplies = d.supply_source_id;
-				supplies = supplies.split(',');
+				supplies = supplies.split(';');
 				for (i=0; i<supplies.length; i++) {
 				supply.append('supply_source.'+(i+1).toString()+'.id', supplies[i]);
 				}
@@ -76,7 +76,7 @@ function upload_zips(d,callback){
 			//geo
 			if(d.geo_region != ""){
 				var geos = d.geo_region;
-				geos = geos.split(',');
+				geos = geos.split(';');
 				for (i=0; i<geos.length; i++) {	
 				geo.append('include', geos[i]);
 				}
@@ -85,17 +85,17 @@ function upload_zips(d,callback){
 			//concept
 			if(d.concept_id != undefined || d.concept_id != ""){
 				var concepts = d.concept_id;
-				concepts = concepts.split(',');
+				concepts = concepts.split(';');
 				for (i=0; i<concepts.length; i++) {
 				concept.append('concepts.'+(i+1).toString()+'.id', concepts[i]);
 				}
 			}
 			console.log(d.name,d.campaign_id,d.status,d.budget,d.description,d.type,d.use_campaign_start,d.use_campaign_end,d.start_date,d.end_date,d.bid_price_is_media_only,d.frequency_type,d.frequency_amount,d.frequency_interval,d.use_optimization,d.goal_type,d.goal_value,d.max_bid,d.pacing_type,d.pacing_amount,d.pacing_interval,d.pixel_target_expr,d.roi_target,d.version,d.geo_region,d.concept_id);
 			
-	callback(uploadFile,geo,concept,supply,d.concept_id,d.geo_region,d.supply_source_id);
+	callback(uploadFile,geo,concept,supply,d.concept_id,d.geo_region,d.supply_source_id,d.name);
 }
 
-function post(upload,row,callback){
+function post(upload,callback){
 		$.ajax({
 	url: "https://adroit-tools.mediamath.com/t1/api/v2.0/strategies",
 	contentType: false,
@@ -113,13 +113,13 @@ function post(upload,row,callback){
 		//var err = xhr.responseXML.getElementsByTagName("field-error");
 		var err = xml.responseXML.getElementsByTagName("field-error")[0].getAttribute('error');
 		console.log(err);
-		var error = "Error on Row " + row + ": " + err;
+		var error = "Error on Row: " + err;
 		callback("",error);
 	}
 	});
 }
 
-function update_geo(s,g,row,callback){
+function update_geo(s,g,callback){
 	$.ajax({
 	url: "https://adroit-tools.mediamath.com/t1/api/v2.0/strategies/"+s+"/target_dimensions/7",
 	contentType: false,
@@ -135,13 +135,13 @@ function update_geo(s,g,row,callback){
 		//var err = xhr.responseXML.getElementsByTagName("field-error");
 		var err = xml.responseXML.getElementsByTagName("field-error")[0].getAttribute('error');
 		console.log(err);
-		var error = "Geo Error on Row " + row + ": " + err;
+		var error = "Geo Error on Row " + s + ": " + err;
 		callback("",error);
 	}
 	});
 }
 
-function add_concept(s,c,row,callback){
+function add_concept(s,c,callback){
 	//c.append("strategy_id", s);
 	$.ajax({
 	url: "https://adroit-tools.mediamath.com/t1/api/v2.0/strategies/"+s+"/concepts",
@@ -158,13 +158,13 @@ function add_concept(s,c,row,callback){
 		//var err = xhr.responseXML.getElementsByTagName("field-error");
 		var err = xml.responseXML.getElementsByTagName("field-error")[0].getAttribute('error');
 		console.log(err);
-		var error = "Concept Error on Row " + row + ": " + err;
+		var error = "Concept Error on Row " + s + ": " + err;
 		callback(error);
 	}
 	});
 }
 
-function add_supply(strat,s,row,callback){
+function add_supply(strat,s,callback){
 	$.ajax({
 	url: "https://adroit-tools.mediamath.com/t1/api/v2.0/strategies/"+strat+"/supplies",
 	contentType: false,
@@ -180,7 +180,7 @@ function add_supply(strat,s,row,callback){
 		//var err = xhr.responseXML.getElementsByTagName("field-error");
 		var err = xml.responseXML.getElementsByTagName("status")[0].getAttribute('error');
 		console.log(err);
-		var error = "Supply Error on Row " + row + ": " + err;
+		var error = "Supply Error on Row " + strat + ": " + err;
 		callback(error);
 	}
 	});
@@ -210,8 +210,7 @@ $("#feedback_sup").html(feedback);
 
 
 
-$("#punch").click(function() {
-
+function upload_button(data){
 	feedback="";
 /*  	var fileUpload = document.getElementById("fileSelect");
     if (fileUpload.value != null) {
@@ -219,18 +218,15 @@ $("#punch").click(function() {
         var files = $("#fileSelect").get(0).files;		
 		var f = files[0];  */
 		
-		d3.csv('benz_create.csv', function(data) {
 			console.log(data);
-			console.log(data[0]);
-			console.log(data.length);
 			
-			for (var i = 0; i < data.length; i++){
-			var count = i +1;			
-			upload_zips(data[i],function(upload,geo,concept,supply,c_id,g_id,s_id){
- 					post(upload,count,function(strat,strat_success){
+ 			//for (var i = 0; i < data.length; i++){
+			//var count = i +1;			
+			upload_zips(data,function(upload,geo,concept,supply,c_id,g_id,s_id,name){
+ 					post(upload,function(strat,strat_success){
 						
 						if (strat_success == 1) {
-							feedback = feedback + "Success on Row " + count + ": Strategy Added</p>";							
+							feedback = feedback + "Success on Row " + name + ": Strategy Added</p>";							
 							$("#feedback").html(feedback); 
 						}
 						else {
@@ -239,10 +235,10 @@ $("#punch").click(function() {
 						}
 						
 						if(g_id != undefined && g_id != ""){
-						update_geo(strat,geo,count,function(strat, geo_success){
+						update_geo(strat,geo,function(strat, geo_success){
 							
 						if (geo_success == 1) {
-							feedback = feedback + "Success on Row " + count + ": Regions Added</p>";							
+							feedback = feedback + "Success on Row " + name + ": Regions Added</p>";							
 							$("#feedback").html(feedback); 
 						
 						}
@@ -255,9 +251,9 @@ $("#punch").click(function() {
 						}
 						
 						if(c_id != undefined && c_id != ""){
-							add_concept(strat,concept,count,function(concept_success){
+							add_concept(strat,concept,function(concept_success){
 							if (concept_success == 1) {
-							feedback = feedback + "Success on Row " + count + ": Concepts Added</p>";								
+							feedback = feedback + "Success on Row " + name + ": Concepts Added</p>";								
 							$("#feedback").html(feedback); 
 							}
 							else {
@@ -267,9 +263,9 @@ $("#punch").click(function() {
 							})
 						}
 						if(s_id != undefined && s_id != ""){
-							add_supply(strat,supply,count,function(supply_success){
+							add_supply(strat,supply,function(supply_success){
 							if (supply_success == 1) {
-							feedback = feedback + "Success on Row " + count + ": Supplies Added</p>";								
+							feedback = feedback + "Success on Row " + name + ": Supplies Added</p>";								
 							$("#feedback").html(feedback); 
 							}
 							else {
@@ -281,10 +277,10 @@ $("#punch").click(function() {
 						
 					}) 
 			})
-			}
-		})
+			//} 
+		
 	// add bracket
-});
+};
 
 
 

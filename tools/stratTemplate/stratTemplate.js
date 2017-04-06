@@ -88,6 +88,7 @@ function get_strat_info(strat,callback){
 			a.push(i.find("prop[name=end_date]").attr("value"));	
 			a.push(i.find("prop[name=bid_price_is_media_only]").attr("value"));
 			a.push(i.find("prop[name=run_on_all_exchanges]").attr("value"));
+			a.push("");
 			a.push(i.find("prop[name=frequency_type]").attr("value"));
 			a.push(i.find("prop[name=frequency_amount]").attr("value"));
 			a.push(i.find("prop[name=frequency_interval]").attr("value"));
@@ -148,7 +149,7 @@ function get_concepts(strat, s, callback){
 			
 			});
 			
-			//con = con.slice(0, -1);
+			con = con.slice(0, -1);
 			//con = con + ",";
 			console.log(con);
 			
@@ -184,7 +185,7 @@ function get_geos(strat, s, callback){
 			
 			});
 			
-			//geo = geo.slice(0, -1);
+			geo = geo.slice(0, -1);
 			geo = geo + ",";
 			console.log(geo);
 			
@@ -204,7 +205,7 @@ function download() {
 	var info = "";
 	strat_list = get_selected_strats();
 	strat_list = strat_list[0]; 
-	var header = "name,campaign_id,status,budget,description,type,use_campaign_start,use_campaign_end,start_date,end_date,bid_price_is_media_only,run_on_all_exchanges,frequency_type,frequency_amount,frequency_interval,use_optimization,goal_type,goal_value,max_bid,pacing_type,pacing_amount,pacing_interval,pixel_target_expr,roi_target,version,geo_region,concept_id";
+	var header = "name,campaign_id,status,budget,description,type,use_campaign_start,use_campaign_end,start_date,end_date,bid_price_is_media_only,run_on_all_exchanges,supply_source_id,frequency_type,frequency_amount,frequency_interval,use_optimization,goal_type,goal_value,max_bid,pacing_type,pacing_amount,pacing_interval,pixel_target_expr,roi_target,version,geo_region,concept_id";
 	
 	console.log("starting to loop through strats and update geo");
 	for(var i=0; i<strat_list.length; i++) {
