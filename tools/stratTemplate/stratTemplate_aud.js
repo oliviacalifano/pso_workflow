@@ -151,7 +151,7 @@ function get_concepts(strat, s, callback){
 			});
 			
 			con = con.slice(0, -1);
-			//con = con + ",";
+			con = con + ",";
 			console.log(con);
 			
 			callback(strat,con);
@@ -162,6 +162,41 @@ function get_concepts(strat, s, callback){
 	})
 }	
 
+function get_aud(strat, s, callback){
+	console.log(strat);
+	var con = s;
+
+	var request = $.ajax({
+		url: "https://adroit-tools.mediamath.com/t1/api/v2.0/strategies/"+strat+"/audience_segments?with=audience_segment",
+		type: "GET",
+		cache: false,
+		dataType: "xml",
+	
+		success: function(xml) {
+			
+			var entry = $(xml).find('entity');
+			var array = [];
+			entry.each(function(){
+			var aud_id = $(this).find('entity').attr('id');
+			console.log(aud_id);
+			if(aud_id != undefined && aud_id != "" && aud_id != "undefined"){
+			array.push(aud_id);
+			con = con + aud_id+";"
+			}
+			
+			});
+			
+			con = con.slice(0, -1);
+			//con = con + ",";
+			console.log(con);
+			
+			callback(strat,con);
+		},	
+		error: function(jqXHR, textStatus, errorThrown) {
+		console.log(jqXHR, textStatus, errorThrown)
+		}
+	})
+}	
 
 function get_geos(strat, s, callback){
 	
@@ -206,7 +241,7 @@ function download() {
 	var info = "";
 	strat_list = get_selected_strats();
 	strat_list = strat_list[0]; 
-	var header = "name,campaign_id,status,media_type,budget,description,type,use_campaign_start,use_campaign_end,start_date,end_date,bid_price_is_media_only,run_on_all_exchanges,supply_source_id,frequency_type,frequency_amount,frequency_interval,use_optimization,goal_type,goal_value,max_bid,pacing_type,pacing_amount,pacing_interval,pixel_target_expr,roi_target,version,geo_region,concept_id";
+	var header = "name,campaign_id,status,media_type,budget,description,type,use_campaign_start,use_campaign_end,start_date,end_date,bid_price_is_media_only,run_on_all_exchanges,supply_source_id,frequency_type,frequency_amount,frequency_interval,use_optimization,goal_type,goal_value,max_bid,pacing_type,pacing_amount,pacing_interval,pixel_target_expr,roi_target,version,geo_region,concept_id,aud_id";
 	
 	console.log("starting to loop through strats and update geo");
 	for(var i=0; i<strat_list.length; i++) {
@@ -217,7 +252,8 @@ function download() {
 
 	get_strat_info(current_strat,function(current_strat,str){
 		get_geos(current_strat, str, function(current_strat,str_geo){
-			get_concepts(current_strat, str_geo, function(current_strat,str_geo_con){	
+			get_concepts(current_strat, str_geo, function(current_strat,str_geo_con){
+				get_aud(current_strat, str_geo_con, function(current_strat,str_geo_con_aud){				
 				//get_supplies(function(str_con_geo_sup){	
 					counter++;
 					//console.log(counter);
@@ -226,15 +262,16 @@ function download() {
 					
 					//console.log(str_geo_con);
 					if(counter == strat_list.length){
-						info = header +info+ "\n"+ str_geo_con;
+						info = header +info+ "\n"+ str_geo_con_aud;
 						downloadCSV(info, { filename: "Strategy_Template.csv" });
 					}
 					else{
 						console.log(info);
-						info = info +"\n"+ str_geo_con;
+						info = info +"\n"+ str_geo_con_aud;
 					} 
 					//});
 					})
+			})
 		})
 		})
 		}

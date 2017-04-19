@@ -24,6 +24,9 @@ function upload_zips(d,callback){
 			if(d.status != ""){
 			uploadFile.append("status",d.status);
 			}
+			if(d.media_type != ""){
+			uploadFile.append("media_type",d.media_type);
+			}
 			if(d.description != ""){
 			uploadFile.append("description",d.description);
 			}
