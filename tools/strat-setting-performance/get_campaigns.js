@@ -39,7 +39,7 @@ function update_campaign_list(adv_ids)
 	else{
 		for(var i=0; i<adv_ids.length; i++){
 			//url = "https://adroit-tools.mediamath.com/t1/api/v2.0/campaigns/limit/advertiser="+adv_ids[i]+"?sort_by=name";
-			url = "https://adroit-tools.mediamath.com/t1/api/v2.0/campaigns/limit/advertiser="+adv_ids[i]+"?q=status%3D%3D1%26end_date%3E%3D" + date + "%26start_date%3C%3D" + date + "%26spend_cap_type%21%3Dno-limit";
+			url = "https://adroit-tools.mediamath.com/t1/api/v2.0/campaigns/limit/advertiser="+adv_ids[i]+"?q=status%3D%3D1";
 			
 			console.log(url);
 			aggregate_pages_promises.push(aggregate_pages(url));

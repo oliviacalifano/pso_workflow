@@ -1,4 +1,7 @@
 'use strict' 
+//added aud_id
+//added tech_id
+//added peer39_id
 
 var selectedCamps = [];
 var csv = ""; 
@@ -76,12 +79,17 @@ function get_strat_info(strat,callback){
 			//console.log(i.find("prop[name=campaign_id]").attr("value"));
 
 			//required
-			a.push(i.find("entity").attr("name"));
+			var strat_name = i.find("entity").attr("name");
+			strat_name = strat_name.replace(/,/g, ';');
+			a.push(strat_name);
 			a.push(i.find("prop[name=campaign_id]").attr("value"));
 			a.push(i.find("prop[name=status]").attr("value"));
 			a.push(i.find("prop[name=media_type]").attr("value"));
 			a.push(i.find("prop[name=budget]").attr("value"));
-			a.push(i.find("prop[name=description]").attr("value"));
+			var description = i.find("prop[name=description]").attr("value");
+			if(description != undefined)
+			{description = description.replace(/\n/g, " ");}
+			a.push(description);
 			a.push(i.find("prop[name=type]").attr("value"));
 			a.push(i.find("prop[name=use_campaign_start]").attr("value"));
 			a.push(i.find("prop[name=use_campaign_end]").attr("value"));	
@@ -241,7 +249,7 @@ function download() {
 	var info = "";
 	strat_list = get_selected_strats();
 	strat_list = strat_list[0]; 
-	var header = "name,campaign_id,status,media_type,budget,description,type,use_campaign_start,use_campaign_end,start_date,end_date,bid_price_is_media_only,run_on_all_exchanges,supply_source_id,frequency_type,frequency_amount,frequency_interval,use_optimization,goal_type,goal_value,max_bid,pacing_type,pacing_amount,pacing_interval,pixel_target_expr,roi_target,version,geo_region,concept_id,aud_id,tech_id";
+	var header = "name,campaign_id,status,media_type,budget,description,type,use_campaign_start,use_campaign_end,start_date,end_date,bid_price_is_media_only,run_on_all_exchanges,supply_source_id,frequency_type,frequency_amount,frequency_interval,use_optimization,goal_type,goal_value,max_bid,pacing_type,pacing_amount,pacing_interval,pixel_target_expr,roi_target,version,geo_region,concept_id,aud_id,contextual_id,tech_id";
 	
 	console.log("starting to loop through strats and update geo");
 	for(var i=0; i<strat_list.length; i++) {
