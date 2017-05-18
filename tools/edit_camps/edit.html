@@ -1,0 +1,66 @@
+	<html>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+<head>
+	<title>EDIT CAMPAIGNS</title>
+	<link href="zip.css" rel="stylesheet"/>
+	<script src="t1_toolkit.js"></script>
+	<script src="d3/d3.js"></script>
+	<script src="d3/d3.min.js"></script>
+	<link href="multiple_select/multiple-select/multiple-select.css" rel="stylesheet"/>
+	<script src="multiple_select/multiple-select/jquery.multiple.select.js"></script>
+
+</head>
+
+<body>
+	
+	<div id = "all_the_stuff">
+		<H1 class="title">EDIT CAMPAIGNS</H1>
+		
+			
+	<br></br>
+		
+		<!--<input id="fileSelect" type="file" accept=".csv" />-->
+		<input type="file" />		
+
+		<div id="submit_button">
+			<button type="submit" class="button" value="punch" id="punch">&nbspHeal&nbsp</button>
+		</div>
+		
+		<div id="feedback" class="feedback">
+		</div>
+		
+		</div>
+
+	
+	</body>
+	
+<script src="edit.js"></script>
+
+		<script>
+			var reader = new FileReader();  
+				
+
+			$("#punch").click(function() {
+				
+				  var file = document.querySelector('input[type=file]').files[0];      
+				  reader.addEventListener("load", parseFile, false);
+				  if (file) {
+					reader.readAsText(file);
+				  }      
+
+			});
+				
+			 
+				function parseFile(){
+				  var data = d3.csvParse(reader.result, function(d){
+					  console.log(d);
+					  upload_button(d); 
+					});		
+				  };
+
+	  </script>
+
+
+</html>
