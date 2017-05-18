@@ -97,7 +97,7 @@ function get_settings(camp,callback){
 			var strat_name = $(xml).find("entity").attr("name");
 			console.log(strat_name);
 			strat_name = strat_name.replace(/,/g, '/');
-			
+
 			var strat_id = $(xml).find("entity").attr("id");
 			console.log(strat_id);
 			
