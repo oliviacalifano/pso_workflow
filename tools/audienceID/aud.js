@@ -73,6 +73,7 @@ function post(vendor,search,callback){
 			//console.log(counter);
 			var entry = $(xml).find('entity');
 			entry.each(function(){
+			id = $(this).attr("id");
 			audience = $(this).find('prop[name="full_path"]').attr('value');
 			var newchar = '|'
 			audience = audience.split(',').join(newchar);
@@ -83,7 +84,7 @@ function post(vendor,search,callback){
 			console.log(cpm);
 			//console.log(audience);
 			if (uniques != undefined && cpm != undefined){
-				view = view + "\n" + audience + "," + uniques + "," + cpm ;
+				view = view + "\n" + id + "," + audience + "," + uniques + "," + cpm ;
 			}
 			else {
 				view = view;
@@ -124,7 +125,7 @@ function post(vendor,search,callback){
 $("#aud_button").click(function() {	
 	var audiences = "";
 	var vendor_list = [];
-	var header = "audience, uniques, cpm";
+	var header = "audience_id, audience_name, uniques, cpm";
 	vendor_list = get_selected_vendors();
 	//vendor_list = vendor_list[0]; 
 	console.log("vendor list:", vendor_list);

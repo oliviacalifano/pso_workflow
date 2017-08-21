@@ -30,8 +30,9 @@ function post(upload,pixel,callback){
 	type: 'POST',
 	success: function(data,textStatus, jqXHR) { 
 	success = 1;
-
-	callback(pixel,success);
+	
+	var as_pixel_id = data["data"].pixel_id;
+	callback(pixel,as_pixel_id,success);
 	console.log("success", success,data,textStatus, jqXHR);
 	},
 	error: function(xml,jqXHR, textStatus, errorThrown) {
@@ -54,12 +55,12 @@ function upload_button(data){
 	console.log(attr[0]);	
 	
 	feedback="";
-	upload_zips(data,pixel_id, pixel_name,adv_id,attr,function(p_id,upload){
-			post(upload,p_id,function(strat,strat_success){
+	upload_zips(data,pixel_id, pixel_name,adv_id,attr,function(as_name,upload){
+			post(upload,as_name,function(name,as_p_id,strat_success){
 				
 				if (strat_success == 1) {
 
-					feedback = feedback + "Success on Adaptive Segment:" +strat +	"</p>";							
+					feedback = feedback + "Success on Adaptive Segment: " + name + ", pixel_id = " + as_p_id + "</p>";							
 					$("#feedback").html(feedback); 
 				}
 				else {

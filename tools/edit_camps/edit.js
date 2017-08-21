@@ -3,35 +3,41 @@
 function upload_zips(d,callback){
     var uploadFile = new FormData();
 			//required
-			console.log(d.status);
+
 			var camp_id = d.camp_id;
 
+			uploadFile.append("version",d.version);
+
+			uploadFile.append("status",d.status);
 			uploadFile.append("name",d.name);
-			uploadFile.append("advertiser_id",d.advertiser_id);
 			uploadFile.append("service_type",d.service_type);
-			uploadFile.append("start_date",d.start_date);
-			uploadFile.append("end_date",d.end_date);
-			uploadFile.append("zone_name",d.zone_name);
-			uploadFile.append("total_budget",d.total_budget);
-			uploadFile.append("margin_pct",d.margin_pct);
-			uploadFile.append("goal_type",d.goal_type);
 			uploadFile.append("goal_value",d.goal_value);
-			uploadFile.append("ad_server_id",d.ad_server_id);
-			uploadFile.append("use_mm_freq",d.use_mm_freq);
+			uploadFile.append("margin_pct",d.margin_pct);
+			uploadFile.append("currency_code",d.currency_code);
+			uploadFile.append("spend_cap_type",d.spend_cap_type);
+			uploadFile.append("impression_cap_type",d.impression_cap_type);
+			uploadFile.append("spend_cap_automatic",d.spend_cap_automatic);
+			uploadFile.append("impression_cap_automatic",d.impression_cap_automatic);
+			uploadFile.append("frequency_type",d.frequency_type);
 			uploadFile.append("frequency_amount",d.frequency_amount);
 			uploadFile.append("frequency_interval",d.frequency_interval);
-			uploadFile.append("frequency_type",d.frequency_type);
-			uploadFile.append("conversion_type",d.conversion_type);
-			uploadFile.append("conversion_variable_minutes",d.conversion_variable_minutes);
-			uploadFile.append("io_name",d.io_name);
-			uploadFile.append("io_reference_num",d.io_reference_num);
+			uploadFile.append("minimize_multi_ads",d.minimize_multi_ads);
 			uploadFile.append("merit_pixel_id",d.merit_pixel_id);
 			uploadFile.append("pc_window_minutes",d.pc_window_minutes);
-			uploadFile.append("pv_pct",d.pv_pct);
 			uploadFile.append("pv_window_minutes",d.pv_window_minutes);
-			uploadFile.append("spend_cap_type",d.spend_cap_type);
-			uploadFile.append("spend_cap_automatic",d.spend_cap_automatic);
-			uploadFile.append("spend_cap_amount	",d.spend_cap_amount);
+			uploadFile.append("pv_pct",d.pv_pct);
+			uploadFile.append("conversion_variable_minutes",d.conversion_variable_minutes);
+			uploadFile.append("has_custom_attribution",d.has_custom_attribution);
+			uploadFile.append("io_name",d.io_name);
+			uploadFile.append("io_reference_num",d.io_reference_num);
+			uploadFile.append("conversion_type",d.conversion_type);
+			uploadFile.append("zone_name",d.zone_name);
+			uploadFile.append("frequency_optimization",d.frequency_optimization);
+			uploadFile.append("goal_type",d.goal_type);
+			uploadFile.append("restrict_targeting_to_deterministic_id",d.restrict_targeting_to_deterministic_id);
+			uploadFile.append("restrict_targeting_to_same_device_id",d.restrict_targeting_to_same_device_id);
+			uploadFile.append("override_suspicious_traffic_filter",d.override_suspicious_traffic_filter);
+			uploadFile.append("suspicious_traffic_filter_level",d.suspicious_traffic_filter_level);
 				
 			//if(d.roi_target != ""){
 			//uploadFile.append("roi_target",d.roi_target);

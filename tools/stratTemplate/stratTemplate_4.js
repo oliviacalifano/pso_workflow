@@ -1,7 +1,7 @@
 'use strict' 
 //added aud_id
 //added tech_id
-//added peer39_id
+//added contextual
 
 var selectedCamps = [];
 var csv = ""; 
@@ -51,7 +51,7 @@ function get_camp_info(camp, callback){
 	
 		success: function(xml) {
 			var entry = $(xml).find('entity').attr('name');
-			console.log(entry);
+			//console.log(entry);
 			callback(camp,entry)
 		},	
 		error: function(jqXHR, textStatus, errorThrown) {
@@ -113,7 +113,7 @@ function get_strat_info(strat,callback){
 			a.push(i.find("prop[name=roi_target]").attr("value"));
 			a.push(i.find("entity").attr("version"));			
 			
-		console.log(a);
+		//console.log(a);
 
 		var string = "";
 		for (var i = 0; i <a.length; i++){
@@ -126,7 +126,7 @@ function get_strat_info(strat,callback){
 		}
 		//string = string.slice(0, -1);
 		
-		console.log(string);
+		//console.log(string);
 		callback(strat,string)
 		},	
 		error: function(jqXHR, textStatus, errorThrown) {
@@ -135,9 +135,7 @@ function get_strat_info(strat,callback){
 	})
 }	
 
-
 function get_concepts(strat, s, callback){
-	console.log(strat);
 	var con = s;
 
 	var request = $.ajax({
@@ -152,16 +150,11 @@ function get_concepts(strat, s, callback){
 			var array = [];
 			entry.each(function(){
 			var concept_id = $(this).attr('id');
-			console.log(concept_id);
-			array.push(concept_id);
-			
-			con = con + concept_id+";"
-			
+			array.push(concept_id);		
 			});
 			
-			con = con.slice(0, -1);
-			con = con + ",";
-			console.log(con);
+			con = con + array.join(";")+",";
+			//console.log(con);
 			
 			callback(strat,con);
 		},	
@@ -172,11 +165,44 @@ function get_concepts(strat, s, callback){
 }	
 
 function get_aud(strat, s, callback){
-	console.log(strat);
+	var con = s;
+	console.log(con);
+	var request = $.ajax({
+		url: "https://adroit-tools.mediamath.com/t1/api/v2.0/strategies/"+strat+"/audience_segments?with=audience_segment",
+		type: "GET",
+		cache: false,
+		dataType: "xml",
+	
+		success: function(xml) {
+			
+			var array = [];
+			var entry = $(xml).find("entity");
+			console.log(entry);
+			entry.each(function(){
+			//var aud_id = $(this).find("entity").attr('id');
+			var aud_id = $(this).find("entity").attr('id');
+			if(aud_id != undefined && aud_id != "" && aud_id != "undefined"){
+			array.push(aud_id);
+			}
+			});
+			
+			con = con + array.join(";") + ",";
+			console.log(con);
+			
+			callback(strat,con);
+		},	
+		error: function(jqXHR, textStatus, errorThrown) {
+		console.log(jqXHR, textStatus, errorThrown)
+		}
+	})
+}
+
+function get_ctx(strat, s, callback){
+	//console.log(strat);
 	var con = s;
 
 	var request = $.ajax({
-		url: "https://adroit-tools.mediamath.com/t1/api/v2.0/strategies/"+strat+"/audience_segments?with=audience_segment",
+		url: "https://adroit-tools.mediamath.com/t1/api/v2.0/strategies/"+strat+"/targeting_segments?full=*&q=restriction%3D%3DINCLUDE",
 		type: "GET",
 		cache: false,
 		dataType: "xml",
@@ -186,18 +212,18 @@ function get_aud(strat, s, callback){
 			var entry = $(xml).find('entity');
 			var array = [];
 			entry.each(function(){
-			var aud_id = $(this).find('entity').attr('id');
-			console.log(aud_id);
-			if(aud_id != undefined && aud_id != "" && aud_id != "undefined"){
-			array.push(aud_id);
-			con = con + aud_id+";"
+			//console.log($(this));
+			var ctx_id = $(this).find("prop[name=targeting_segment_id]").attr('value');
+			//console.log(ctx_id);
+			if(ctx_id != undefined && ctx_id != "" && ctx_id != "undefined"){
+			array.push(ctx_id);
+			con = con + ctx_id+";"
 			}
-			
 			});
 			
 			con = con.slice(0, -1);
 			//con = con + ",";
-			console.log(con);
+			//console.log(con);
 			
 			callback(strat,con);
 		},	
@@ -205,7 +231,7 @@ function get_aud(strat, s, callback){
 		console.log(jqXHR, textStatus, errorThrown)
 		}
 	})
-}	
+}		
 
 function get_geos(strat, s, callback){
 	
@@ -220,19 +246,16 @@ function get_geos(strat, s, callback){
 		success: function(xml) {
 			
 			var entry = $(xml).find('entity');
-			var array = [];
 			entry.each(function(){
 			var geo_id = $(this).attr('id');
-			console.log(geo_id);
-			array.push(geo_id);
-			
+			//console.log(geo_id);
 			geo = geo + geo_id+";"
 			
 			});
 			
 			geo = geo.slice(0, -1);
 			geo = geo + ",";
-			console.log(geo);
+			//console.log(geo);
 			
 			callback(strat,geo);
 		},	
@@ -252,33 +275,34 @@ function download() {
 	strat_list = strat_list[0]; 
 	var header = "strat_id,name,campaign_id,status,media_type,budget,description,type,use_campaign_start,use_campaign_end,start_date,end_date,bid_price_is_media_only,run_on_all_exchanges,supply_source_id,frequency_type,frequency_amount,frequency_interval,use_optimization,goal_type,goal_value,max_bid,pacing_type,pacing_amount,pacing_interval,pixel_target_expr,roi_target,version,geo_region,concept_id,aud_id,contextual_id,tech_id";
 	
-	console.log("starting to loop through strats and update geo");
+	//console.log("starting to loop through strats and update geo");
 	for(var i=0; i<strat_list.length; i++) {
 
 	var current_strat = strat_list[i];
-	console.log(current_strat);
+	//console.log(current_strat);
 	var counter = 0;
 
 	get_strat_info(current_strat,function(current_strat,str){
 		get_geos(current_strat, str, function(current_strat,str_geo){
 			get_concepts(current_strat, str_geo, function(current_strat,str_geo_con){
-				get_aud(current_strat, str_geo_con, function(current_strat,str_geo_con_aud){				
+				get_aud(current_strat, str_geo_con, function(current_strat,str_geo_con_aud){
+console.log("aud",str_geo_con_aud);					
+					get_ctx(current_strat, str_geo_con_aud, function(current_strat,str_geo_con_aud_ctx){
+console.log("ctx",str_geo_con_aud_ctx);						
 				//get_supplies(function(str_con_geo_sup){	
 					counter++;
-					//console.log(counter);
- 					//console.log(head);
-					//if(header.length > head.length){head = header;}
 					
 					//console.log(str_geo_con);
 					if(counter == strat_list.length){
-						info = header +info+ "\n"+ str_geo_con_aud;
+						info = header +info+ "\n"+ str_geo_con_aud_ctx;
 						downloadCSV(info, { filename: "Strategy_Template.csv" });
 					}
 					else{
-						console.log(info);
-						info = info +"\n"+ str_geo_con_aud;
+						//console.log(info);
+						info = info +"\n"+ str_geo_con_aud_ctx;
 					} 
 					//});
+					})
 					})
 			})
 		})
