@@ -139,6 +139,8 @@ function set_targeting(camp_id, include, callback)
 			},
 			error: function(jqXHR, textStatus, errorThrown) {
 				console.log(jqXHR, textStatus, errorThrown)
+				success = 0;
+				callback(success);
 			}
 		})
 }
@@ -199,11 +201,12 @@ function update_bl_targeting() {
 							feedback = feedback + "<p> Removed the blacklists/whitelists for "+current_camp+". Check changes <a target=\"_blank\" href=\"https://adroit-tools.mediamath.com/t1/api/v2.0/campaigns/"+ current_camp +"/site_lists?q=assigned%3D%3D1&sort_by=id\">here</a></p>";									
 							$("#feedback").html(feedback); 
 							}
+						}
+   
 						else{
 							var error = "ERROR: ";
 							feedback = feedback + "<p>" + error.fontcolor("red")+current_camp+". Check changes <a target=\"_blank\" href=\"https://adroit-tools.mediamath.com/t1/api/v2.0/campaigns/"+ current_camp +"/site_lists?q=assigned%3D%3D1&sort_by=id\">here</a></p>";									
 							$("#feedback").html(feedback);
-						}
 						}
 					});	
 					

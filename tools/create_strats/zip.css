@@ -2,36 +2,73 @@
 .title {
 	font-family: sans-serif;
 	font-size: 28;
-	color: #0D81AA;
+	color: #005288;
+}
+
+.info {
+	font-family: sans-serif;
+	font-size: 14;
+	color: #54BCEB;
 }
 
 .dropdown {
 	font-family: sans-serif;
 	font-size: 12;
+}
+
+.al {
+  display: flex;
+  align-items: left;
+  flex-wrap: wrap;
+  flex-flow: column;
+  padding-bottom:5px;
 }	
 
+.download {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: left;
+  flex-flow: row;	
+  padding-bottom:5px;
+}
+
+
+.box {
+  background: #eaeaea;
+  display: flex;
+  justify-content: center;
+  flex-flow: column wrap;
+  height: 200px;
+  margin-right: 5px;
+  margin-bottom: 1em;
+  padding: 15px 15px 15px 15px;
+}
+
+.upload {
+  display: flex;
+  align-items: left;
+  flex-wrap: wrap; 
+  flex-flow: row;
+  padding-bottom:5px;
+}
+
+.box2 {
+  background: #eaeaea;
+  display: flex;
+  flex-flow: column wrap;
+  padding: 15px 15px 15px 15px;
+}
+
 .button {
-   border-top: 1px solid #0D81AA;
    background: #0D81AA;
-/*    background: -webkit-gradient(linear, left top, left bottom, from(#005FA3), to(#005FA3));	
-   background: -webkit-linear-gradient(top, #005FA3, #005FA3);
-   background: -moz-linear-gradient(top, #005FA3, #005FA3);
-   background: -ms-linear-gradient(top, #005FA3, #005FA3);
-   background: -o-linear-gradient(top, #005FA3, #005FA3); */
-   padding: 5px 10px;
-   -webkit-border-radius: 8px;
-   -moz-border-radius: 8px;
    border-radius: 8px;
-/*    -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
-   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
-   box-shadow: rgba(0,0,0,1) 0 1px 0;
-   text-shadow: rgba(0,0,0,.4) 0 1px 0; */
+   width: 150px;
+   height: 25px;
    color: white;
    font-size: 16px;
    font-weight: bold;
    font-family: Sans-Serif;
    text-decoration: none;
-   vertical-align: middle;
    }
    
 .button:hover {
@@ -44,7 +81,7 @@
 	width:960px;
 	padding-bottom: 15px;
 }  
-.button2{
+/* .button2{
    display: block;
    border-top: 1px solid #0D81AA;
    background: #0D81AA;
@@ -60,14 +97,14 @@
    margin-right: 8px;
    padding-top: 4px;
    text-align:center;
-   }
+   } */
    
    
-.button2:hover {
+/* .button2:hover {
    border-top-color: #076789;
    background: #076789;
    color: #ccc;
-   }   
+   }  */  
 
    
 #login_title {

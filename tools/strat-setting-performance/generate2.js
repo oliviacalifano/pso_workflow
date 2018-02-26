@@ -115,12 +115,17 @@ function get_settings(camp,callback){
 			var pacing_amount = $(xml).find("prop[name=pacing_amount]").attr("value");
 			console.log(pacing_amount);
 
+			var min_bid = $(xml).find("prop[name=min_bid]").attr("value");
+			console.log(min_bid);			
+			
 			var max_bid = $(xml).find("prop[name=max_bid]").attr("value");
 			console.log(max_bid);
 			
+			var bids = min_bid +","+ max_bid;
+			
 			var info = camp_id +","+ camp_name + "," + strat_id +","+ strat_name + "," + pacing_type +","+ pacing_interval+ "," + pacing_amount;
 
-			callback(camp,info,max_bid);
+			callback(camp,info,bids);
 			
 		},	
 		error: function(jqXHR, textStatus, errorThrown) {
@@ -150,17 +155,17 @@ function checks(){
 		for(var i=0; i<campaign_list.length; i++) {
 				var current_camp = campaign_list[i];
 				
-				get_settings(current_camp, function(current_camp, info,max_bid){
+				get_settings(current_camp, function(current_camp, info,bids){
 					check_spend(current_camp, date ,function(current_camp, spend){
 						check_perf(current_camp, start, end, function(current_camp, perf){
 						counter++;
 
 						if(counter == campaign_list.length){
-						doc = "camp_id,camp_name,strat_id,strat_name,pacing_type,pacing_interval,pacing_amount,spend,max_bid,eCPM,total_spend,eCPA" +'\r\n' + doc + info + "," + spend + "," + max_bid + "," + perf;
+						doc = "camp_id,camp_name,strat_id,strat_name,pacing_type,pacing_interval,pacing_amount,spend,min_bid,max_bid,eCPM,total_spend,eCPA" +'\r\n' + doc + info + "," + spend + "," + bids + "," + perf;
 						downloadCSV(doc, { filename: "settings_performance_report_" + start + "_" + end + ".csv" });
 						}
 						else{
-						doc = doc + info + "," + spend + "," + max_bid + "," + perf +'\r\n'; 
+						doc = doc + info + "," + spend + "," + bids + "," + perf +'\r\n'; 
 						console.log(info);
 						}
 						});

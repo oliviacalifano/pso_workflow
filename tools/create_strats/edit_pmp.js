@@ -9,11 +9,33 @@ var deal_list = [];
 	
 	var edits = {};
 		console.log(edits);
-		var new_name = d.new_name;
-		console.log(new_name);
-		if(new_name != undefined && new_name != ""){
-		edits.name = new_name;
+		var name = d.name;
+		var stat = d.status;
+		console.log(stat)
+		var deal_identifier = d.deal_identifier;
+		
+		var exchange = d.exchange;
+		console.log(name);
+		if(name != undefined && name != ""){
+			//edits.supply_source_id = Number(name);
+		edits.name = name;
 		}
+		console.log(stat);
+		if(stat != undefined && stat != ""){
+			stat = stat.toLowerCase();
+			var stat_boolean = (stat == "true");
+			console.log(typeof(stat_boolean));
+			console.log(stat_boolean);
+			edits.status = stat_boolean;
+			console.log("yes");
+		}
+		if(deal_identifier != undefined && deal_identifier != ""){
+			edits.deal_identifier = String(deal_identifier);
+		}
+		if(exchange != undefined && exchange != ""){
+			edits.supply_source_id = Number(exchange);
+		}
+
 		console.log(edits);
 		
 	callback(deal,edits);
@@ -22,7 +44,7 @@ var deal_list = [];
 function update(deal,edits,callback){
 	console.log(edits);
 	//c.append("strategy_id", d);
-	//console.log(d.new_name);
+	//console.log(d.name);
 	$.ajax({
 	type: 'POST',
 	url: "https://adroit-tools.mediamath.com/t1/media/deals/"+deal,
@@ -55,23 +77,18 @@ function get(deal, callback){
 	
 		success: function(response) {
 			console.log(response.data);
-			var info = response.data.name;
+			var name = response.data.name;
+			name = name.replace(/,/g, ';');
+			var stat = response.data.status;
+			var deal_identifier = response.data.deal_identifier;
+			var exchange = response.data.supply_source_id;
+			var info = name + "," + stat + "," + deal_identifier + "," + exchange;
 			console.log(info);
-/* 			entry.each(function(){
-			//var aud_id = $(this).find("entity").attr('id');
-			var aud_id = $(this).find("entity").attr('id');
-			if(aud_id != undefined && aud_id != "" && aud_id != "undefined"){
-			info.push(aud_id);
-			}
-			});
-			
-			con = con + info.join(";") + ",";
-			console.log(con);*/
-			
 			callback(deal,info); 
 		},	
 		error: function(jqXHR, textStatus, errorThrown) {
 		console.log(jqXHR, textStatus, errorThrown)
+		callback(deal,"not_found");
 		}
 	})
 }
@@ -105,7 +122,7 @@ function get_button(d,numRows){
 	var feedback = "";
 	var success = 0; 
 	var info = "";
-	var header = "strat_id,name";
+	var header = "deal_id,name,status,deal_identifier,exchange";
  	if(deal_list.length == numRows){
 	//console.log("starting to loop through strats and update geo");
 	for(var i=0; i<deal_list.length; i++) {
@@ -119,7 +136,7 @@ function get_button(d,numRows){
 
 					if(counter == deal_list.length){
 						info = header +info+ "\n"+ current_deal  + "," + stuff;
-						downloadCSV(info, { filename: "Strategy_Audience_Template.csv" });
+						downloadCSV(info, { filename: "Strategy_PMP_Template.csv" });
 					}
 					else{
 						//console.log(info);

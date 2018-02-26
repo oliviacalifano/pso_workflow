@@ -119,7 +119,7 @@ function get_history(strat, callback){
 			}
 			
 			var header = "campaign_id,campaign_name,strategy_id,strategy_name";
-			for (var j=0;j<max;j++){
+			for (var j=1;j<max+1;j++){
 				header = header + ",concept_id_"+j+",concept_name_"+j;
 			}
 			

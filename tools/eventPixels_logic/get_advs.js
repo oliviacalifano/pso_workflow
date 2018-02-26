@@ -13,5 +13,7 @@ function update_adv_list(org_id)
 
 	aggregate_pages("https://adroit-tools.mediamath.com/t1/api/v2.0/advertisers/limit/agency.organization="+org_id+"?sort_by=name")
 		.then(function(xml) { push_entities_to_multiselect(xml, "#adv_list")});
+	aggregate_pages("https://adroit-tools.mediamath.com/t1/api/v2.0/advertisers/limit/agency.organization="+org_id+"?sort_by=name")
+		.then(function(xml) { push_entities_to_multiselect(xml, "#adv_pixel")});
 	
 }

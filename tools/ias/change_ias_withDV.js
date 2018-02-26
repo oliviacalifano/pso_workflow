@@ -1,7 +1,4 @@
 'use strict' 
-
-//doesn't overwrite DV
-
 //returns array of all selected strategies
 function get_selected_strats() {
 
@@ -10,30 +7,20 @@ function get_selected_strats() {
 	//get all selected strat ids
 	$("#strat_list").each(function(){
 		strat_id.push($(this).val());
-	});
-	
-	//print all strats	
-	// for (i=0; i<strat_id.length; i++) {
-		// console.log(strat_id[i]);
-	// }
-	 
+	}); 
 	return strat_id;
 }
 
-//returns selected iasices
+//returns selected ias segments
 function get_selected_ias() 
 {
-
-	var ias_id = []; 
-	
-	//get selected iasice ids
+	var ias_id = []; 					  
 	$("#ias_list").each(function() { 
 		ias_id.push($(this).val()); 
 	});
 	console.log(ias_id);
 	
 	return ias_id[0];
-
 }
 
 function get_ias_targets(strat_id, callback){
@@ -43,9 +30,13 @@ function get_ias_targets(strat_id, callback){
 	var include_array_ia = [];
 	var include_array_pe = [];
 	var include_array_dv = [];
+	var include_array_gs = [];
+	var include_array_sm = [];
 	var op_ia = "";
 	var op_pe = "";
 	var op_dv = "";
+	var op_gs = "";
+	var op_sm = "";
 	var exclude_array = [];
 	var final_list = {};
 
@@ -81,6 +72,14 @@ function get_ias_targets(strat_id, callback){
 						include_array_dv.push(id);
 						op_dv = op;
 					}
+					if(restriction=="INCLUDE" && group=="tsg1_gs"){
+						include_array_gs.push(id);
+						op_gs = op;
+					}
+					if(restriction=="INCLUDE" && group=="tsg1_sm"){
+						include_array_sm.push(id);
+						op_sm = op;
+					}					
 					if(restriction=="EXCLUDE"){
 						exclude_array.push(id);
 					}					
@@ -89,40 +88,21 @@ function get_ias_targets(strat_id, callback){
 			console.log(include_array_pe);
 			console.log(include_array_ia);
 			console.log(include_array_dv);
+			console.log(include_array_gs);
+			console.log(include_array_sm);			
 			console.log(exclude_array);
 			
 			final_list['include_pe'] = include_array_pe;
 			final_list['include_ia'] = include_array_ia;
 			final_list['include_dv'] = include_array_dv;
+			final_list['include_gs'] = include_array_gs;
+			final_list['include_sm'] = include_array_sm;
 			final_list['exclude'] = exclude_array;
 
 			console.log(final_list);
 			
 			
-			callback(strat_id,final_list,op_ia,op_pe,op_dv)
-			
-/* 			var concepts = {};
-
-			xmlDoc.find("entity[type=strategy_targeting_segment]").each(function() {
-				if()
-				
-				concepts[$(this).attr("id")] = $(this).attr("name");
-			});
-			
-
-			entities.each(function(){ exclude_array.push((this.id)) });
-			
-			
-			include.each(function(){ include_array.push((this.id)) });
-
-			final_list['exclude'] = exclude_array;
-			final_list['include'] = include_array;
-
-
-			console.log(final_list); */
-
-		
-			
+			callback(strat_id,final_list,op_ia,op_pe,op_dv,op_gs,op_sm); 
 		},	
 		error: function(jqXHR, textStatus, errorThrown) {
 		console.log(jqXHR, textStatus, errorThrown)
@@ -161,7 +141,7 @@ function remove_from_final_list(final_list, mod_list)
 	return final_list;
 }
 
-function set_targeting(strat_id, final_list, ia, pe, dv, callback)
+function set_targeting(strat_id, final_list, ia, pe, dv, gs, sm, callback)
 {		
 		var include_array = [];
 		var exclude_array = [];
@@ -173,17 +153,12 @@ function set_targeting(strat_id, final_list, ia, pe, dv, callback)
 		var in_ia_length = final_list['include_ia'].length;
 		var in_pe_length = final_list['include_pe'].length;
 		var in_dv_length = final_list['include_dv'].length;
+		var in_gs_length = final_list['include_gs'].length;
+		var in_sm_length = final_list['include_sm'].length;
 		var ex_ia_length = final_list['exclude'].length;
 	
-		var sum = in_pe_length + in_ia_length + in_dv_length+ ex_ia_length;
-		console.log("sum: " + sum);
-		
-		
-		//segments.1.id
-		//segments.1.restriction
-		//segments.1.operation
-		
-		
+		var sum = in_pe_length + in_ia_length + in_dv_length + in_gs_length + in_sm_length + ex_ia_length;
+		console.log("sum: " + sum);	
 		for(var i = 0; i<final_list['include_ia'].length; i++){
 			include_array.push("segments." +sum+".id="+final_list['include_ia'][i]+"&segments."+sum+".restriction=INCLUDE"+"&segments."+sum+".operator="+ia);
 			sum = sum -1;
@@ -196,8 +171,16 @@ function set_targeting(strat_id, final_list, ia, pe, dv, callback)
 			include_array.push("segments." +sum+".id="+final_list['include_dv'][k]+"&segments."+sum+".restriction=INCLUDE"+"&segments."+sum+".operator="+dv);
 			sum = sum -1;
 		}
-		for(var l = 0; l<final_list['exclude'].length; l++){
-			exclude_array.push("segments." +sum+".id="+final_list['exclude'][l]+"&segments."+sum+".restriction=EXCLUDE"+"&segments."+sum+".operator=OR");
+		for(var l = 0; l<final_list['include_gs'].length; l++){
+			include_array.push("segments." +sum+".id="+final_list['include_gs'][l]+"&segments."+sum+".restriction=INCLUDE"+"&segments."+sum+".operator="+gs);
+			sum = sum -1;
+		}
+		for(var m = 0; m<final_list['include_sm'].length; m++){
+			include_array.push("segments." +sum+".id="+final_list['include_sm'][m]+"&segments."+sum+".restriction=INCLUDE"+"&segments."+sum+".operator="+sm);
+			sum = sum -1;
+		}		
+		for(var n = 0; n<final_list['exclude'].length; n++){
+			exclude_array.push("segments." +sum+".id="+final_list['exclude'][n]+"&segments."+sum+".restriction=EXCLUDE"+"&segments."+sum+".operator=OR");
 			sum = sum -1;
 		}
 		include_list = include_array.join("&");
@@ -236,6 +219,8 @@ function update_ias_targeting() {
 	var ia_op = "";
 	var pe_op = "";
 	var dv_op = "";
+	var gs_op = "";
+	var sm_op = "";
 	var count = 0;
 
 	//check if adding or removing technologies
@@ -293,7 +278,7 @@ function update_ias_targeting() {
 			var current_strat = strat_list[i];
 			
 			if(mod_ias !== null){
-				get_ias_targets(current_strat, function(current_strat, final_list, ia_op, pe_op, dv_op) 
+				get_ias_targets(current_strat, function(current_strat, final_list, ia_op, pe_op, dv_op, gs_op, sm_op) 
 				{
 					console.log(ia_op);
 					if(logic_ia != "CURRENT"){
@@ -312,7 +297,15 @@ function update_ias_targeting() {
 					if(dv_op == ""){
 						dv_op = "OR";
 						console.log("logic_dv:", dv_op);
-					}						
+					}
+					if(gs_op == ""){
+						gs_op = "OR";
+						console.log("logic_gs:", gs_op);
+					}
+					if(sm_op == ""){
+						sm_op = "OR";
+						console.log("logic_sm:", sm_op);
+					}					
 					console.log("ias list for current_strat.  Include: ", final_list['include_ia'], " Exclude: ", final_list['exclude']);
 					if(add_remove == 'add'){
 						var temp = add_to_final_list(final_list[include_exclude], final_list[notChecked], mod_ias);
@@ -325,7 +318,7 @@ function update_ias_targeting() {
 					}
 					console.log("After..ias list for current_strat.  Include: ", final_list['include_ia'], " Exclude: ", final_list['exclude']);
 					
-					set_targeting(current_strat, final_list, ia_op, pe_op, dv_op, function(success)
+					set_targeting(current_strat, final_list, ia_op, pe_op, dv_op, gs_op, sm_op, function(success)
 					{			
 						if (success == 1 && mod_ias.length!=0) {
 							count = count +1;

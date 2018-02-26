@@ -142,6 +142,7 @@ function get_current_daypart(strat_id, callback){
 
 function set_targeting(strat_id, include, callback)
 {		
+		var success = 0;
 		var request = $.ajax({
 			url: "https://adroit-tools.mediamath.com/t1/api/v2.0/strategies/" + strat_id +"/day_parts",
 			type: "POST",
@@ -149,13 +150,15 @@ function set_targeting(strat_id, include, callback)
 			dataType: "xml",
 			data: include,
 			success: function(data,textStatus, jqXHR) { 
-				var success = 1;
+				success = 1;
 				callback(strat_id, success);
 				console.log("success", success);
 				console.log("updated " + strat_id);
 			},
 			error: function(jqXHR, textStatus, errorThrown) {
+				success = 0;
 				console.log(jqXHR, textStatus, errorThrown)
+				callback(strat_id, success);
 			}
 		})
 }

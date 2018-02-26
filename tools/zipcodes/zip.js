@@ -70,7 +70,9 @@ function upload_zips(strat, callback){
 			},
 			error: function(jqXHR, textStatus, errorThrown) {
 				console.log(jqXHR, textStatus, errorThrown)
-				alert("Wrong file!");
+				success = 0;
+				callback(success, strat);
+				//alert("Wrong file!");
 			}
             });
 		}
@@ -105,6 +107,11 @@ $("#punch").click(function() {
 				move(Math.round((count/strats.length)*100));
 				feedback = feedback + "<p> Zipcode file uploaded for strategy "+strat+". Check changes <a target=\"_blank\" href=\"https://t1.mediamath.com/app/#strategy/edit/"+ strat+"/targeting/location\">here</a></p>";									
 				$("#feedback").html(feedback); 
+				}
+				if (success == 0) {
+				var error = "ERROR: ";
+				feedback = feedback + "<p>"+ error.fontcolor("red")+strat+". Check changes <a target=\"_blank\" href=\"https://t1.mediamath.com/app/#strategy/edit/"+ strat+"/targeting/location\">here</a></p>";								
+				$("#feedback").html(feedback);
 				}
 
 			

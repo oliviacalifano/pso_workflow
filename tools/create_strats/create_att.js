@@ -19,6 +19,7 @@ function upload_zips(d,callback){
 			uploadFile.append("frequency_type",d.frequency_type);
 			uploadFile.append("goal_type",d.goal_type);
 			uploadFile.append("goal_value",d.goal_value);
+			uploadFile.append("min_bid",d.min_bid);
 			uploadFile.append("max_bid",d.max_bid);
 			uploadFile.append("pacing_amount",d.pacing_amount);
 			uploadFile.append("version",d.version);
@@ -150,8 +151,9 @@ function upload_zips(d,callback){
 				contextual.append('segments.'+(i+1).toString()+'.restriction', "INCLUDE");
 				contextual.append('segments.'+(i+1).toString()+'.operator', "AND");
 				}
+				contextual.append('include_op', "OR");
 				contextual.append('exclude_op', "OR");
-				contextual.append('include_op', "AND");
+				
 			}
 		
 			

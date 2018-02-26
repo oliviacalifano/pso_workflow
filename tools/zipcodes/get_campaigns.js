@@ -2,12 +2,17 @@ $("#adv_list").change(function(){
 	update_campaign_list($(this).val());
 });
 
+$("#active_camp").change(function(){
+	update_campaign_list($("#adv_list").val());
+});
+
 function update_campaign_list(adv_ids)
 {
 	var options = [];
 	var aggregate_pages_promises = [];
 	var entities = [];
 
+	console.log("empty campaign list..");
 	$("#campaign_list").empty(); 
 
 	if(!adv_ids){
@@ -21,8 +26,14 @@ function update_campaign_list(adv_ids)
 
 	else{
 		for(var i=0; i<adv_ids.length; i++){
+			var active = $('#active_camp').is(':checked');
+			if($('#active_camp').is(':checked')){
+			url = "https://adroit-tools.mediamath.com/t1/api/v2.0/campaigns/limit/advertiser="+adv_ids[i]+"?sort_by=name&q=status%3D%3D1";
+			}
+			else{
 			url = "https://adroit-tools.mediamath.com/t1/api/v2.0/campaigns/limit/advertiser="+adv_ids[i]+"?sort_by=name";
-			//console.log(url);
+			}
+			console.log(url);
 			aggregate_pages_promises.push(aggregate_pages(url));
 		}
 		Promise.all(aggregate_pages_promises).then(function(xml){

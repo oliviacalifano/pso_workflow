@@ -20,6 +20,7 @@ function upload_zips(d,callback){
 			uploadFile.append("frequency_type",d.frequency_type);
 			uploadFile.append("goal_type",d.goal_type);
 			uploadFile.append("goal_value",d.goal_value);
+			uploadFile.append("min_bid",d.min_bid);
 			uploadFile.append("max_bid",d.max_bid);
 			uploadFile.append("pacing_amount",d.pacing_amount);
 			uploadFile.append("version",d.version);
@@ -30,6 +31,9 @@ function upload_zips(d,callback){
 			}
 			if(d.media_type != ""){
 			uploadFile.append("media_type",d.media_type);
+			}
+			if(d.supply_type != ""){
+			uploadFile.append("supply_type",d.supply_type);
 			}
 			if(d.description != ""){
 			uploadFile.append("description",d.description);
@@ -98,7 +102,7 @@ function upload_zips(d,callback){
 				}
 			}
 			
-			//audience
+			/*audience single
 			if(d.aud_id != undefined || d.aud_id != ""){
 				var aud = d.aud_id;
 				aud = aud.split(';');
@@ -108,7 +112,51 @@ function upload_zips(d,callback){
 				}
 				audience.append('exclude_op', "OR");
 				audience.append('include_op', "OR");
+			}*/
+			
+			//audience
+			if((d.aud_inc_id != undefined && d.aud_inc_id != "") || (d.aud_exc_id != undefined && d.aud_exc_id != "")) {
+				console.log("audience_inc!!!");
+				var aud_inc = d.aud_inc_id.split(';');
+				console.log(aud_inc);
+				var aud_exc = d.aud_exc_id.split(';');
+				console.log(aud_exc);
+				var temp = d.aud_inc_id + d.aud_exc_id;
+				console.log(temp);
+				
+				var index_inc = aud_inc.indexOf("");
+				var index_exc = aud_exc.indexOf("");
+				
+				if (index_inc > -1) {
+					aud_inc.splice(index_inc, 1);
+				}
+				if (index_exc > -1) {
+					aud_exc.splice(index_exc, 1);
+				}
+				
+				var inc_length = aud_inc.length;
+				console.log(inc_length);
+				var exc_length = aud_exc.length;
+				console.log(exc_length);
+				var total_length = inc_length + exc_length;
+				console.log(total_length);
+				
+					
+				for (i=0; i<inc_length; i++) {
+				audience.append('segments.'+(i+1).toString()+'.id', aud_inc[i]);
+				audience.append('segments.'+(i+1).toString()+'.restriction', "INCLUDE");
+				//console.log(audience);
+				}
+				for (i=inc_length; i<total_length; i++) {
+				audience.append('segments.'+(i+1).toString()+'.id', aud_exc[i-inc_length]);
+				audience.append('segments.'+(i+1).toString()+'.restriction', "EXCLUDE");
+				//console.log(audience);
+				}
+				audience.append('exclude_op', "OR");
+				audience.append('include_op', "AND");
+				//console.log(audience);
 			}
+			
 			
 			//contextual
 			if(d.contextual_id != undefined || d.contextual_id != ""){
@@ -120,8 +168,6 @@ function upload_zips(d,callback){
 				contextual.append('segments.'+(i+1).toString()+'.restriction', "INCLUDE");
 				contextual.append('segments.'+(i+1).toString()+'.operator', "AND");
 				}
-				contextual.append('segments.'+(len+1).toString()+'.id', "6365");
-				contextual.append('segments.'+(len+1).toString()+'.restriction', "EXCLUDE");
 				contextual.append('exclude_op', "OR");
 				contextual.append('include_op', "OR");
 			}
@@ -146,7 +192,7 @@ function upload_zips(d,callback){
 			
 			console.log(d.name,d.campaign_id,d.status,d.budget,d.description,d.type,d.use_campaign_start,d.use_campaign_end,d.start_date,d.end_date,d.bid_price_is_media_only,d.frequency_type,d.frequency_amount,d.frequency_interval,d.use_optimization,d.goal_type,d.goal_value,d.max_bid,d.pacing_type,d.pacing_amount,d.pacing_interval,d.pixel_target_expr,d.roi_target,d.version,d.geo_region,d.concept_id);
 			
-	callback(uploadFile,geo,concept,supply,audience,technology,contextual,d.concept_id,d.geo_region,d.supply_source_id,d.aud_id,d.tech_inc_id,d.tech_exc_id,d.contextual_id,d.name);
+	callback(uploadFile,geo,concept,supply,audience,technology,contextual,d.concept_id,d.geo_region,d.supply_source_id,d.aud_inc_id,d.aud_exc_id,d.tech_inc_id,d.tech_exc_id,d.contextual_id,d.name);
 }
 
 function post(upload,callback){
@@ -345,7 +391,7 @@ function upload_button(data){
 			
  			//for (var i = 0; i < data.length; i++){
 			//var count = i +1;			
-			upload_zips(data,function(upload,geo,concept,supply,aud,tech,contextual,c_id,g_id,s_id,a_id,t1_id,t2_id,contextual_id,name){
+			upload_zips(data,function(upload,geo,concept,supply,aud,tech,contextual,c_id,g_id,s_id,a1_id,a2_id,t1_id,t2_id,contextual_id,name){
  					post(upload,function(strat,strat_success){
 						
 						if (strat_success == 1) {
@@ -385,7 +431,7 @@ function upload_button(data){
 							}
 							})
 						}
-						if(a_id != undefined && a_id != ""){
+						if((a1_id != undefined && a1_id != "") || (a2_id != undefined && a2_id != "")){
 							add_aud(strat,aud,function(audience_success){
 							if (audience_success == 1) {
 							feedback = feedback + "Success on Row " + name + ": Audiences Added</p>";								
@@ -434,7 +480,7 @@ function upload_button(data){
 							})
 						}
 						
-						add_fold_position(strat,function(fold_success){
+/* 						add_fold_position(strat,function(fold_success){
 						if (fold_success == 1) {
 						feedback = feedback + "Success on Row " + name + ": Fold Position Added</p>";								
 						$("#feedback").html(feedback); 
@@ -443,7 +489,7 @@ function upload_button(data){
 						feedback = feedback + fold_success.fontcolor("red") + "<br>";							
 						$("#feedback").html(feedback); 
 						}
-						})
+						}) */
 						
 						
 						
