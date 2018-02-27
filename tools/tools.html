@@ -69,11 +69,11 @@
       <h2 style="text-align: center;">Checklist</h2>
       <p>QA your campaigns by checking dates, concepts, creatives, recencies and budgets.</p>
     </a>
-     <a ng-show="bulkEdit || allTools" href="supplysource2.0/supply_targeting.html" class="tool-container col-lg-3 col-md-4 col-sm-6 col-xs-12 green">
+     <a ng-show="bulkEdit || allTools" href="supply_display/supply_targeting.html" class="tool-container col-lg-3 col-md-4 col-sm-6 col-xs-12 green">
       <h2>Supply - Display</h2>
       <p>Bulk edit supply and fold targeting for display strategies.</p>
     </a>
-	<a ng-show="bulkEdit || allTools" href="supplyVideo/supply_targeting.html" class="tool-container col-lg-3 col-md-4 col-sm-6 col-xs-12 blue">
+	<a ng-show="bulkEdit || allTools" href="supply_video/supply_targeting.html" class="tool-container col-lg-3 col-md-4 col-sm-6 col-xs-12 blue">
       <h2>Supply - Video</h2>
       <p>Bulk edit supply and fold targeting for video strategies.</p>
     </a>
@@ -89,10 +89,10 @@
       <h2>Zipcode Targeting</h2>
       <p>Bulk edit zipcode targeting by uploading a postal code file. File must be uploaded as a CSV.</p>
     </a>
-    <a ng-show="bulkEdit || allTools" href="techtual/tech_targeting.html" class=" tool-container col-lg-3 col-md-4 col-sm-6 col-xs-12 red">
+<!--     <a ng-show="bulkEdit || allTools" href="techtual/tech_targeting.html" class=" tool-container col-lg-3 col-md-4 col-sm-6 col-xs-12 red">
       <h2 style="text-align: center;">Tech-tual Healing</h2>
       <p>Bulk edit stratety technology targeting including device, inventory, connection, ISP, browser.</p> 
-    </a>
+    </a> -->
     <a  ng-show="bulkEdit || allTools" href="peer39/peer39_targeting.html" class="tool-container col-lg-3 col-md-4 col-sm-6 col-xs-12 navyblue">
       <h2>Contextual: Peer39</h2>
       <p>Add or remove Peer39 channels.</p>
@@ -109,14 +109,14 @@
       <h2>Dayparting</h2>
       <p>Bulk edit daypart targeting.</p>
     </a>
-	<a ng-show="bulkEdit || allTools" href="blacklistCampaign/BL_targeting.html" class=" tool-container col-lg-3 col-md-4 col-sm-6 col-xs-12 violet">
+	<!--<a ng-show="bulkEdit || allTools" href="blacklistCampaign/BL_targeting.html" class=" tool-container col-lg-3 col-md-4 col-sm-6 col-xs-12 violet">
       <h2 style="text-align: center;">Sitelists - Campaign</h2>
       <p>Bulk add or remove a blacklist or whitelist at the campaign level.</p>
     </a>  
     <a ng-show="bulkEdit || allTools" href="sitelists/BL_targeting.html" class=" tool-container col-lg-3 col-md-4 col-sm-6 col-xs-12 violet">
       <h2 style="text-align: center;">Sitelists - Strategy</h2>
       <p>Bulk add or remove a blacklist or whitelist at the strategy level.</p>
-    </a>  
+    </a>-->  
     <a ng-show="bulkEdit || allTools" href="siteSelectiveness/siteSelectiveness_targeting.html" class=" tool-container col-lg-3 col-md-4 col-sm-6 col-xs-12 yellow">
       <h2>Site Selectiveness</h2>
       <p>Bulk edit site selectiveness and transparent URLS.</p> 
@@ -129,15 +129,15 @@
       <h2>Data Pixels</h2>
       <p>Target or anti-target data pixels. Includes AND/OR/CURRENT logic. </p>
     </a>
-    <a ng-show="reports || allTools" href="spendCap2.0/spendCap_targeting.html" class="tool-container col-lg-3 col-md-4 col-sm-6 col-xs-12 blue">
+    <a ng-show="reports || allTools" href="spendcap_report/spendCap_targeting.html" class="tool-container col-lg-3 col-md-4 col-sm-6 col-xs-12 blue">
       <h2>Spend Cap Report</h2>
       <p>Download a report to check whether your campaigns are hitting their campaign spend caps. </p>
     </a>
-	<a ng-show="reports || allTools" href="history2.0/history.html" class="tool-container col-lg-3 col-md-4 col-sm-6 col-xs-12 green">
+	<a ng-show="reports || allTools" href="history2.0/history_date.html" class="tool-container col-lg-3 col-md-4 col-sm-6 col-xs-12 green">
       <h2>Change Log Report</h2>
       <p>Download the change log for multiple strategies or a single campaign.</p>
     </a>
-	<a ng-show="reports || allTools" href="uniques2.0/uniques.html" class="tool-container col-lg-3 col-md-4 col-sm-6 col-xs-12 navyblue">
+	<a ng-show="reports || allTools" href="uniques_data/uniques.html" class="tool-container col-lg-3 col-md-4 col-sm-6 col-xs-12 navyblue">
       <h2>Uniques Report (Data Pixels)</h2>
       <p>Download the daily loads and uniques for data pixels.</p>
     </a>
@@ -145,11 +145,11 @@
       <h2>Uniques Report (Event Pixels)</h2>
       <p>Download the daily loads and uniques for event pixels.</p>
     </a>
-	<a ng-show="reports || allTools" href="PacingReport2.0/hourlySpend.html" class="tool-container col-lg-3 col-md-4 col-sm-6 col-xs-12 navyblue">
+	<a ng-show="reports || allTools" href="pacing_campaign/hourlySpend_withBeforeYesterday.html" class="tool-container col-lg-3 col-md-4 col-sm-6 col-xs-12 navyblue">
       <h2>Campaign Pacing Report</h2>
-      <p>Compare cumulative spend/impressions by hour for today and yesterday.</p>
+      <p>Compare cumulative spend/impressions by hour for today, yesterday and the day before yesterday.</p>
     </a>	
-	<a ng-show="reports || allTools" href="strategyPacingReport/hourlySpend.html" class="tool-container col-lg-3 col-md-4 col-sm-6 col-xs-12 green">
+	<a ng-show="reports || allTools" href="pacing_strategy/hourlySpend.html" class="tool-container col-lg-3 col-md-4 col-sm-6 col-xs-12 green">
       <h2>Strategy Pacing Report</h2>
       <p>Compare cumulative spend/impressions by hour for today and yesterday.</p>
     </a>
