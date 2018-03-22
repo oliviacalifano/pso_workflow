@@ -12,6 +12,11 @@ import sys
 import pandas as pd
 import numpy as np
 
+import secret
+
+password_api = secret.login['password_api']
+password_email = secret.login['password_email']
+api_key = secret.login['api_key']
 
 #function to make datetime objects timezone aware
 def toDate (date,zone):
@@ -165,7 +170,7 @@ login = "https://api.mediamath.com/api/v2.0/login"
 login_reports = "https://api.mediamath.com/api/v2.0/login"
 campaigns = "https://api.mediamath.com/api/v2.0/campaigns?q=("+','.join(campaign_ids)+")&full=*"
 
-payload = "user=ocalifano&password=Cap2albio&api_key=zknzxverexqwf5epb53z87ae"
+payload = "user=ocalifano&password="+password_api+"&api_key="+api_key
 headers = {
     'cache-control': "no-cache",
     'postman-token': "02f1f521-7fae-1398-25cd-0a46f6ce81cb",
@@ -295,7 +300,7 @@ from email.mime.application import MIMEApplication
 username = 'ocalifano@mediamath.com'
 from_addr = 'ocalifano@mediamath.com'
 #to_addrs = 'ocalifano@mediamath.com'
-password = 'Eva3angelina!'
+password = password_email
 msg = MIMEMultipart()
 msg['Subject'] = email_subject
 msg['From'] = from_addr
