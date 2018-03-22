@@ -12,11 +12,17 @@ import sys
 import pandas as pd
 import numpy as np
 
+import secret
+
+password_api = secret.login['password_api']
+password_email = secret.login['password_email']
+api_key = secret.login['api_key']
+
 #connect to MM api	
 login = "https://api.mediamath.com/api/v2.0/login"
 ca_strats = "https://api.mediamath.com/api/v2.0/strategies/limit/campaign=389498"
 
-payload = "user=ocalifano&password=Cap2albio&api_key=zknzxverexqwf5epb53z87ae"
+payload = "user=ocalifano&password="+password_api+"&api_key="+api_key
 
 headers_login = {
     'cache-control': "no-cache",
@@ -117,7 +123,7 @@ from email.mime.application import MIMEApplication
 username = 'ocalifano@mediamath.com'
 from_addr = 'ocalifano@mediamath.com'
 to_addrs = 'ocalifano@mediamath.com'
-password = 'Eva3angelina!'
+password = password_email
 msg = MIMEMultipart()
 msg['Subject'] = "IBM - Alert: Whitelist Check"
 msg['From'] = from_addr
