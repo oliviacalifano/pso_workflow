@@ -39,7 +39,7 @@ def get_from_smartsheet(conn, headers_smartsheet, sheet, id, budget, status, sta
 	
 	s_ids, s_status, s_budgets, s_starts, s_ends, s_metric = ([] for i in range(6))
 	for x in rows_tracker:
-		
+		print(x["cells"][id],x["cells"][status])
 		if "value" in x["cells"][id] and "value" in x["cells"][status]:
 			s_ids.append(str(int(x["cells"][id]["value"])))
 			s_status.append(str(x["cells"][status]["value"]))
