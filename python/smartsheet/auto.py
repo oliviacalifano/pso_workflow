@@ -43,7 +43,7 @@ for x in rows_initialize:
 	
 		#connect to smartsheet lookup sheet
 		sheet, id, budget, status, start, end, metric, email = smartsheet_lookup(account,conn,headers_smartsheet)
-
+		
 		#connect to activity tracker sheet
 		campaign_ids, s_status, s_budgets, s_starts, s_ends, s_metric = get_from_smartsheet(conn, headers_smartsheet, sheet, id, budget, status, start, end, metric, email)
 
