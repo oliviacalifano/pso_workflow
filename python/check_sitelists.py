@@ -41,6 +41,7 @@ r = r_camp.content
 
 json_string = str(r_camp.content, 'utf8')
 jdata = json.loads(json_string)
+print(jdata)
 j = jdata["data"]
 
 count = jdata["meta"]["total_count"]
