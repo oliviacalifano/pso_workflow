@@ -117,12 +117,15 @@ function check_todaySpend(camp, metric, callback){
 					
 					
 					for(var i = last_time+1; i < 24 ; i++){
-						result[i] = "";
+						result[i] = "-";
 					}
 					//console.log(result);
 					
-					for(var i = 0; i < last_time ; i++){
-						today.push([i, result[i]])
+					//for(var i = 0; i < last_time ; i++){
+						//today.push([i, result[i]])
+					//}
+					for(r in result){
+						today.push([r, result[r]])
 					}
 					
 				callback(today); 
