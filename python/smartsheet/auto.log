@@ -722,3 +722,25 @@ GoDaddy 2018-03-26 12:00:02.955116+00:00
 {'columnId': 4491467830912900, 'value': 444668.0, 'displayValue': '444668'} {'columnId': 5935521902946180, 'value': 'Live', 'displayValue': 'Live'}
 {'columnId': 4491467830912900, 'value': 465111.0, 'displayValue': '465111'} {'columnId': 5935521902946180, 'value': 'Live', 'displayValue': 'Live'}
 {'columnId': 4491467830912900, 'value': 443232.0, 'displayValue': '443232'} {'columnId': 5935521902946180, 'value': 'Live', 'displayValue': 'Live'}
+Traceback (most recent call last):
+  File "/home/ocalifano/public_html/python/smartsheet/auto.py", line 34, in <module>
+    conn.request("GET", "/2.0/sheets/8865616196069252", headers=headers_smartsheet)
+  File "/usr/local/lib/python3.6/http/client.py", line 1239, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "/usr/local/lib/python3.6/http/client.py", line 1285, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "/usr/local/lib/python3.6/http/client.py", line 1234, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/usr/local/lib/python3.6/http/client.py", line 1026, in _send_output
+    self.send(msg)
+  File "/usr/local/lib/python3.6/http/client.py", line 964, in send
+    self.connect()
+  File "/usr/local/lib/python3.6/http/client.py", line 1392, in connect
+    super().connect()
+  File "/usr/local/lib/python3.6/http/client.py", line 936, in connect
+    (self.host,self.port), self.timeout, self.source_address)
+  File "/usr/local/lib/python3.6/socket.py", line 704, in create_connection
+    for res in getaddrinfo(host, port, 0, SOCK_STREAM):
+  File "/usr/local/lib/python3.6/socket.py", line 745, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno -2] Name or service not known
