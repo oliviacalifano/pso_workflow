@@ -30,7 +30,8 @@ headers_login = {
 headers_get = {
 	'Accept' : "application/vnd.mediamath.v1+json"
 	}	
-
+print(pytz.utc.localize(datetime.datetime.utcnow()))
+conn.connect()
 conn.request("GET", "/2.0/sheets/8865616196069252", headers=headers_smartsheet)
 rows_initialize = json.loads(conn.getresponse().read())["rows"]
 
