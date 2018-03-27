@@ -51,6 +51,7 @@ function add_con(s,audience,callback){
 
 function get(strat, callback){
 	var con = "";
+	var con_name = "";
 	console.log(con);
 	var request = $.ajax({
 		url: "https://adroit-tools.mediamath.com/t1/api/v2.0/strategies/"+strat+"/concepts",
@@ -61,20 +62,24 @@ function get(strat, callback){
 		success: function(xml) {
 			
 			var array = [];
+			var array_name = [];
 			var entry = $(xml).find("entity");
 			console.log(entry);
 			entry.each(function(){
 			//var aud_id = $(this).find("entity").attr('id');
 			var aud_id = $(this).attr('id');
+			var aud_name = $(this).attr('name');
 			if(aud_id != undefined && aud_id != "" && aud_id != "undefined"){
 			array.push(aud_id);
+			array_name.push(aud_name);
 			}
 			});
 			
 			con = con + array.join(";") + ",";
+			con_name = con_name + array_name.join(";") + ",";
 			console.log(con);
 			
-			callback(strat,con);
+			callback(strat,con,con_name);
 		},	
 		error: function(jqXHR, textStatus, errorThrown) {
 		console.log(jqXHR, textStatus, errorThrown)
@@ -113,7 +118,7 @@ function get_button(d,numRows){
 	var feedback = "";
 	var success = 0; 
 	var info = "";
-	var header = "strat_id,con_id";
+	var header = "strat_id,con_id,con_name";
  	if(strat_list.length == numRows){
 	//console.log("starting to loop through strats and update geo");
 	for(var i=0; i<strat_list.length; i++) {
@@ -122,16 +127,16 @@ function get_button(d,numRows){
 	//console.log(current_strat);
 	var counter = 0;
 		
-		get(current_strat, function(current_strat,audience){
+		get(current_strat, function(current_strat,audience,con_name){
 					counter++;
 
 					if(counter == strat_list.length){
-						info = header +info+ "\n"+ current_strat  + "," + audience;
+						info = header +info+ "\n"+ current_strat  + "," + audience + "," + con_name;
 						downloadCSV(info, { filename: "Strategy_Audience_Template.csv" });
 					}
 					else{
 						//console.log(info);
-						info = info +"\n"+ current_strat  + "," + audience;
+						info = info +"\n"+ current_strat  + "," + audience + "," + con_name;;
 					} 
 					//});
 					})
