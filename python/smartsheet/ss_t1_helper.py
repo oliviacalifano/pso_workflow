@@ -33,13 +33,13 @@ def smartsheet_lookup(arg,conn,headers_smartsheet):
 			return sheet, id, budget, status, start, end, metric, email
 
 def get_from_smartsheet(conn, headers_smartsheet, sheet, id, budget, status, start, end, metric, email):
-	print(sheet, id, budget, status, start, end, metric, email)
+	#print(sheet, id, budget, status, start, end, metric, email)
 	conn.request("GET", "/2.0/sheets/"+str(int(sheet)), headers=headers_smartsheet)
 	rows_tracker = json.loads(conn.getresponse().read())["rows"]
 	
 	s_ids, s_status, s_budgets, s_starts, s_ends, s_metric = ([] for i in range(6))
 	for x in rows_tracker:
-		print(x["cells"][id],x["cells"][status])
+		#print(x["cells"][id],x["cells"][status])
 		if "value" in x["cells"][id] and "value" in x["cells"][status]:
 			s_ids.append(str(int(x["cells"][id]["value"])))
 			s_status.append(str(x["cells"][status]["value"]))
@@ -63,7 +63,7 @@ def get_from_smartsheet(conn, headers_smartsheet, sheet, id, budget, status, sta
 			else: s_ends.append("nan")		
 			if metric != "":		
 				if "value" in x["cells"][metric]:
-					s_metric.append('{:.2f}'.format(round(float(x["cells"][metric]["value"]), 2)))
+					s_metric.append('{:.2f}'.format(round(float(re.sub('[^0-9.]','', str(x["cells"][metric]["value"]))), 2)))
 				else:
 					s_metric.append("nan")
 			else: s_metric.append("nan")
