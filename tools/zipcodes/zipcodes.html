@@ -56,7 +56,10 @@
 					placeholder: "Choose Campaign",
 					filter: true
 				});	
-			</script>		
+			</script>
+					<input type="radio" name="toggle_camp" value="all_camp" id="all_camp" checked="checked"><label for="all_camp">All</label>	
+					<input type="radio" name="toggle_camp" value="active_camp" id="active_camp"><label for="active_camp">Active</label>	
+					<input type="radio" name="toggle_camp" value="inactive_camp" id="inactive_camp"><label for="inactive_camp">Inactive</label>				
 			</td></tr>
 			<tr><td><select name="strategy" class="dropdown" style="width:300px" size=12 id="strat_list" multiple></select>
 			<script>
@@ -65,7 +68,9 @@
 					filter: true
 				});	
 			</script>
-			<label><input type="checkbox" name="active" id="active" checked="checked"> Show Active Strategies Only</label>			
+				<input type="radio" name="toggle" value="all" id="all" checked="checked"><label for="all">All</label>			
+				<input type="radio" name="toggle" value="active" id="active"><label for="active">Active</label>	
+				<input type="radio" name="toggle" value="inactive" id="inactive"><label for="inactive">Inactive</label>			
 			</td></tr>
 		<tr><tr><tr><tr><tr><tr></tr></tr></tr></tr></tr></tr>	
 		</table>
