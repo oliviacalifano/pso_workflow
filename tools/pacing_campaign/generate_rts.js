@@ -18,8 +18,7 @@ function get_selected_campaigns()
 	$("#campaign_list").each(function() { 
 		camp_ids.push($(this).val()); 
 	});
-	//console.log(camp_ids);
-
+	
 	return camp_ids[0];
 }
 
@@ -63,11 +62,10 @@ function beforeYestDate(){
 	return yesterday;	
 }
 
-function check_todaySpend(camp, metric, callback){
-	date = todayDate();	
-	console.log(date);			
+function check_todaySpend(camp, report, metric, callback){
+	date = todayDate();				
 	var request = $.ajax({
-		url: "https://adroit-tools.mediamath.com/t1/reporting/v1/std/pulse?dimensions=campaign_name&metrics="+metric+"&filter=campaign_id="+camp+"&time_rollup=by_hour&start_date="+date+"&end_date="+date+"&order=date",
+		url: "https://adroit-tools.mediamath.com/t1/reporting/v1/std/"+report+"?dimensions=campaign_name&metrics="+metric+"&filter=campaign_id="+camp+"&time_rollup=by_hour&start_date="+date+"&end_date="+date+"&order=date",
 		type: "GET",
 
 		success: function(csv) {
@@ -90,24 +88,21 @@ function check_todaySpend(camp, metric, callback){
 						day = day.split(":")[0];
 						day = parseInt(day,10);
 						var rest = da[1].split(",")[2];
-						//console.log(rest);
-						last_time = day;						
+						last_time = day;
+						console.log(last_time);						
 						data[day] = rest;
-						//console.log(data);
 					}
 					
 					for(a in data){			
 						tuples.push(Number(data[a]));
 					}
-					//console.log(tuples);
 					
 					var result = tuples.reduce(function(r, a) {
 						if (r.length > 0)
 							a += r[r.length - 1];
 						r.push(a);
 						return r;
-						}, []);
-					//console.log(result);	
+						}, []);	
 						
 					for(r in result){
 						result[r] = Math.round(Number(result[r])*100)/100;
@@ -117,11 +112,6 @@ function check_todaySpend(camp, metric, callback){
 					for(var i = last_time+1; i < 24 ; i++){
 						result[i] = "-";
 					}
-					//console.log(result);
-					
-					//for(var i = 0; i < last_time ; i++){
-						//today.push([i, result[i]])
-					//}
 					for(r in result){
 						today.push([r, result[r]])
 					}
@@ -136,15 +126,18 @@ function check_todaySpend(camp, metric, callback){
 }
 
 
-function check_rts(camp, today, last_time, callback){
+function check_rts(camp, today, last_time, metric, callback){
+	console.log(metric)
 	console.log(last_time)
-	date = todayDate();	
-	console.log(date);			
+	var m = metric
+	if(metric == "total_spend"){
+		m = "spend_usd"
+	}
+
+	date = todayDate();				
 	hour = new Date().getHours();
 	min = new Date().getMinutes();
 	offset = Number(min)/60
-	//offset = 0.5
-	console.log(offset)
 	
 	var request = $.ajax({
 		url: "https://adroit-tools.mediamath.com/t1/realtime_spend/v1.0/campaigns/"+camp,
@@ -155,23 +148,21 @@ function check_rts(camp, today, last_time, callback){
 				for(var i = 0; i < 24; i++){
 					rts.push([i,"-"]);
 				}
+				
 			if (last_time != ""){
 
 				var json = JSON.parse(csv);
 				var info = json["data"];
 				rts[last_time] = [last_time, Number(today[last_time][1])];
-				var rts_first_hour = new Date(info[info.length-1]["hour_starting"]).getHours();
-				console.log(rts_first_hour,today[rts_first_hour-1][1])
-				var rts_cumulative = today[rts_first_hour-1][1];
-				var rts_newday = 0;
-				
-				
+				console.log(rts[last_time])
+				var rts_first_hour = new Date(info[info.length-1]["hour_starting"])
+				var time_rts = rts_first_hour.getHours();
+				var rts_cumulative = today[time_rts-1][1];
+					
 				
 				for(var i = info.length; i--;){
-					var rts_spend = Number(info[i]["spend_usd"]);
+					var rts_spend = Number(info[i][m]);
 					rts_cumulative += rts_spend;
-					rts_newday += rts_spend;
-					console.log(i,rts_cumulative)
 					var tmpDate = new Date(info[i]["hour_starting"]);
 					var time = tmpDate.getHours();
 					
@@ -182,7 +173,7 @@ function check_rts(camp, today, last_time, callback){
 							rts[time] = [Number(time)-(1-offset), Number(rts_cumulative)];
 						}
 						else{
-						rts[time] = [time, Number(rts_cumulative)];
+							rts[time] = [time, Number(rts_cumulative)];
 						}
 					}
 					
@@ -197,9 +188,9 @@ function check_rts(camp, today, last_time, callback){
 	});
 }
 
-function check_yestSpend(camp, metric, callback){  
+function check_yestSpend(camp, report, metric, callback){  
 	var request = $.ajax({
-		url: "https://adroit-tools.mediamath.com/t1/reporting/v1/std/pulse?dimensions=campaign_name&metrics="+metric+"&filter=campaign_id="+camp+"&time_rollup=by_hour&time_window=last_1_days&order=date",
+		url: "https://adroit-tools.mediamath.com/t1/reporting/v1/std/"+report+"?dimensions=campaign_name&metrics="+metric+"&filter=campaign_id="+camp+"&time_rollup=by_hour&time_window=last_1_days&order=date",
 		type: "GET",
 
 		success: function(csv) {
@@ -222,16 +213,13 @@ function check_yestSpend(camp, metric, callback){
 						day = day.split(":")[0];
 						day = parseInt(day,10);
 						var rest = da[1].split(",")[2];
-						//console.log(rest);
 						last_time = day;						
 						data[day] = rest;
-						//console.log(data);
 					}
 					
 					for(a in data){			
 						tuples.push(Number(data[a]));
 					}
-					//console.log(tuples);
 					
 					var result = tuples.reduce(function(r, a) {
 						if (r.length > 0)
@@ -239,7 +227,6 @@ function check_yestSpend(camp, metric, callback){
 						r.push(a);
 						return r;
 						}, []);
-					//console.log(result);	
 						
 					for(r in result){
 						result[r] = Math.round(Number(result[r])*100)/100;
@@ -249,7 +236,6 @@ function check_yestSpend(camp, metric, callback){
 					for(var i = last_time+1; i < 24 ; i++){
 						result[i] = "-";
 					}
-					//console.log(result);
 									
 					for(r in result){
 						yesterday.push([r, result[r]])
@@ -264,13 +250,12 @@ function check_yestSpend(camp, metric, callback){
 	});
 }
 
-function check_dayBeforeYestSpend(camp, metric, callback){
+function check_dayBeforeYestSpend(camp, report, metric, callback){
     var hold = [];
 	var max = 0;
-	date = beforeYestDate();	
-	console.log(date);			
+	date = beforeYestDate();			
 	var request = $.ajax({
-		url: "https://adroit-tools.mediamath.com/t1/reporting/v1/std/pulse?dimensions=campaign_name&metrics="+metric+"&filter=campaign_id="+camp+"&time_rollup=by_hour&start_date="+date+"&end_date="+date+"&order=date",
+		url: "https://adroit-tools.mediamath.com/t1/reporting/v1/std/"+report+"?dimensions=campaign_name&metrics="+metric+"&filter=campaign_id="+camp+"&time_rollup=by_hour&start_date="+date+"&end_date="+date+"&order=date",
 		type: "GET",
 
 		success: function(csv) {
@@ -293,24 +278,20 @@ function check_dayBeforeYestSpend(camp, metric, callback){
 						day = day.split(":")[0];
 						day = parseInt(day,10);
 						var rest = da[1].split(",")[2];
-						//console.log(rest);
 						last_time = day;						
 						data[day] = rest;
-						//console.log(data);
 					}
 					
 					for(a in data){			
 						tuples.push(Number(data[a]));
 					}
-					//console.log(tuples);
 					
 					var result = tuples.reduce(function(r, a) {
 						if (r.length > 0)
 							a += r[r.length - 1];
 						r.push(a);
 						return r;
-						}, []);
-					//console.log(result);	
+						}, []);	
 						
 					for(r in result){
 						result[r] = Math.round(Number(result[r])*100)/100;
@@ -320,7 +301,6 @@ function check_dayBeforeYestSpend(camp, metric, callback){
 					for(var i = last_time+1; i < 24 ; i++){
 						result[i] = "-";
 					}
-					//console.log(result);
 									
 					for(r in result){
 						yesterday.push([r, result[r]])
@@ -341,30 +321,29 @@ function checks(click){
 	date1 = todayDate();
 	date2 = yesterdayDate();
 	date3 = beforeYestDate();
-	//console.log(date1);
 		
 	campaign_list = get_selected_campaigns();
 	var current_camp = campaign_list[0];
 	var camp_name = $("#campaign_list").multipleSelect('getSelects', 'text');
 	
 	var metrics = $('input[name=metric]:checked', '#metric').val();
-	//console.log(metric);
-	
-	//console.log("pixel list:", campaign_list);
+	var report = ""
+	if(metrics == "media_cost" || metrics == "total_spend" || metrics == "impressions"){
+		report = "pulse"
+	}
+	if(metrics == "wins" || metrics == "bids" || metrics == "matched_bid_opportunities"){
+		report = "win_loss"
+	}
+
 	var counter =0;
 	var doc = "";
 	
-		check_todaySpend(current_camp, metrics, function(today,last_time){
-			check_rts(current_camp, today, last_time, function(rts){
-			check_yestSpend(current_camp, metrics, function(yest) 
+		check_todaySpend(current_camp, report, metrics, function(today,last_time){
+			check_rts(current_camp, today, last_time, metrics, function(rts){
+			check_yestSpend(current_camp, report, metrics, function(yest) 
 			{	
-			check_dayBeforeYestSpend(current_camp, metrics, function(beforeYest) 
+			check_dayBeforeYestSpend(current_camp, report, metrics, function(beforeYest) 
 			{	
-			//console.log(metrics);
-				//console.log(today);
-				//console.log(rts);
-				//console.log(yest);
-				//console.log(beforeYest);
 				if(click == "plot"){
 				display(today,rts,yest,beforeYest,metrics);
 				}
@@ -383,7 +362,6 @@ function checks(click){
 						var t_arr = today[i];
 						var y_arr = yest[i];
 						var by_arr = beforeYest[i];
-						//console.log(t_arr);
 						var t;
 						var y;
 						var by;
@@ -421,7 +399,7 @@ function checks(click){
 	});
 }
 
-function display(to,rts,ye,by,m){
+function display(rts,to,ye,by,m){
 	if(m == "total_spend"){
 		m = "Total Spend"
 	}
@@ -434,6 +412,14 @@ function display(to,rts,ye,by,m){
 		m = "Impressions"
 	}
 	
+	if(m == "bids"){
+		m = "Bids"
+	}
+	
+	if(m == "matched_bid_opportunities"){
+		m = "Matched Bid Opportunities"
+	}
+	
 	console.log(to);
 	console.log(rts);
 	console.log(ye);
@@ -441,7 +427,7 @@ function display(to,rts,ye,by,m){
 
 $(document).ready(function(){
 toolTip1 = ['Today', 'Real Time Spend', 'Yesterday','Day Before Yesterday'];
-  plot2 = $.jqplot ('chart2', [to,rts,ye,by],{	
+  plot2 = $.jqplot ('chart2', [rts,to,ye,by],{	
 
       title: 'Cumulative ' +m+ ' by Hour',
         legend: {
@@ -461,10 +447,11 @@ toolTip1 = ['Today', 'Real Time Spend', 'Yesterday','Day Before Yesterday'];
         },
         series:[
             {	
-                pointLabels: {
+/*                 pointLabels: {
                     show: false
-                },
-                showHighlight: true,
+                }, */
+                //showHighlight: true,
+				color: '#366092',
                 rendererOptions: {
                     // Speed up the animation a little bit.
                     // This is a number of milliseconds.  
@@ -472,14 +459,37 @@ toolTip1 = ['Today', 'Real Time Spend', 'Yesterday','Day Before Yesterday'];
                     animation: {
                         speed: 2500
                     },
-                    barWidth: 15,
-                    barPadding: -15,
-                    barMargin: 0,
+                    //barWidth: 15,
+                    //barPadding: -15,
+                    //barMargin: 0,
                     highlightMouseOver: true
                 }
             }, 
             {
-                rendererOptions: {
+                color: '#244062',
+				rendererOptions: {
+					// speed up the animation a little bit.
+                    // This is a number of milliseconds.
+                    // Default for a line series is 2500.
+                    animation: {
+                        speed: 2000
+                    }
+                }
+            }, 
+            {
+                color: '#95B3D7',
+				rendererOptions: {
+					// speed up the animation a little bit.
+                    // This is a number of milliseconds.
+                    // Default for a line series is 2500.
+                    animation: {
+                        speed: 2000
+                    }
+                }
+            }, 
+            {
+                color: '#DCE6F1',
+				rendererOptions: {
 					// speed up the animation a little bit.
                     // This is a number of milliseconds.
                     // Default for a line series is 2500.
