@@ -4,10 +4,11 @@ import http.client, json
 import re
 import datetime, pytz
 import sys, traceback
+sys.path.append('..')
+import secret
 import pandas as pd
 
 from ss_t1_helper import toDate, get_from_smartsheet, get_from_t1_meta, smartsheet_lookup, get_from_t1_reports, send_email
-import secret
 
 password_api = secret.login['password_api']
 password_email = secret.login['password_email']
@@ -144,8 +145,8 @@ for x in rows_initialize:
 				da.set_properties(subset=df.columns.values,**{'text-align': 'left','white-space': 'nowrap'})
 				
 				#tester email
-				send_email(account,"ocalifano@mediamath.com",password_email,da)
-				#send_email(account,email,password_email,da)
+				#send_email(account,"ocalifano@mediamath.com",password_email,da)
+				send_email(account,email,password_email,da)
 		except: 
 			traceback.print_exc(file=sys.stdout)
 			continue
