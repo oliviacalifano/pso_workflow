@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/home/ocalifano/public_html/python/smartsheet/auto.py", line 10, in <module>
+    import secret
+  File "/home/ocalifano/public_html/python/smartsheet/secret.py", line 1
+    <<<<<<< HEAD
+     ^
+SyntaxError: invalid syntax
