@@ -7,7 +7,7 @@ import math
 import datetime, pytz
 import pandas as pd
 import sys
-
+sys.path.append('..')
 import secret
 
 password_api = secret.login['password_api']
