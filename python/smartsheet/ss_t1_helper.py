@@ -112,7 +112,10 @@ def get_from_t1_reports(login, headers_login, payload, headers_get, x):
 	
 	json_string = str(r_camp.content, 'utf8')
 	cpm = json_string.split()[-1].split(",")[-1]
+<<<<<<< HEAD
 	if cpm == "total_spend_cpm": cpm = 0
+=======
+>>>>>>> b9b35f8b2200c79d520123d4d58aa7169a3d2830
 	return cpm
 
 def send_email(account,to_addrs,password,da):

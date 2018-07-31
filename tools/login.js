@@ -10,8 +10,13 @@ $("#login_form").submit(function(event) {
 			type: "POST",
 			cache: false,
 			dataType: "xml",
+<<<<<<< HEAD
 			//data: {user:username, password: password, api_key: "4d56c81d0d6b14f43e28a0d7fb0caf35"}, 
 			data: {user:username, password: password, api_key: "zknzxverexqwf5epb53z87ae"}, 
+=======
+			data: {user:username, password: password, api_key: "4d56c81d0d6b14f43e28a0d7fb0caf35"}, 
+			//data: {user:username, password: password, api_key: "zknzxverexqwf5epb53z87ae"}, 
+>>>>>>> b9b35f8b2200c79d520123d4d58aa7169a3d2830
 			
 			success: function(data,textStatus, jqXHR) {
 				$(data).find('status').each(function() {

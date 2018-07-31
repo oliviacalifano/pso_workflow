@@ -1,0 +1,516 @@
+7288604121687940
+start_date,end_date,organization_id,total_spend
+"2018-07-01","2018-07-31",101870,2207.55
+
+{'message': 'SUCCESS', 'resultCode': 0, 'result': [{'id': 1278169193965444, 'rowNumber': 2, 'siblingId': 6907668728178564, 'expanded': True, 'createdAt': '2018-06-27T20:44:03Z', 'modifiedAt': '2018-07-05T16:54:49Z', 'cells': [{'columnId': 533204680632196, 'value': 'AIT', 'displayValue': 'AIT'}, {'columnId': 5036804308002692, 'value': 21258.58, 'displayValue': '$21,258.58'}, {'columnId': 2785004494317444, 'value': '509633,511315', 'displayValue': '509633,511315'}, {'columnId': 7288604121687940, 'value': 2207.55, 'displayValue': '$2,207.55'}, {'columnId': 1659104587474820, 'value': 0.103842777833703, 'displayValue': '10%', 'formula': '=[Column4]2 / [Column2]2'}, {'columnId': 6162704214845316}]}], 'version': 67}
+7288604121687940
+start_date,end_date,organization_id,total_spend
+"2018-07-01","2018-07-31",101870,640.43
+
+{'message': 'SUCCESS', 'resultCode': 0, 'result': [{'id': 5781768821335940, 'rowNumber': 3, 'siblingId': 1278169193965444, 'expanded': True, 'createdAt': '2018-06-27T20:44:03Z', 'modifiedAt': '2018-07-05T16:54:53Z', 'cells': [{'columnId': 533204680632196, 'value': 'APC', 'displayValue': 'APC'}, {'columnId': 5036804308002692, 'value': 25000.0, 'displayValue': '$25,000.00'}, {'columnId': 2785004494317444, 'value': '511285,514176,514171,511285', 'displayValue': '511285,514176,514171,511285'}, {'columnId': 7288604121687940, 'value': 640.43, 'displayValue': '$640.43'}, {'columnId': 1659104587474820, 'value': 0.0256172, 'displayValue': '3%', 'formula': '=[Column4]3 / [Column2]3'}, {'columnId': 6162704214845316}]}], 'version': 68}
+7288604121687940
+start_date,end_date,organization_id,total_spend
+"2018-07-01","2018-07-31",101870,27897.99
+
+{'message': 'SUCCESS', 'resultCode': 0, 'result': [{'id': 3529969007650692, 'rowNumber': 4, 'siblingId': 5781768821335940, 'expanded': True, 'createdAt': '2018-06-27T20:44:03Z', 'modifiedAt': '2018-07-05T16:54:58Z', 'cells': [{'columnId': 533204680632196, 'value': 'APO', 'displayValue': 'APO'}, {'columnId': 5036804308002692, 'value': 93763.83, 'displayValue': '$93,763.83'}, {'columnId': 2785004494317444, 'value': '515150,515845', 'displayValue': '515150,515845'}, {'columnId': 7288604121687940, 'value': 27897.99, 'displayValue': '$27,897.99'}, {'columnId': 1659104587474820, 'value': 0.297534667685823, 'displayValue': '30%', 'formula': '=[Column4]4 / [Column2]4'}, {'columnId': 6162704214845316}]}], 'version': 69}
+7288604121687940
+start_date,end_date,organization_id,total_spend
+"2018-07-01","2018-07-31",101870,1037.09
+
+{'message': 'SUCCESS', 'resultCode': 0, 'result': [{'id': 8033568635021188, 'rowNumber': 5, 'siblingId': 3529969007650692, 'expanded': True, 'createdAt': '2018-06-27T20:44:03Z', 'modifiedAt': '2018-07-05T16:55:02Z', 'cells': [{'columnId': 533204680632196, 'value': 'APT', 'displayValue': 'APT'}, {'columnId': 5036804308002692, 'value': 25000.0, 'displayValue': '$25,000.00'}, {'columnId': 2785004494317444, 'value': '514220,514231,511331', 'displayValue': '514220,514231,511331'}, {'columnId': 7288604121687940, 'value': 1037.09, 'displayValue': '$1,037.09'}, {'columnId': 1659104587474820, 'value': 0.0414836, 'displayValue': '4%', 'formula': '=[Column4]5 / [Column2]5'}, {'columnId': 6162704214845316}]}], 'version': 70}
+7288604121687940
+start_date,end_date,organization_id,total_spend
+"2018-07-01","2018-07-31",101870,19859.19
+
+{'message': 'SUCCESS', 'resultCode': 0, 'result': [{'id': 715219240544132, 'rowNumber': 6, 'siblingId': 8033568635021188, 'expanded': True, 'createdAt': '2018-06-27T20:44:03Z', 'modifiedAt': '2018-07-05T16:55:07Z', 'cells': [{'columnId': 533204680632196, 'value': 'BGT', 'displayValue': 'BGT'}, {'columnId': 5036804308002692, 'value': 225319.44, 'displayValue': '$225,319.44'}, {'columnId': 2785004494317444, 'value': '506510,506511,510086,509359,511017,514235', 'displayValue': '506510,506511,510086,509359,511017,514235'}, {'columnId': 7288604121687940, 'value': 19859.19, 'displayValue': '$19,859.19'}, {'columnId': 1659104587474820, 'value': 0.088137934303405, 'displayValue': '9%', 'formula': '=[Column4]6 / [Column2]6'}, {'columnId': 6162704214845316}]}], 'version': 71}
+7288604121687940
+start_date,end_date,organization_id,total_spend
+"2018-07-01","2018-07-31",101870,115489.45
+
+{'message': 'SUCCESS', 'resultCode': 0, 'result': [{'id': 5218818867914628, 'rowNumber': 7, 'siblingId': 715219240544132, 'expanded': True, 'createdAt': '2018-06-27T20:44:03Z', 'modifiedAt': '2018-07-05T16:55:11Z', 'cells': [{'columnId': 533204680632196, 'value': 'BGW', 'displayValue': 'BGW'}, {'columnId': 5036804308002692, 'value': 424666.88, 'displayValue': '$424,666.88'}, {'columnId': 2785004494317444, 'value': '506194,506196,506198,514288,514772,519824,514768,514281', 'displayValue': '506194,506196,506198,514288,514772,519824,514768,514281'}, {'columnId': 7288604121687940, 'value': 115489.45, 'displayValue': '$115,489.45'}, {'columnId': 1659104587474820, 'value': 0.27195304234698, 'displayValue': '27%', 'formula': '=[Column4]7 / [Column2]7'}, {'columnId': 6162704214845316}]}], 'version': 72}
+7288604121687940
+start_date,end_date,organization_id,total_spend
+"2018-07-01","2018-07-31",101870,0.00
+
+{'message': 'SUCCESS', 'resultCode': 0, 'result': [{'id': 2967019054229380, 'rowNumber': 8, 'siblingId': 5218818867914628, 'expanded': True, 'createdAt': '2018-06-27T20:44:03Z', 'modifiedAt': '2018-07-02T22:00:03Z', 'cells': [{'columnId': 533204680632196, 'value': 'DCO', 'displayValue': 'DCO'}, {'columnId': 5036804308002692, 'value': 103823.03, 'displayValue': '$103,823.03'}, {'columnId': 2785004494317444, 'value': '506507,506508,506509,506512,506513,511004,515881,515891,516752', 'displayValue': '506507,506508,506509,506512,506513,511004,515881,515891,516752'}, {'columnId': 7288604121687940, 'value': 0.0, 'displayValue': '$0.00'}, {'columnId': 1659104587474820, 'value': 0.0, 'displayValue': '0%', 'formula': '=[Column4]8 / [Column2]8'}, {'columnId': 6162704214845316}]}], 'version': 72}
+7288604121687940
+start_date,end_date,organization_id,total_spend
+"2018-07-01","2018-07-31",101870,3449.37
+
+{'message': 'SUCCESS', 'resultCode': 0, 'result': [{'id': 7470618681599876, 'rowNumber': 9, 'siblingId': 2967019054229380, 'expanded': True, 'createdAt': '2018-06-27T20:44:03Z', 'modifiedAt': '2018-07-05T16:55:32Z', 'cells': [{'columnId': 533204680632196, 'value': 'SPL', 'displayValue': 'SPL'}, {'columnId': 5036804308002692, 'value': 101000.0, 'displayValue': '$101,000.00'}, {'columnId': 2785004494317444, 'value': '506514,506515,510119,511635,517258', 'displayValue': '506514,506515,510119,511635,517258'}, {'columnId': 7288604121687940, 'value': 3449.37, 'displayValue': '$3,449.37'}, {'columnId': 1659104587474820, 'value': 0.0341521782178218, 'displayValue': '3%', 'formula': '=[Column4]9 / [Column2]9'}, {'columnId': 6162704214845316}]}], 'version': 73}
+7288604121687940
+start_date,end_date,organization_id,total_spend
+"2018-07-01","2018-07-31",101870,14536.83
+
+{'message': 'SUCCESS', 'resultCode': 0, 'result': [{'id': 1841119147386756, 'rowNumber': 10, 'siblingId': 7470618681599876, 'expanded': True, 'createdAt': '2018-06-27T20:44:03Z', 'modifiedAt': '2018-07-05T16:55:37Z', 'cells': [{'columnId': 533204680632196, 'value': 'SWC', 'displayValue': 'SWC'}, {'columnId': 5036804308002692, 'value': 94812.19, 'displayValue': '$94,812.19'}, {'columnId': 2785004494317444, 'value': '510111,514901,506202,506203,506207,514906,516772,514077,514085', 'displayValue': '510111,514901,506202,506203,506207,514906,516772,514077,514085'}, {'columnId': 7288604121687940, 'value': 14536.83, 'displayValue': '$14,536.83'}, {'columnId': 1659104587474820, 'value': 0.153322373420549, 'displayValue': '15%', 'formula': '=[Column4]10 / [Column2]10'}, {'columnId': 6162704214845316}]}], 'version': 74}
+7288604121687940
+start_date,end_date,organization_id,total_spend
+"2018-07-01","2018-07-31",101870,117328.84
+
+{'message': 'SUCCESS', 'resultCode': 0, 'result': [{'id': 6344718774757252, 'rowNumber': 11, 'siblingId': 1841119147386756, 'expanded': True, 'createdAt': '2018-06-27T20:44:03Z', 'modifiedAt': '2018-07-05T16:55:41Z', 'cells': [{'columnId': 533204680632196, 'value': 'SWF', 'displayValue': 'SWF'}, {'columnId': 5036804308002692, 'value': 235041.76, 'displayValue': '$235,041.76'}, {'columnId': 2785004494317444, 'value': '510103,506214,506210,506208,506215,506213,506211,506204,518150', 'displayValue': '510103,506214,506210,506208,506215,506213,506211,506204,518150'}, {'columnId': 7288604121687940, 'value': 117328.84, 'displayValue': '$117,328.84'}, {'columnId': 1659104587474820, 'value': 0.499182953701504, 'displayValue': '50%', 'formula': '=[Column4]11 / [Column2]11'}, {'columnId': 6162704214845316}]}], 'version': 75}
+7288604121687940
+start_date,end_date,organization_id,total_spend
+"2018-07-01","2018-07-31",101870,12255.90
+
+{'message': 'SUCCESS', 'resultCode': 0, 'result': [{'id': 4092918961072004, 'rowNumber': 12, 'siblingId': 6344718774757252, 'expanded': True, 'createdAt': '2018-06-27T20:44:03Z', 'modifiedAt': '2018-07-05T16:55:46Z', 'cells': [{'columnId': 533204680632196, 'value': 'SWT', 'displayValue': 'SWT'}, {'columnId': 5036804308002692, 'value': 113556.15, 'displayValue': '$113,556.15'}, {'columnId': 2785004494317444, 'value': '510115,506212,506217,506209,506205,506206,516250', 'displayValue': '510115,506212,506217,506209,506205,506206,516250'}, {'columnId': 7288604121687940, 'value': 12255.9, 'displayValue': '$12,255.90'}, {'columnId': 1659104587474820, 'value': 0.107928104290256, 'displayValue': '11%', 'formula': '=[Column4]12 / [Column2]12'}, {'columnId': 6162704214845316}]}], 'version': 76}
+7288604121687940
+start_date,end_date,organization_id,total_spend
+"2018-07-01","2018-07-31",101870,17641.61
+
+{'message': 'SUCCESS', 'resultCode': 0, 'result': [{'id': 8596518588442500, 'rowNumber': 13, 'siblingId': 4092918961072004, 'expanded': True, 'createdAt': '2018-06-27T20:44:03Z', 'modifiedAt': '2018-07-05T16:55:51Z', 'cells': [{'columnId': 533204680632196, 'value': 'WCW', 'displayValue': 'WCW'}, {'columnId': 5036804308002692, 'value': 115288.67, 'displayValue': '$115,288.67'}, {'columnId': 2785004494317444, 'value': '510120,517596', 'displayValue': '510120,517596'}, {'columnId': 7288604121687940, 'value': 17641.61, 'displayValue': '$17,641.61'}, {'columnId': 1659104587474820, 'value': 0.153021194537156, 'displayValue': '15%', 'formula': '=[Column4]13 / [Column2]13'}, {'columnId': 6162704214845316}]}], 'version': 77}
+   Park Current Budget        Spend Pacing
+0   AIT     $21,258.58    $2,207.55    10%
+1   APC     $25,000.00      $640.43     3%
+2   APO     $93,763.83   $27,897.99    30%
+3   APT     $25,000.00    $1,037.09     4%
+4   BGT    $225,319.44   $19,859.19     9%
+5   BGW    $424,666.88  $115,489.45    27%
+6   DCO    $103,823.03        $0.00     0%
+7   SPL    $101,000.00    $3,449.37     3%
+8   SWC     $94,812.19   $14,536.83    15%
+9   SWF    $235,041.76  $117,328.84    50%
+10  SWT    $113,556.15   $12,255.90    11%
+11  WCW    $115,288.67   $17,641.61    15%
+7288604121687940
+start_date,end_date,organization_id,total_spend
+"2018-07-01","2018-07-31",101870,2207.55
+
+{'message': 'SUCCESS', 'resultCode': 0, 'result': [{'id': 1278169193965444, 'rowNumber': 2, 'siblingId': 6907668728178564, 'expanded': True, 'createdAt': '2018-06-27T20:44:03Z', 'modifiedAt': '2018-07-05T16:54:49Z', 'cells': [{'columnId': 533204680632196, 'value': 'AIT', 'displayValue': 'AIT'}, {'columnId': 5036804308002692, 'value': 21258.58, 'displayValue': '$21,258.58'}, {'columnId': 2785004494317444, 'value': '509633,511315', 'displayValue': '509633,511315'}, {'columnId': 7288604121687940, 'value': 2207.55, 'displayValue': '$2,207.55'}, {'columnId': 1659104587474820, 'value': 0.103842777833703, 'displayValue': '10%', 'formula': '=[Column4]2 / [Column2]2'}, {'columnId': 6162704214845316}]}], 'version': 78}
+7288604121687940
+start_date,end_date,organization_id,total_spend
+"2018-07-01","2018-07-31",101870,640.43
+
+{'message': 'SUCCESS', 'resultCode': 0, 'result': [{'id': 5781768821335940, 'rowNumber': 3, 'siblingId': 1278169193965444, 'expanded': True, 'createdAt': '2018-06-27T20:44:03Z', 'modifiedAt': '2018-07-05T16:54:53Z', 'cells': [{'columnId': 533204680632196, 'value': 'APC', 'displayValue': 'APC'}, {'columnId': 5036804308002692, 'value': 25000.0, 'displayValue': '$25,000.00'}, {'columnId': 2785004494317444, 'value': '511285,514176,514171,511285', 'displayValue': '511285,514176,514171,511285'}, {'columnId': 7288604121687940, 'value': 640.43, 'displayValue': '$640.43'}, {'columnId': 1659104587474820, 'value': 0.0256172, 'displayValue': '3%', 'formula': '=[Column4]3 / [Column2]3'}, {'columnId': 6162704214845316}]}], 'version': 78}
+7288604121687940
+start_date,end_date,organization_id,total_spend
+"2018-07-01","2018-07-31",101870,27897.99
+
+{'message': 'SUCCESS', 'resultCode': 0, 'result': [{'id': 3529969007650692, 'rowNumber': 4, 'siblingId': 5781768821335940, 'expanded': True, 'createdAt': '2018-06-27T20:44:03Z', 'modifiedAt': '2018-07-05T16:54:58Z', 'cells': [{'columnId': 533204680632196, 'value': 'APO', 'displayValue': 'APO'}, {'columnId': 5036804308002692, 'value': 93763.83, 'displayValue': '$93,763.83'}, {'columnId': 2785004494317444, 'value': '515150,515845', 'displayValue': '515150,515845'}, {'columnId': 7288604121687940, 'value': 27897.99, 'displayValue': '$27,897.99'}, {'columnId': 1659104587474820, 'value': 0.297534667685823, 'displayValue': '30%', 'formula': '=[Column4]4 / [Column2]4'}, {'columnId': 6162704214845316}]}], 'version': 78}
+7288604121687940
+start_date,end_date,organization_id,total_spend
+"2018-07-01","2018-07-31",101870,1037.09
+
+{'message': 'SUCCESS', 'resultCode': 0, 'result': [{'id': 8033568635021188, 'rowNumber': 5, 'siblingId': 3529969007650692, 'expanded': True, 'createdAt': '2018-06-27T20:44:03Z', 'modifiedAt': '2018-07-05T16:55:02Z', 'cells': [{'columnId': 533204680632196, 'value': 'APT', 'displayValue': 'APT'}, {'columnId': 5036804308002692, 'value': 25000.0, 'displayValue': '$25,000.00'}, {'columnId': 2785004494317444, 'value': '514220,514231,511331', 'displayValue': '514220,514231,511331'}, {'columnId': 7288604121687940, 'value': 1037.09, 'displayValue': '$1,037.09'}, {'columnId': 1659104587474820, 'value': 0.0414836, 'displayValue': '4%', 'formula': '=[Column4]5 / [Column2]5'}, {'columnId': 6162704214845316}]}], 'version': 78}
+7288604121687940
+start_date,end_date,organization_id,total_spend
+"2018-07-01","2018-07-31",101870,19859.19
+
+{'message': 'SUCCESS', 'resultCode': 0, 'result': [{'id': 715219240544132, 'rowNumber': 6, 'siblingId': 8033568635021188, 'expanded': True, 'createdAt': '2018-06-27T20:44:03Z', 'modifiedAt': '2018-07-05T16:55:07Z', 'cells': [{'columnId': 533204680632196, 'value': 'BGT', 'displayValue': 'BGT'}, {'columnId': 5036804308002692, 'value': 225319.44, 'displayValue': '$225,319.44'}, {'columnId': 2785004494317444, 'value': '506510,506511,510086,509359,511017,514235', 'displayValue': '506510,506511,510086,509359,511017,514235'}, {'columnId': 7288604121687940, 'value': 19859.19, 'displayValue': '$19,859.19'}, {'columnId': 1659104587474820, 'value': 0.088137934303405, 'displayValue': '9%', 'formula': '=[Column4]6 / [Column2]6'}, {'columnId': 6162704214845316}]}], 'version': 78}
+7288604121687940
+start_date,end_date,organization_id,total_spend
+"2018-07-01","2018-07-31",101870,115489.45
+
+{'message': 'SUCCESS', 'resultCode': 0, 'result': [{'id': 5218818867914628, 'rowNumber': 7, 'siblingId': 715219240544132, 'expanded': True, 'createdAt': '2018-06-27T20:44:03Z', 'modifiedAt': '2018-07-05T16:55:11Z', 'cells': [{'columnId': 533204680632196, 'value': 'BGW', 'displayValue': 'BGW'}, {'columnId': 5036804308002692, 'value': 424666.88, 'displayValue': '$424,666.88'}, {'columnId': 2785004494317444, 'value': '506194,506196,506198,514288,514772,519824,514768,514281', 'displayValue': '506194,506196,506198,514288,514772,519824,514768,514281'}, {'columnId': 7288604121687940, 'value': 115489.45, 'displayValue': '$115,489.45'}, {'columnId': 1659104587474820, 'value': 0.27195304234698, 'displayValue': '27%', 'formula': '=[Column4]7 / [Column2]7'}, {'columnId': 6162704214845316}]}], 'version': 78}
+7288604121687940
+start_date,end_date,organization_id,total_spend
+"2018-07-01","2018-07-31",101870,0.00
+
+{'message': 'SUCCESS', 'resultCode': 0, 'result': [{'id': 2967019054229380, 'rowNumber': 8, 'siblingId': 5218818867914628, 'expanded': True, 'createdAt': '2018-06-27T20:44:03Z', 'modifiedAt': '2018-07-02T22:00:03Z', 'cells': [{'columnId': 533204680632196, 'value': 'DCO', 'displayValue': 'DCO'}, {'columnId': 5036804308002692, 'value': 103823.03, 'displayValue': '$103,823.03'}, {'columnId': 2785004494317444, 'value': '506507,506508,506509,506512,506513,511004,515881,515891,516752', 'displayValue': '506507,506508,506509,506512,506513,511004,515881,515891,516752'}, {'columnId': 7288604121687940, 'value': 0.0, 'displayValue': '$0.00'}, {'columnId': 1659104587474820, 'value': 0.0, 'displayValue': '0%', 'formula': '=[Column4]8 / [Column2]8'}, {'columnId': 6162704214845316}]}], 'version': 78}
+7288604121687940
+start_date,end_date,organization_id,total_spend
+"2018-07-01","2018-07-31",101870,3449.37
+
+{'message': 'SUCCESS', 'resultCode': 0, 'result': [{'id': 7470618681599876, 'rowNumber': 9, 'siblingId': 2967019054229380, 'expanded': True, 'createdAt': '2018-06-27T20:44:03Z', 'modifiedAt': '2018-07-05T16:55:32Z', 'cells': [{'columnId': 533204680632196, 'value': 'SPL', 'displayValue': 'SPL'}, {'columnId': 5036804308002692, 'value': 101000.0, 'displayValue': '$101,000.00'}, {'columnId': 2785004494317444, 'value': '506514,506515,510119,511635,517258', 'displayValue': '506514,506515,510119,511635,517258'}, {'columnId': 7288604121687940, 'value': 3449.37, 'displayValue': '$3,449.37'}, {'columnId': 1659104587474820, 'value': 0.0341521782178218, 'displayValue': '3%', 'formula': '=[Column4]9 / [Column2]9'}, {'columnId': 6162704214845316}]}], 'version': 78}
+7288604121687940
+start_date,end_date,organization_id,total_spend
+"2018-07-01","2018-07-31",101870,14536.83
+
+{'message': 'SUCCESS', 'resultCode': 0, 'result': [{'id': 1841119147386756, 'rowNumber': 10, 'siblingId': 7470618681599876, 'expanded': True, 'createdAt': '2018-06-27T20:44:03Z', 'modifiedAt': '2018-07-05T16:55:37Z', 'cells': [{'columnId': 533204680632196, 'value': 'SWC', 'displayValue': 'SWC'}, {'columnId': 5036804308002692, 'value': 94812.19, 'displayValue': '$94,812.19'}, {'columnId': 2785004494317444, 'value': '510111,514901,506202,506203,506207,514906,516772,514077,514085', 'displayValue': '510111,514901,506202,506203,506207,514906,516772,514077,514085'}, {'columnId': 7288604121687940, 'value': 14536.83, 'displayValue': '$14,536.83'}, {'columnId': 1659104587474820, 'value': 0.153322373420549, 'displayValue': '15%', 'formula': '=[Column4]10 / [Column2]10'}, {'columnId': 6162704214845316}]}], 'version': 78}
+7288604121687940
+start_date,end_date,organization_id,total_spend
+"2018-07-01","2018-07-31",101870,117328.84
+
+{'message': 'SUCCESS', 'resultCode': 0, 'result': [{'id': 6344718774757252, 'rowNumber': 11, 'siblingId': 1841119147386756, 'expanded': True, 'createdAt': '2018-06-27T20:44:03Z', 'modifiedAt': '2018-07-05T16:55:41Z', 'cells': [{'columnId': 533204680632196, 'value': 'SWF', 'displayValue': 'SWF'}, {'columnId': 5036804308002692, 'value': 235041.76, 'displayValue': '$235,041.76'}, {'columnId': 2785004494317444, 'value': '510103,506214,506210,506208,506215,506213,506211,506204,518150', 'displayValue': '510103,506214,506210,506208,506215,506213,506211,506204,518150'}, {'columnId': 7288604121687940, 'value': 117328.84, 'displayValue': '$117,328.84'}, {'columnId': 1659104587474820, 'value': 0.499182953701504, 'displayValue': '50%', 'formula': '=[Column4]11 / [Column2]11'}, {'columnId': 6162704214845316}]}], 'version': 78}
+7288604121687940
+start_date,end_date,organization_id,total_spend
+"2018-07-01","2018-07-31",101870,12255.90
+
+{'message': 'SUCCESS', 'resultCode': 0, 'result': [{'id': 4092918961072004, 'rowNumber': 12, 'siblingId': 6344718774757252, 'expanded': True, 'createdAt': '2018-06-27T20:44:03Z', 'modifiedAt': '2018-07-05T16:55:46Z', 'cells': [{'columnId': 533204680632196, 'value': 'SWT', 'displayValue': 'SWT'}, {'columnId': 5036804308002692, 'value': 113556.15, 'displayValue': '$113,556.15'}, {'columnId': 2785004494317444, 'value': '510115,506212,506217,506209,506205,506206,516250', 'displayValue': '510115,506212,506217,506209,506205,506206,516250'}, {'columnId': 7288604121687940, 'value': 12255.9, 'displayValue': '$12,255.90'}, {'columnId': 1659104587474820, 'value': 0.107928104290256, 'displayValue': '11%', 'formula': '=[Column4]12 / [Column2]12'}, {'columnId': 6162704214845316}]}], 'version': 78}
+7288604121687940
+start_date,end_date,organization_id,total_spend
+"2018-07-01","2018-07-31",101870,17641.61
+
+{'message': 'SUCCESS', 'resultCode': 0, 'result': [{'id': 8596518588442500, 'rowNumber': 13, 'siblingId': 4092918961072004, 'expanded': True, 'createdAt': '2018-06-27T20:44:03Z', 'modifiedAt': '2018-07-05T16:55:51Z', 'cells': [{'columnId': 533204680632196, 'value': 'WCW', 'displayValue': 'WCW'}, {'columnId': 5036804308002692, 'value': 115288.67, 'displayValue': '$115,288.67'}, {'columnId': 2785004494317444, 'value': '510120,517596', 'displayValue': '510120,517596'}, {'columnId': 7288604121687940, 'value': 17641.61, 'displayValue': '$17,641.61'}, {'columnId': 1659104587474820, 'value': 0.153021194537156, 'displayValue': '15%', 'formula': '=[Column4]13 / [Column2]13'}, {'columnId': 6162704214845316}]}], 'version': 78}
+   Park Current Budget        Spend Pacing
+0   AIT     $21,258.58    $2,207.55    10%
+1   APC     $25,000.00      $640.43     3%
+2   APO     $93,763.83   $27,897.99    30%
+3   APT     $25,000.00    $1,037.09     4%
+4   BGT    $225,319.44   $19,859.19     9%
+5   BGW    $424,666.88  $115,489.45    27%
+6   DCO    $103,823.03        $0.00     0%
+7   SPL    $101,000.00    $3,449.37     3%
+8   SWC     $94,812.19   $14,536.83    15%
+9   SWF    $235,041.76  $117,328.84    50%
+10  SWT    $113,556.15   $12,255.90    11%
+11  WCW    $115,288.67   $17,641.61    15%
+2018-07-06 12:00:02.525539+00:00
+     Park Current Budget        Spend Pacing
+0     AIT     $16,616.22    $2,695.14    16%
+1     APC      $5,454.87      $712.67    13%
+2     APO     $74,376.79   $31,068.86    42%
+3     APT      $1,995.81    $1,207.39    60%
+4     BGT    $382,795.05   $21,338.20     6%
+5     BGW    $543,822.36  $135,946.30    25%
+6     DCO    $136,605.26        $0.00     0%
+7     SPL     $61,587.66    $5,689.95     9%
+8     SWC    $102,411.33   $17,902.31    17%
+9     SWF    $223,834.75  $133,012.36    59%
+10    SWT    $118,896.31   $15,618.17    13%
+11    WCW    $139,296.23   $21,827.37    16%
+12  SWCRP     $94,324.64   $21,914.32    23%
+2018-07-07 12:00:02.837262+00:00
+     Park Current Budget        Spend Pacing
+0     AIT     $16,616.22    $3,185.34    19%
+1     APC      $5,454.87      $732.63    13%
+2     APO     $74,376.79   $32,481.79    44%
+3     APT      $1,995.81    $1,238.29    62%
+4     BGT    $382,795.05   $26,437.07     7%
+5     BGW    $543,822.36  $145,754.96    27%
+6     DCO    $136,605.26      $198.37     0%
+7     SPL     $61,587.66    $7,881.84    13%
+8     SWC    $102,411.33   $21,257.25    21%
+9     SWF    $223,834.75  $136,765.91    61%
+10    SWT    $118,896.31   $18,980.87    16%
+11    WCW    $139,296.23   $25,982.27    19%
+12  SWCRP     $94,324.64   $26,511.69    28%
+2018-07-08 12:00:02.669877+00:00
+     Park Current Budget        Spend Pacing
+0     AIT     $16,616.22    $3,673.15    22%
+1     APC      $5,454.87      $752.89    14%
+2     APO     $74,376.79   $33,990.01    46%
+3     APT      $1,995.81    $1,266.65    63%
+4     BGT    $382,795.05   $31,674.46     8%
+5     BGW    $543,822.36  $155,566.31    29%
+6     DCO    $136,605.26      $396.86     0%
+7     SPL     $61,587.66    $9,902.80    16%
+8     SWC    $102,411.33   $24,597.37    24%
+9     SWF    $223,834.75  $140,146.92    63%
+10    SWT    $118,896.31   $22,344.27    19%
+11    WCW    $139,296.23   $30,173.85    22%
+12  SWCRP     $94,324.64   $31,101.07    33%
+2018-07-09 12:00:03.136112+00:00
+     Park Current Budget        Spend Pacing
+0     AIT     $16,616.22    $4,188.91    25%
+1     APC      $5,454.87      $775.72    14%
+2     APO     $74,376.79   $35,542.27    48%
+3     APT      $1,995.81    $1,295.41    65%
+4     BGT    $382,795.05   $37,154.88    10%
+5     BGW    $543,822.36  $165,679.98    30%
+6     DCO    $136,605.26      $596.83     0%
+7     SPL     $61,587.66   $11,963.97    19%
+8     SWC    $102,411.33   $28,036.65    27%
+9     SWF    $223,834.75  $143,629.25    64%
+10    SWT    $118,896.31   $25,727.76    22%
+11    WCW    $139,296.23   $34,371.59    25%
+12  SWCRP     $94,324.64   $35,719.07    38%
+2018-07-10 12:00:02.931930+00:00
+   Park Current Budget        Spend Pacing
+0   AIT     $16,616.22    $4,796.24    29%
+1   APC      $5,454.87      $803.08    15%
+2   APO     $74,376.79   $37,443.02    50%
+3   APT      $1,995.81    $1,325.30    66%
+4   BGT    $382,795.05   $42,749.41    11%
+5   BGW    $543,822.36  $177,062.19    33%
+6   DCO    $136,605.26    $1,067.00     1%
+7   SPL     $61,587.66   $14,117.33    23%
+8   SWC    $102,411.33   $31,493.84    31%
+9   SWF    $223,834.75  $147,361.41    66%
+10  SWT    $118,896.31   $29,244.47    25%
+11  WCW    $139,296.23   $38,297.62    27%
+2018-07-11 12:00:02.371215+00:00
+   Park Current Budget        Spend Pacing
+0   AIT     $16,616.22    $5,397.55    32%
+1   APC      $5,454.87      $828.90    15%
+2   APO     $74,376.79   $39,343.56    53%
+3   APT      $1,995.81    $1,355.33    68%
+4   BGT    $382,795.05   $48,352.74    13%
+5   BGW    $543,822.36  $188,476.41    35%
+6   DCO    $136,605.26    $2,247.45     2%
+7   SPL     $61,587.66   $15,869.90    26%
+8   SWC    $102,411.33   $34,967.11    34%
+9   SWF    $223,834.75  $151,154.95    68%
+10  SWT    $118,896.31   $32,750.49    28%
+11  WCW    $139,296.23   $42,048.87    30%
+2018-07-12 12:00:04.251815+00:00
+   Park Current Budget        Spend Pacing
+0   AIT     $16,616.22    $6,049.12    36%
+1   APC      $5,454.87      $854.46    16%
+2   APO     $74,376.79   $41,261.11    55%
+3   APT      $1,995.81    $1,408.44    71%
+4   BGT    $382,795.05   $54,017.06    14%
+5   BGW    $543,822.36  $203,192.93    37%
+6   DCO    $136,605.26    $3,375.80     2%
+7   SPL     $61,587.66   $17,623.51    29%
+8   SWC    $102,411.33   $38,446.48    38%
+9   SWF    $223,834.75  $154,941.75    69%
+10  SWT    $118,896.31   $36,262.26    30%
+11  WCW    $139,296.23   $45,800.73    33%
+2018-07-13 12:00:02.084900+00:00
+   Park Current Budget        Spend Pacing
+0   AIT     $16,616.22    $6,649.63    40%
+1   APC      $5,454.87      $863.87    16%
+2   APO     $74,376.79   $42,878.09    58%
+3   APT      $1,995.81    $1,461.52    73%
+4   BGT    $382,795.05   $57,616.40    15%
+5   BGW    $543,822.36  $215,186.17    40%
+6   DCO    $136,605.26    $4,370.66     3%
+7   SPL     $61,587.66   $19,882.17    32%
+8   SWC    $102,411.33   $42,393.75    41%
+9   SWF    $223,834.75  $158,726.44    71%
+10  SWT    $118,896.31   $39,773.86    33%
+11  WCW    $139,296.23   $50,455.92    36%
+2018-07-14 12:00:02.807578+00:00
+   Park Current Budget        Spend Pacing
+0   AIT     $16,616.22    $7,250.44    44%
+1   APC      $5,454.87      $873.40    16%
+2   APO     $74,376.79   $44,498.46    60%
+3   APT      $1,995.81    $1,514.55    76%
+4   BGT    $382,795.05   $61,214.60    16%
+5   BGW    $543,822.36  $226,827.43    42%
+6   DCO    $136,605.26    $5,265.78     4%
+7   SPL     $61,587.66   $22,056.99    36%
+8   SWC    $102,411.33   $45,486.14    44%
+9   SWF    $223,834.75  $162,385.64    73%
+10  SWT    $118,896.31   $43,058.66    36%
+11  WCW    $139,296.23   $55,111.25    40%
+2018-07-15 12:00:02.401877+00:00
+   Park Current Budget        Spend Pacing
+0   AIT     $16,616.22    $7,827.26    47%
+1   APC      $5,454.87      $882.51    16%
+2   APO     $74,376.79   $46,055.03    62%
+3   APT      $1,995.81    $1,567.59    79%
+4   BGT    $382,795.05   $64,728.22    17%
+5   BGW    $543,822.36  $238,078.47    44%
+6   DCO    $136,605.26    $6,067.77     4%
+7   SPL     $61,587.66   $24,282.18    39%
+8   SWC    $102,411.33   $48,639.55    47%
+9   SWF    $223,834.75  $165,614.71    74%
+10  SWT    $118,896.31   $46,086.16    39%
+11  WCW    $139,296.23   $59,594.56    43%
+2018-07-16 12:00:08.221769+00:00
+   Park Current Budget        Spend Pacing
+0   AIT     $16,616.22    $8,409.41    51%
+1   APC      $5,454.87      $891.68    16%
+2   APO     $74,376.79   $47,520.57    64%
+3   APT      $1,995.81    $1,620.60    81%
+4   BGT    $382,795.05   $68,048.16    18%
+5   BGW    $543,822.36  $249,356.89    46%
+6   DCO    $136,605.26    $6,881.29     5%
+7   SPL     $61,587.66   $26,511.46    43%
+8   SWC    $102,411.33   $51,823.95    51%
+9   SWF    $223,834.75  $168,899.76    75%
+10  SWT    $118,896.31   $49,159.91    41%
+11  WCW    $139,296.23   $63,954.61    46%
+2018-07-17 12:00:03.006362+00:00
+   Park Current Budget        Spend Pacing
+0   AIT     $16,616.22    $9,021.19    54%
+1   APC      $5,454.87      $947.42    17%
+2   APO     $74,376.79   $48,457.78    65%
+3   APT      $1,995.81    $2,157.96   108%
+4   BGT    $382,795.05   $71,639.01    19%
+5   BGW    $543,822.36  $260,675.72    48%
+6   DCO    $136,605.26    $7,805.73     6%
+7   SPL     $61,587.66   $28,821.08    47%
+8   SWC    $102,411.33   $55,032.53    54%
+9   SWF    $223,834.75  $172,197.72    77%
+10  SWT    $118,896.31   $52,238.20    44%
+11  WCW    $139,296.23   $68,495.91    49%
+2018-07-18 12:00:02.637535+00:00
+   Park Current Budget        Spend Pacing
+0   AIT     $16,616.22    $9,836.52    59%
+1   APC      $5,454.87    $1,044.95    19%
+2   APO     $74,376.79   $49,363.76    66%
+3   APT      $1,995.81    $2,775.13   139%
+4   BGT    $382,795.05   $74,535.77    19%
+5   BGW    $543,822.36  $269,867.85    50%
+6   DCO    $136,605.26    $8,607.14     6%
+7   SPL     $61,587.66   $32,565.06    53%
+8   SWC    $102,411.33   $61,268.43    60%
+9   SWF    $223,834.75  $177,903.63    79%
+10  SWT    $118,896.31   $55,128.65    46%
+11  WCW    $139,296.23   $71,529.80    51%
+2018-07-19 12:00:03.489130+00:00
+   Park Current Budget        Spend Pacing
+0   AIT     $16,616.22   $10,436.43    63%
+1   APC      $5,454.87    $1,100.50    20%
+2   APO     $74,376.79   $49,800.65    67%
+3   APT      $1,995.81    $3,587.03   180%
+4   BGT    $382,795.05   $75,828.66    20%
+5   BGW    $543,822.36  $275,758.61    51%
+6   DCO    $136,605.26    $9,392.04     7%
+7   SPL     $61,587.66   $35,834.85    58%
+8   SWC    $102,411.33   $68,094.00    66%
+9   SWF    $223,834.75  $181,305.69    81%
+10  SWT    $118,896.31   $57,038.19    48%
+11  WCW    $139,296.23   $73,102.59    52%
+2018-07-20 12:00:02.531643+00:00
+   Park Current Budget        Spend Pacing
+0   AIT     $16,616.22   $11,037.16    66%
+1   APC      $5,454.87    $1,155.69    21%
+2   APO     $74,376.79   $50,316.05    68%
+3   APT      $1,995.81    $4,429.29   222%
+4   BGT    $382,795.05   $77,225.61    20%
+5   BGW    $543,822.36  $281,836.38    52%
+6   DCO    $136,605.26   $10,189.20     7%
+7   SPL     $61,587.66   $39,198.68    64%
+8   SWC    $102,411.33   $75,010.25    73%
+9   SWF    $223,834.75  $184,312.94    82%
+10  SWT    $118,896.31   $59,367.06    50%
+11  WCW    $139,296.23   $74,561.51    54%
+2018-07-21 12:00:01.983882+00:00
+   Park Current Budget        Spend Pacing
+0   AIT     $16,616.22   $11,636.96    70%
+1   APC      $5,454.87    $1,210.83    22%
+2   APO     $74,376.79   $50,830.71    68%
+3   APT      $1,995.81    $5,269.87   264%
+4   BGT    $382,795.05   $78,642.12    21%
+5   BGW    $543,822.36  $287,504.20    53%
+6   DCO    $136,605.26   $11,053.85     8%
+7   SPL     $61,587.66   $42,560.20    69%
+8   SWC    $102,411.33   $81,919.53    80%
+9   SWF    $223,834.75  $186,942.96    84%
+10  SWT    $118,896.31   $61,735.43    52%
+11  WCW    $139,296.23   $76,006.53    55%
+2018-07-22 12:00:02.687845+00:00
+   Park Current Budget        Spend Pacing
+0   AIT     $16,616.22   $12,229.03    74%
+1   APC      $5,454.87    $1,253.13    23%
+2   APO     $74,376.79   $51,338.91    69%
+3   APT      $1,995.81    $6,110.32   306%
+4   BGT    $382,795.05   $80,025.19    21%
+5   BGW    $543,822.36  $293,159.03    54%
+6   DCO    $136,605.26   $11,809.97     9%
+7   SPL     $61,587.66   $45,921.88    75%
+8   SWC    $102,411.33   $88,790.59    87%
+9   SWF    $223,834.75  $189,690.96    85%
+10  SWT    $118,896.31   $64,100.76    54%
+11  WCW    $139,296.23   $77,359.90    56%
+2018-07-23 12:00:02.839069+00:00
+   Park Current Budget        Spend Pacing
+0   AIT     $16,616.22   $12,820.96    77%
+1   APC      $5,454.87    $1,296.17    24%
+2   APO     $74,376.79   $51,854.08    70%
+3   APT      $1,995.81    $6,951.32   348%
+4   BGT    $382,795.05   $81,387.72    21%
+5   BGW    $543,822.36  $298,822.66    55%
+6   DCO    $136,605.26   $12,595.15     9%
+7   SPL     $61,587.66   $49,283.25    80%
+8   SWC    $102,411.33   $95,532.72    93%
+9   SWF    $223,834.75  $192,432.75    86%
+10  SWT    $118,896.31   $66,465.05    56%
+11  WCW    $139,296.23       $47.00     0%
+2018-07-24 12:00:02.163405+00:00
+   Park Current Budget        Spend Pacing
+0   AIT     $16,616.22   $13,431.54    81%
+1   APC      $5,454.87    $1,351.26    25%
+2   APO     $74,376.79   $52,369.27    70%
+3   APT      $1,995.81    $6,951.32   348%
+4   BGT    $382,795.05   $82,805.60    22%
+5   BGW    $543,822.36  $304,633.53    56%
+6   DCO    $136,605.26   $13,492.10    10%
+7   SPL     $61,587.66   $52,642.13    85%
+8   SWC    $102,411.33  $102,007.12   100%
+9   SWF    $223,834.75  $195,197.96    87%
+10  SWT    $118,896.31   $68,834.44    58%
+11  WCW    $139,296.23   $80,193.66    58%
+2018-07-25 12:00:01.934982+00:00
+   Park Current Budget        Spend Pacing
+0   AIT     $16,616.22   $14,057.36    85%
+1   APC      $5,454.87    $1,402.85    26%
+2   APO     $74,376.79   $52,884.63    71%
+3   APT      $1,995.81    $6,951.32   348%
+4   BGT    $382,795.05   $84,353.46    22%
+5   BGW    $543,822.36  $310,450.94    57%
+6   DCO    $136,605.26   $14,317.48    10%
+7   SPL     $61,587.66   $56,025.93    91%
+8   SWC    $102,411.33  $108,468.42   106%
+9   SWF    $223,834.75  $197,966.20    88%
+10  SWT    $118,896.31   $71,205.46    60%
+11  WCW    $139,296.23   $81,742.63    59%
+2018-07-26 12:00:02.193621+00:00
+   Park Current Budget        Spend Pacing
+0   AIT     $16,616.22   $14,683.05    88%
+1   APC      $5,454.87    $1,454.66    27%
+2   APO     $74,376.79   $53,469.92    72%
+3   APT      $1,995.81    $6,951.32   348%
+4   BGT    $382,795.05   $85,900.19    22%
+5   BGW    $543,822.36  $316,042.86    58%
+6   DCO    $136,605.26   $15,242.42    11%
+7   SPL     $61,587.66   $59,575.57    97%
+8   SWC    $102,411.33  $114,910.38   112%
+9   SWF    $223,834.75  $200,883.84    90%
+10  SWT    $118,896.31   $73,234.62    62%
+11  WCW    $139,296.23   $83,319.75    60%
+2018-07-27 12:00:02.640950+00:00
+   Park Current Budget        Spend Pacing
+0   AIT     $16,616.22   $15,312.59    92%
+1   APC      $5,454.87    $1,509.13    28%
+2   APO     $74,376.79   $54,055.28    73%
+3   APT      $1,995.81    $6,951.32   348%
+4   BGT    $382,795.05   $87,300.06    23%
+5   BGW    $543,822.36  $321,188.01    59%
+6   DCO    $136,605.26   $16,101.23    12%
+7   SPL     $61,587.66   $63,269.34   103%
+8   SWC    $102,411.33  $121,862.79   119%
+9   SWF    $223,834.75  $203,810.23    91%
+10  SWT    $118,896.31   $74,986.06    63%
+11  WCW    $139,296.23   $84,949.36    61%
+2018-07-28 12:00:02.367278+00:00
+   Park Current Budget        Spend Pacing
+0   AIT     $16,616.22   $15,926.39    96%
+1   APC      $5,454.87    $1,564.50    29%
+2   APO     $74,376.79   $54,640.54    73%
+3   APT      $1,995.81    $6,951.32   348%
+4   BGT    $382,795.05   $88,556.44    23%
+5   BGW    $543,822.36  $326,397.42    60%
+6   DCO    $136,605.26   $17,334.37    13%
+7   SPL     $61,587.66   $66,939.38   109%
+8   SWC    $102,411.33  $128,645.48   126%
+9   SWF    $223,834.75  $206,694.73    92%
+10  SWT    $118,896.31   $76,741.81    65%
+11  WCW    $139,296.23   $86,608.63    62%
+2018-07-29 12:00:02.484269+00:00
+   Park Current Budget        Spend Pacing
+0   AIT     $16,616.22   $16,493.10    99%
+1   APC      $5,454.87    $1,619.84    30%
+2   APO     $74,376.79   $55,217.54    74%
+3   APT      $1,995.81    $6,951.32   348%
+4   BGT    $382,795.05   $89,856.78    23%
+5   BGW    $543,822.36  $331,602.23    61%
+6   DCO    $136,605.26   $18,680.97    14%
+7   SPL     $61,587.66   $70,596.55   115%
+8   SWC    $102,411.33  $135,099.09   132%
+9   SWF    $223,834.75  $209,562.70    94%
+10  SWT    $118,896.31   $78,487.98    66%
+11  WCW    $139,296.23   $88,255.35    63%
+2018-07-30 12:00:02.732757+00:00
+   Park Current Budget        Spend Pacing
+0   AIT     $16,616.22   $16,977.80   102%
+1   APC      $5,454.87    $1,674.92    31%
+2   APO     $74,376.79   $55,802.88    75%
+3   APT      $1,995.81    $6,951.32   348%
+4   BGT    $382,795.05   $91,048.18    24%
+5   BGW    $543,822.36  $336,575.66    62%
+6   DCO    $136,605.26   $19,487.56    14%
+7   SPL     $61,587.66   $74,107.28   120%
+8   SWC    $102,411.33  $141,544.43   138%
+9   SWF    $223,834.75  $212,447.80    95%
+10  SWT    $118,896.31   $80,233.02    67%
+11  WCW    $139,296.23   $89,914.95    65%
+2018-07-31 12:00:03.367655+00:00
+Traceback (most recent call last):
+  File "/home/ocalifano/public_html/python/seaworld/push_to_ss.py", line 107, in <module>
+    df.loc[len(df)] = key
+  File "/usr/local/lib/python3.6/site-packages/pandas/core/indexing.py", line 194, in __setitem__
+    self._setitem_with_indexer(indexer, value)
+  File "/usr/local/lib/python3.6/site-packages/pandas/core/indexing.py", line 439, in _setitem_with_indexer
+    raise ValueError("cannot set a row with "
+ValueError: cannot set a row with mismatched columns
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ocalifano/public_html/python/seaworld/push_to_ss.py", line 109, in <module>
+    traceback.print_exc(file=sys.stdout)
+NameError: name 'traceback' is not defined

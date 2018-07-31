@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 2018-06-19 12:00:01.798001+00:00
 SeaWorld 2018-06-19 12:00:01.980434+00:00
 2018-06-20 12:00:02.574049+00:00
@@ -348,3 +349,17 @@ SaatchiX 2018-07-30 12:00:02.679840+00:00
 Conagra 2018-07-30 12:00:28.815764+00:00
 Progressive 2018-07-30 12:00:29.121081+00:00
 2018-07-31 12:00:03.103110+00:00
+=======
+Traceback (most recent call last):
+  File "/home/ocalifano/public_html/python/smartsheet/auto.py", line 8, in <module>
+    import secret
+ModuleNotFoundError: No module named 'secret'
+Traceback (most recent call last):
+  File "/home/ocalifano/public_html/python/smartsheet/auto.py", line 8, in <module>
+    import secret
+ModuleNotFoundError: No module named 'secret'
+Traceback (most recent call last):
+  File "/home/ocalifano/public_html/python/smartsheet/auto.py", line 8, in <module>
+    import secret
+ModuleNotFoundError: No module named 'secret'
+>>>>>>> b9b35f8b2200c79d520123d4d58aa7169a3d2830
