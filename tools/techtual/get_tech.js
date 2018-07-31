@@ -1,10 +1,10 @@
 $(function(){
 	var options = [];
-	options.push("<option value=BSER>Browser</option>");
-	options.push("<option value=CSPD>Connection Speed</option>");
-	options.push("<option value=DVCE>Device Type/OS</option>");
-	options.push("<option value=ISPX>ISP</option>");
-	options.push("<option value=INVT>Inventory Type</option>");
+	options.push("<option value=bser>Browser</option>");
+	options.push("<option value=cspd>Connection Speed</option>");
+	options.push("<option value=dvce>Device Type/OS</option>");
+	options.push("<option value=ispx>ISP</option>");
+	options.push("<option value=invt>Inventory Type</option>");
 
 	$("#target_values").append(options);
 	$("#target_values").multipleSelect({

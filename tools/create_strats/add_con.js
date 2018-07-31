@@ -131,12 +131,12 @@ function get_button(d,numRows){
 					counter++;
 
 					if(counter == strat_list.length){
-						info = header +info+ "\n"+ current_strat  + "," + audience + "," + con_name;
+						info = header +info+ "\n"+ current_strat  + "," + audience + con_name;
 						downloadCSV(info, { filename: "Strategy_Audience_Template.csv" });
 					}
 					else{
 						//console.log(info);
-						info = info +"\n"+ current_strat  + "," + audience + "," + con_name;;
+						info = info +"\n"+ current_strat  + "," + audience + con_name;
 					} 
 					//});
 					})
@@ -158,7 +158,7 @@ function dropdown(strat_list){
 	var feedback = "";
 	var success = 0; 
 	var info = "";
-	var header = "strat_id,con_id";
+	var header = "strat_id,con_id,con_name";
 	//console.log("starting to loop through strats and update geo");
 	for(var i=0; i<strat_list.length; i++) {
 
@@ -166,16 +166,16 @@ function dropdown(strat_list){
 	//console.log(current_strat);
 	var counter = 0;
 		
-		get(current_strat, function(current_strat,audience){
+		get(current_strat, function(current_strat,audience,con_name){
 					counter++;
 
 					if(counter == strat_list.length){
-						info = header +info+ "\n"+ current_strat  + "," + audience;
+						info = header +info+ "\n"+ current_strat  + "," + audience + con_name;
 						downloadCSV(info, { filename: "Strategy_Audience_Template.csv" });
 					}
 					else{
 						//console.log(info);
-						info = info +"\n"+ current_strat  + "," + audience;
+						info = info +"\n"+ current_strat  + "," + audience + con_name;
 					} 
 					//});
 					})

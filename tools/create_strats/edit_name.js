@@ -92,6 +92,44 @@ $("#get_dropdown").click(function() {
 	dropdown(); 	
 })
 
+function get_button(d,numRows){
+	var strat = d.strat_id;
+	strat_list.push(strat);
+	console.log(strat);
+	console.log(numRows);
+
+	var feedback = "";
+	var success = 0; 
+	var info = "";
+	var header = "strat_id,name,status,version";
+ 	if(strat_list.length == numRows){
+	//console.log("starting to loop through strats and update geo");
+	for(var i=0; i<strat_list.length; i++) {
+
+	var current_deal = strat_list[i];
+	//console.log(current_deal);
+	var counter = 0;
+		
+		get(current_deal, function(current_deal,stuff){
+					counter++;
+
+					if(counter == strat_list.length){
+						info = header +info+ "\n"+ current_deal  + "," + stuff;
+						downloadCSV(info, { filename: "Strategy_Name_Template.csv" });
+					}
+					else{
+						//console.log(info);
+						info = info +"\n"+ current_deal  + "," + stuff;
+					} 
+					//});
+					})
+
+		}
+		} 
+
+};
+
+
 //get names
 function dropdown(){
 	var strat_list_drop = [];

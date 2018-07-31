@@ -52,7 +52,7 @@ function get_aud(strat,d,callback){
 		}
 }
 		audience.append('exclude_op', "OR");
-		audience.append('include_op', "AND");
+		audience.append('include_op', "OR");
 			
 	callback(strat,audience);
 }

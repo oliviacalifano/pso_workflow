@@ -3,8 +3,9 @@
 import http.client, json
 import re
 import datetime, pytz
-import sys, traceback
-sys.path.append('..')
+import sys
+sys.path.insert(0, "/home/ocalifano")
+import traceback
 import secret
 import pandas as pd
 
@@ -62,7 +63,7 @@ for x in rows_initialize:
 
 			#only output rows that are Live or Launching Next
 			if status != "":
-				df = df[df['Smartsheet Status'].isin(["Live","Launching Next"])]	
+				df = df[df['Smartsheet Status'].isin(["Live","Launching Next","Yes"])]	
 					
 			del df['Smartsheet Status']
 			
@@ -84,7 +85,8 @@ for x in rows_initialize:
 			
 				if metric != "":
 					for camp_id in df.index.values:
-						cpm = get_from_t1_reports(login, headers_login, payload, headers_get, camp_id)	
+						cpm = get_from_t1_reports(login, headers_login, payload, headers_get, camp_id)
+						print(cpm)
 						df.loc[camp_id,'T1 CPM'] = '{:.2f}'.format(round(float(cpm), 2))
 
 				df['Smartsheet CPM'] = df['Smartsheet CPM'].astype('float64')
