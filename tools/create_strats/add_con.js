@@ -131,20 +131,12 @@ function get_button(d,numRows){
 					counter++;
 
 					if(counter == strat_list.length){
-<<<<<<< HEAD
 						info = header +info+ "\n"+ current_strat  + "," + audience + con_name;
-=======
-						info = header +info+ "\n"+ current_strat  + "," + audience + "," + con_name;
->>>>>>> b9b35f8b2200c79d520123d4d58aa7169a3d2830
 						downloadCSV(info, { filename: "Strategy_Audience_Template.csv" });
 					}
 					else{
 						//console.log(info);
-<<<<<<< HEAD
 						info = info +"\n"+ current_strat  + "," + audience + con_name;
-=======
-						info = info +"\n"+ current_strat  + "," + audience + "," + con_name;;
->>>>>>> b9b35f8b2200c79d520123d4d58aa7169a3d2830
 					} 
 					//});
 					})

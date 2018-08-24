@@ -4169,7 +4169,6 @@ Traceback (most recent call last):
   File "/home/ocalifano/public_html/python/dell_rollover.py", line 11, in <module>
     import secret
 ModuleNotFoundError: No module named 'secret'
-<<<<<<< HEAD
 Traceback (most recent call last):
   File "/home/ocalifano/public_html/python/dell_rollover.py", line 15, in <module>
     api_key = secret.login['api_key']
@@ -4294,5 +4293,31 @@ Traceback (most recent call last):
   File "/home/ocalifano/public_html/python/dell_rollover.py", line 11, in <module>
     import secret
 ModuleNotFoundError: No module named 'secret'
-=======
->>>>>>> b9b35f8b2200c79d520123d4d58aa7169a3d2830
+Traceback (most recent call last):
+  File "/home/ocalifano/public_html/python/dell_rollover.py", line 11, in <module>
+    import secret
+ModuleNotFoundError: No module named 'secret'
+Traceback (most recent call last):
+  File "/home/ocalifano/public_html/python/dell_rollover.py", line 11, in <module>
+    import secret
+ModuleNotFoundError: No module named 'secret'
+Traceback (most recent call last):
+  File "/home/ocalifano/public_html/python/dell_rollover.py", line 11, in <module>
+    import secret
+ModuleNotFoundError: No module named 'secret'
+Traceback (most recent call last):
+  File "/home/ocalifano/public_html/python/dell_rollover.py", line 11, in <module>
+    import secret
+ModuleNotFoundError: No module named 'secret'
+Traceback (most recent call last):
+  File "/home/ocalifano/public_html/python/dell_rollover.py", line 11, in <module>
+    import secret
+ModuleNotFoundError: No module named 'secret'
+Traceback (most recent call last):
+  File "/home/ocalifano/public_html/python/dell_rollover.py", line 11, in <module>
+    import secret
+ModuleNotFoundError: No module named 'secret'
+Traceback (most recent call last):
+  File "/home/ocalifano/public_html/python/dell_rollover.py", line 11, in <module>
+    import secret
+ModuleNotFoundError: No module named 'secret'

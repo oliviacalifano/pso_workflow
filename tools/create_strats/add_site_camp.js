@@ -1,5 +1,6 @@
 var camp_list = [];
 
+//retrieve list of selected campaigns from excel or UI
 function get_selected_camps() {
 
 	var camp_id = [];
@@ -12,7 +13,8 @@ function get_selected_camps() {
 	return camp_id;
 }
 
-function get_pmp(camp,d,callback){
+//retrieve the sitelists to be added or removed from user excel
+function get_site(camp,d,callback){
 	var deals = new FormData();
 	var d_assign = d.sitelists_assign;
 	var d_unassign = d.sitelists_unassign;
@@ -40,7 +42,8 @@ function get_pmp(camp,d,callback){
 	callback(camp,deals);
 }
 
-function add_pmp(s,deals,callback){
+//make a post with the new sitelist
+function add_site(s,deals,callback){
 	
 	$.ajax({
 	url: "https://adroit-tools.mediamath.com/t1/api/v2.0/campaigns/"+s+"/site_lists",
@@ -63,6 +66,7 @@ function add_pmp(s,deals,callback){
 	});
 }
 
+//access sitelists currently attached to campaign
 function get(camp, callback){
 	var con = "";
 	console.log(con);
@@ -96,13 +100,14 @@ function get(camp, callback){
 	})
 }
 
+
 function upload_button(d){
 	feedback = "";
 	var camp = d.camp_id;
 	console.log(camp);
 
- 	get_pmp(camp,d,function(camp,deals){
-		add_pmp(camp,deals,function(deal_success){
+ 	get_site(camp,d,function(camp,deals){
+		add_site(camp,deals,function(deal_success){
 		if (deal_success == 1) {
 		feedback = feedback + "Success on " + camp + ": Deals Added</p>";								
 		$("#feedback").html(feedback); 
@@ -116,7 +121,7 @@ function upload_button(d){
 
 };
 
-
+//pull sites attached to campaigns using dropdown
 $("#get_dropdown").click(function() {
 	console.log("hit!");
 	var camp_list_drop = [];
@@ -151,7 +156,6 @@ function dropdown(camp_list){
 					console.log(camp_list.length);
 					console.log(counter);
 					
-					
 					if(counter == camp_list.length){
 						info = header +info+ "\n"+ current_camp + "," + exch;
 						downloadCSV(info, { filename: "Campaign_Sitelist_Template.csv" });
@@ -162,10 +166,7 @@ function dropdown(camp_list){
 					} 
 					//});
 					})
-
 		}
-		
-
 };
 
 function downloadCSV(csv, args) {  
