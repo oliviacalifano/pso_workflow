@@ -28,29 +28,19 @@ partners_list = []
 email = ""
 
 def timer(url):
-	alert_identified = 0
 	global email
-	#time_0 = time.time()
 	try: 
-		#need to put in a timout function
 		print(url)
 		r = requests.get(url, timeout=4)
-		#time_1 = time.time()		
-		#time_delay = time_1-time_0
-		print(r.elapsed,time_delay)
-		if time_delay > .7:
-			email = email + url + " --> " + "request time: " + r.elapsed + "\n"
-			alert_identified = 1
 		if "https:" in url:
 			https_to_http_check(r)
 	except requests.exceptions.Timeout:
-		print(url," Timeout")  # handle the timeout
+		email = email + url + " --> " + "request time > 4 sec" + "\n"
 	except Exception as e: 
 		print(e)
-		#email = email + url + " --> dead link " + str(r.status_code) + "\n"
 		email = email + url + " --> dead link " + "\n"
 
-#TRY THE DEAD LINK AGAIN?
+#TRY THE DEAD LINK A SECOND TIME?
 		
 def https_to_http_check(request):
 	global email
@@ -60,7 +50,6 @@ def https_to_http_check(request):
 		for resp in request.history:
 			if "http:" in resp.url:
 				email = email + resp.url + " --> illegal HTTPS to HTTP redirect \n"
-		
 		#check the final link
 		if "http:" in request.url:
 			email = email + request.url + " --> illegal HTTPS to HTTP redirect \n"
