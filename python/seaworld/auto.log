@@ -878,3 +878,67 @@ Traceback (most recent call last):
   File "/home/ocalifano/public_html/python/seaworld/push_to_ss.py", line 109, in <module>
     traceback.print_exc(file=sys.stdout)
 NameError: name 'traceback' is not defined
+2018-08-24 12:00:02.255926+00:00
+Traceback (most recent call last):
+  File "/home/ocalifano/public_html/python/seaworld/push_to_ss.py", line 107, in <module>
+    df.loc[len(df)] = key
+  File "/usr/local/lib/python3.6/site-packages/pandas/core/indexing.py", line 194, in __setitem__
+    self._setitem_with_indexer(indexer, value)
+  File "/usr/local/lib/python3.6/site-packages/pandas/core/indexing.py", line 439, in _setitem_with_indexer
+    raise ValueError("cannot set a row with "
+ValueError: cannot set a row with mismatched columns
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ocalifano/public_html/python/seaworld/push_to_ss.py", line 109, in <module>
+    traceback.print_exc(file=sys.stdout)
+NameError: name 'traceback' is not defined
+2018-08-25 12:00:01.970952+00:00
+Traceback (most recent call last):
+  File "/home/ocalifano/public_html/python/seaworld/push_to_ss.py", line 107, in <module>
+    df.loc[len(df)] = key
+  File "/usr/local/lib/python3.6/site-packages/pandas/core/indexing.py", line 194, in __setitem__
+    self._setitem_with_indexer(indexer, value)
+  File "/usr/local/lib/python3.6/site-packages/pandas/core/indexing.py", line 439, in _setitem_with_indexer
+    raise ValueError("cannot set a row with "
+ValueError: cannot set a row with mismatched columns
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ocalifano/public_html/python/seaworld/push_to_ss.py", line 109, in <module>
+    traceback.print_exc(file=sys.stdout)
+NameError: name 'traceback' is not defined
+2018-08-26 12:00:02.162567+00:00
+Traceback (most recent call last):
+  File "/home/ocalifano/public_html/python/seaworld/push_to_ss.py", line 107, in <module>
+    df.loc[len(df)] = key
+  File "/usr/local/lib/python3.6/site-packages/pandas/core/indexing.py", line 194, in __setitem__
+    self._setitem_with_indexer(indexer, value)
+  File "/usr/local/lib/python3.6/site-packages/pandas/core/indexing.py", line 439, in _setitem_with_indexer
+    raise ValueError("cannot set a row with "
+ValueError: cannot set a row with mismatched columns
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ocalifano/public_html/python/seaworld/push_to_ss.py", line 109, in <module>
+    traceback.print_exc(file=sys.stdout)
+NameError: name 'traceback' is not defined
+2018-08-27 12:00:02.539577+00:00
+Traceback (most recent call last):
+  File "/home/ocalifano/public_html/python/seaworld/push_to_ss.py", line 107, in <module>
+    df.loc[len(df)] = key
+  File "/usr/local/lib/python3.6/site-packages/pandas/core/indexing.py", line 194, in __setitem__
+    self._setitem_with_indexer(indexer, value)
+  File "/usr/local/lib/python3.6/site-packages/pandas/core/indexing.py", line 439, in _setitem_with_indexer
+    raise ValueError("cannot set a row with "
+ValueError: cannot set a row with mismatched columns
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ocalifano/public_html/python/seaworld/push_to_ss.py", line 109, in <module>
+    traceback.print_exc(file=sys.stdout)
+NameError: name 'traceback' is not defined
