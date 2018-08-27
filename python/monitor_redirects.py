@@ -1,10 +1,7 @@
 #!/usr/bin/env python3
 
-import requests
-import time
-import json
+import requests, time, socket, json
 from pprint import pprint
-import socket
 
 import sys
 sys.path.insert(0, "/home/ocalifano")
@@ -24,7 +21,7 @@ common_name_https = []
 https = []
 http = []
 
-holder = []
+alert_objects = []
 
 email = ""
 udp = ""
@@ -33,7 +30,7 @@ prefix = "dplat.sync_monitor.ewr"
 class LinkObject():
 	def __init__(self, name, link, alert, count_redirects, total_time, attempts, dead_links, slow, https_to_http):
 		# Load up the information
-		self.Name = name
+		self.Name = name.lower()
 		self.Link = link
 		self.History = ""
 		self.FinalURL = ""
@@ -46,9 +43,10 @@ class LinkObject():
 		self.HttpsToHttp = https_to_http
 		self.Message = []
 		
+	#calculate total time for redirects, and timeout if greater than 4 seconds	
 	def Timer(self):
 		try: 
-			r = requests.get(self.Link, timeout=4)
+			r = requests.get(self.Link, timeout=.3)
 			self.History = r.history
 			self.FinalURL = r.url
 			self.TotalTime = r.elapsed
@@ -61,7 +59,8 @@ class LinkObject():
 			self.Alert = self.Alert+1
 			self.DeadLinks = self.DeadLinks+1
 			self.Message.append("dead link")	
-		
+	
+	#check if an https link redirects to an http url
 	def HttpsToHttpCheck(self):
 		#request redirected
 		if self.History:
@@ -81,13 +80,15 @@ class LinkObject():
 		#request not redirected
 		else:
 			pass
-			
+	
+	#string for email alert
 	def __repr__(self):
 		m = ""
 		for x in self.Message:
 			m = m + "\n" + x
-		return "\n Link:%s Alert:%s Redirects:%s Time:%s Attempts:%s Dead:%s Slow:%s HttpsToHttp:%s" % (self.Link, self.Alert, self.CountRedirects, self.TotalTime, self.Attempts, self.DeadLinks, self.Slow, self.HttpsToHttp) + m		
+		return "\n Name:%s Link:%s Alert:%s Redirects:%s Time:%s Attempts:%s Dead:%s Slow:%s HttpsToHttp:%s" % (self.Name, self.Link, self.Alert, self.CountRedirects, self.TotalTime, self.Attempts, self.DeadLinks, self.Slow, self.HttpsToHttp) + m		
 
+	#string for udp stats	
 	def __str__(self):
 		return prefix+"."+str(self.Name)+".redirects"+":"+str(self.CountRedirects)+"|c \n"+prefix+"."+str(self.Name)+ ".attempts" + ":"+str(self.Attempts)+"|c \n" + prefix + "." + str(self.Name) + ".total_time" + ":"+str(self.TotalTime)+"|c \n" + prefix + "." + str(self.Name) + ".error.dead_link" + ":"+str(self.DeadLinks)+"|c \n" + prefix + "." + str(self.Name) + ".error.slow" + ":"+str(self.Slow)+"|c \n" + prefix + "." + str(self.Name) + ".error.https_http" + ":"+str(self.HttpsToHttp)+"|c \n"
 				
@@ -120,7 +121,7 @@ def send_udp_packet(text):
 	sock.sendto(bytes(text, "utf-8"), (UDP_IP, UDP_PORT))
 	
 	
-def read_in_links():
+def read_in_links_from_github():
 	#retrieve the current partner list from github
 	response = requests.get('https://raw.githubusercontent.com/ocalifano/core-mt3/master/compat/config/sync/partners.json?token=AOohJlVQE3dulnb-VnECxyEOiVwXZO51ks5biHDIwA%3D%3D', auth=(git_user, git_password))
 	data = json.loads(response.text)
@@ -147,31 +148,37 @@ def read_in_links():
 def main():
 	global email 
 	global udp
-	global holder
-	read_in_links()
-	count_links = len(https)+len(http)
+	global alert_objects
+	read_in_links_from_github()
+
+	#instantiate https links as objects
 	for i in range(len(https)):
 		newLink = LinkObject(common_name_https[i], https[i], 0, 0, 0, 0, 0, 0, 0)
 		newLink.Attempts = newLink.Attempts + 1
 		newLink.Timer()
 		newLink.HttpsToHttpCheck()
-		holder.append(newLink)
-		if newLink.Alert > 0:
-			email = email + "\n" + repr(newLink)
+		alert_objects.append(newLink)
+
+	#instantiate http links as objects
 	for i in range(len(http)):
 		newLink = LinkObject(common_name_http[i], http[i], 0, 0, 0, 0, 0, 0, 0)
 		newLink.Attempts = newLink.Attempts + 1
 		newLink.Timer()
-		holder.append(newLink)
-		if newLink.Alert > 0:	
-			email = email + "\n" + repr(newLink)
-	if len(holder) == count_links:
-		for x in holder:
-			if x.Alert > 0:
-				udp = udp + str(x)
-		print(email)
-		if email != "":
-			send_email(email)
+		alert_objects.append(newLink)
+
+	for alert in alert_objects:
+		if alert.Alert > 0:
+			udp = udp + str(alert)
+			email = email + "\n" + repr(alert)
+	
+	#send stats to udp server
+	if udp != "":
+		print(udp)
+		#send_udp_packet(udp)
+	
+	#send email with alerts
+	if email != "":
+		send_email(email)
 	
 if __name__== "__main__":
   main()
