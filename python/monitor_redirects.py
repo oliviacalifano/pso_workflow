@@ -46,7 +46,7 @@ class LinkObject():
 	#calculate total time for redirects, and timeout if greater than 4 seconds	
 	def Timer(self):
 		try: 
-			r = requests.get(self.Link, timeout=.3)
+			r = requests.get(self.Link, timeout=4)
 			self.History = r.history
 			self.FinalURL = r.url
 			self.TotalTime = r.elapsed
@@ -85,8 +85,8 @@ class LinkObject():
 	def __repr__(self):
 		m = ""
 		for x in self.Message:
-			m = m + "\n" + x
-		return "\n Name:%s Link:%s Alert:%s Redirects:%s Time:%s Attempts:%s Dead:%s Slow:%s HttpsToHttp:%s" % (self.Name, self.Link, self.Alert, self.CountRedirects, self.TotalTime, self.Attempts, self.DeadLinks, self.Slow, self.HttpsToHttp) + m		
+			m = m + "\n Message: " + x
+		return "\n Name: %s \n Link: %s \n Alert: %s \n Redirects: %s \n Time: %s \n Attempts: %s \n Dead: %s \n Slow: %s \n HttpsToHttp: %s" % (self.Name, self.Link, self.Alert, self.CountRedirects, self.TotalTime, self.Attempts, self.DeadLinks, self.Slow, self.HttpsToHttp) + m		
 
 	#string for udp stats	
 	def __str__(self):
